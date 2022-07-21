@@ -3,7 +3,7 @@
 <%@include file ="../include/header.jsp" %>
 	<section>
 		<div id="page1" style="height:50vh">
-			<h1 style="font-size:50px">QNA</h1>
+			<h1 style="font-size:50px">Q</h1>
 		</div>
 	</section>
 <%@include file ="../include/footer.jsp" %>
