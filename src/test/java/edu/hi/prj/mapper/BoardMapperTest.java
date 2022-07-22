@@ -9,10 +9,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import edu.hi.prj.vo.BoardVO;
 
 @SpringBootTest
-class BoardMapper2Test {
+class BoardMapperTest {
 
 	@Autowired
-	private BoardMapper2 mapper;
+	private BoardMapper mapper;
 	
 	@Test
 	void testgetList() {

@@ -7,29 +7,29 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import edu.hi.prj.service.BoardService2;
+import edu.hi.prj.service.BoardService;
 import edu.hi.prj.vo.BoardVO;
 
 
-@RequestMapping("/qna2")
+@RequestMapping("/qna")
 @Controller
-public class Qna2Controller {
+public class QnaController {
 
 	@Autowired
-	private BoardService2 service;
+	private BoardService service;
 	
 	@GetMapping("")
 	public String place(Model model) {
 		
 		model.addAttribute("boardList",service.getList());
 		
-		return "/qna2/qna";
+		return "/qna/qna";
 	}
 	
 	@GetMapping("/write")
 	public String write() {
 		
-		return "/qna2/write";
+		return "/qna/write";
 	}
 		
 	@PostMapping("/complete")
@@ -37,7 +37,7 @@ public class Qna2Controller {
 		
 		service.write(boardVO);
 		
-		return "redirect:/qna2";
+		return "redirect:/qna";
 	}
 	
 	@GetMapping("/search")
@@ -46,7 +46,7 @@ public class Qna2Controller {
 		String bname = boardVO.getBname();
 		model.addAttribute("boardList",service.searchList(bname));
 		
-		return "/qna2/qna";
+		return "/qna/qna";
 	}
 	
 	@GetMapping("/detail")
@@ -55,7 +55,7 @@ public class Qna2Controller {
 		int bid = boardVO.getBid(); 
 		model.addAttribute("data",service.getBoard(bid));
 		
-		return "/qna2/detail";
+		return "/qna/detail";
 	}
 	
 }

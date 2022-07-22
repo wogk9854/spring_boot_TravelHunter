@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Mapper;
 
 import edu.hi.prj.vo.BoardVO;
 
-public interface BoardService2{
+public interface BoardService{
 	List<BoardVO> getList();
 	BoardVO getBoard(int bid);
 	void write(BoardVO boardVO);

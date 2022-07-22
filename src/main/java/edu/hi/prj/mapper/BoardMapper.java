@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import edu.hi.prj.vo.BoardVO;
 
 @Mapper
-public interface BoardMapper2{
+public interface BoardMapper{
 	List<BoardVO> getList();	//글 전체 리스트 가져오기
 	BoardVO getBoard(int bid); // n글 정보 가져오기
 	void insert(BoardVO boardVO);

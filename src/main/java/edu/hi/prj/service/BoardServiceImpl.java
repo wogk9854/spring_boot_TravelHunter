@@ -5,13 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import edu.hi.prj.mapper.BoardMapper2;
+import edu.hi.prj.mapper.BoardMapper;
 import edu.hi.prj.vo.BoardVO;
 
 @Service
-public class BoardServiceImpl2 implements BoardService2{
+public class BoardServiceImpl implements BoardService{
 	@Autowired
-	private BoardMapper2 mapper;
+	private BoardMapper mapper;
 
 	@Override
 	public List<BoardVO> getList() {

@@ -7,31 +7,31 @@ div#qna{
         margin-right: 156px;
 
        }
-       h2{
+       h1{
         text-align: center;
-        font-size: 3.0em;
-        padding-top: 20px;
-        padding-bottom: 50px;
        }
        table{
         width: 100%;
        }
-       td{
-       	text-align: center;
+       p{
+        position: relative;
+        left: 1350px;
        }
-       
 </style>
 	<section style="padding:200px 0 0 0">
 		 <div id="qna">
-        <h2>Q&A</h2>
-          <select>
-            <option value='' selected>-- 선택 --</option>
-            <option>제목</option>
-            <option>내용</option>
-            <option>작성자</option>
-          </select>
-    검색 : <input type="text">
-    <input type='submit' value="검색">
+        <h1>Q&A</h1>
+        <form action="/qna2/search" method="GET">
+        	<select>
+	            <option selected>-- 선택 --</option>
+	            <option>제목</option>
+	            <option>내용</option>
+	            <option>작성자</option>
+	          </select>
+	    	검색 : <input type="text" name="bname">
+	    	<input type='submit' value="검색">
+        </form>
+          
     <table border="1">
         <tr>
             <th width="70px">번호</th>
@@ -40,34 +40,23 @@ div#qna{
             <th width="100px">진행상태</th>
             <th width="200px">작성일</th>
         </tr>
-        <tr>
-            <td>1</td>
-            <td>테스트1</td>
-            <td>재하</td>
-            <td>완료</td>
-            <td>2022-07-21</td>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>테스트1</td>
-            <td>재하</td>
-            <td>완료</td>
-            <td>2022-07-21</td>
-        </tr>
-      	<c:forEach var="board" items="${list}">
+       
+      	<c:forEach var="data" items="${boardList}">
       		<tr>
-      			<td>${board.bid}</td>
-      			<td><a href="contentfrom?bid=${board.bid}">${board.btitle}</a></td>
-      			<td>${board.bname}</td>
+      			<td>${data.bid}</td>
+      			<td><a href="/qna2/detail?bid=${data.bid}">${data.btitle}</a></td>
+      			<td>${data.bname}</td>
       			<td></td>
-      			<td>${board.bdate}</td>
-      		</tr>
-      		</c:forEach>
-      		<tr>
-      			<td colspan="5"><a href="qna/write">글작성</a></td>
+      			<td>${data.bdate}</td>
+      			
+      			
       		</tr>
       	
+      	</c:forEach>
       	
+      	<tr>
+      		<td colspan="5"><a href="/qna2/write">글쓰기</a>  </td>
+      	</tr>
       	
     </table>
     <br/>
