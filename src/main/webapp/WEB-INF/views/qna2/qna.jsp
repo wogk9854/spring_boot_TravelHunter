@@ -21,14 +21,17 @@ div#qna{
 	<section style="padding:200px 0 0 0">
 		 <div id="qna">
         <h1>Q&A</h1>
-          <select>
-            <option value='' selected>-- 선택 --</option>
-            <option>제목</option>
-            <option>내용</option>
-            <option>작성자</option>
-          </select>
-    검색 : <input type="text">
-    <input type='submit' value="검색">
+        <form action="/qna2/search" method="GET">
+        	<select>
+	            <option selected>-- 선택 --</option>
+	            <option>제목</option>
+	            <option>내용</option>
+	            <option>작성자</option>
+	          </select>
+	    	검색 : <input type="text" name="bname">
+	    	<input type='submit' value="검색">
+        </form>
+          
     <table border="1">
         <tr>
             <th width="70px">번호</th>
@@ -41,7 +44,7 @@ div#qna{
       	<c:forEach var="data" items="${boardList}">
       		<tr>
       			<td>${data.bid}</td>
-      			<td>${data.btitle}</td>
+      			<td><a href="/qna2/detail?bid=${data.bid}">${data.btitle}</a></td>
       			<td>${data.bname}</td>
       			<td></td>
       			<td>${data.bdate}</td>
@@ -52,14 +55,12 @@ div#qna{
       	</c:forEach>
       	
       	<tr>
-      		<td colspan="5"> 글쓰기 </td>
+      		<td colspan="5"><a href="/qna2/write">글쓰기</a>  </td>
       	</tr>
       	
     </table>
     <br/>
-    <p>
-        <input id="psot" type='button' value="글쓰기">
-    </p>
+    
     
     </div>
 	</section>
