@@ -37,18 +37,14 @@ div#qna{
             <th width="100px">진행상태</th>
             <th width="200px">작성일</th>
         </tr>
-        <tr>
-            <th>1</th>
-            <th>테스트1</th>
-            <th>재하</th>
-            <th>완료</th>
-            <th>2022-07-21</th>
-        </tr>
-      	<c:forEach var="board" items="${list}">
+       
+      	<c:forEach var="data" items="${boardList}">
       		<tr>
-      			<td>${board.bid}</td>
-      			<td>${ }
-      			<td>${board.bname}</td>
+      			<td>${data.bid}</td>
+      			<td>${data.btitle}</td>
+      			<td>${data.bname}</td>
+      			<td></td>
+      			<td>${data.bdate}</td>
       			
       			
       		</tr>

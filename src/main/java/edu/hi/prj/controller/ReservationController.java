@@ -9,19 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edu.hi.prj.service.BoardService;
 
 
-@RequestMapping("/qna")
+@RequestMapping("/reservation")
 @Controller
-public class QnaController {
-
-	@Autowired
-	private BoardService service;
+public class ReservationController {
 	
 	@GetMapping("")
-	public String place(Model model) {
+	public String reservation() {
 		
-		model.addAttribute("boardList",service.getList());
-		
-		return "/qna/qna";
+		return "/reservation/reservation";
 	}
 		
 	
