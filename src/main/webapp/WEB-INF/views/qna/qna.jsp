@@ -51,6 +51,10 @@ div#qna{
       	
       	</c:forEach>
       	
+      	<tr>
+      		<td colspan="5"> 글쓰기 </td>
+      	</tr>
+      	
     </table>
     <br/>
     <p>
