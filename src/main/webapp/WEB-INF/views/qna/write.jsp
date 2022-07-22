@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file ="../include/header.jsp" %>
 	<section style="padding:200px 0 0 100px">
-		<form action="/qna2/complete" method="POST">
+		<form action="/qna/complete" method="POST">
 			작성자: <input type="text" name="bname"/><br>
 			제 목: <input type="text"  name="btitle"/><br>
 			내용<br>

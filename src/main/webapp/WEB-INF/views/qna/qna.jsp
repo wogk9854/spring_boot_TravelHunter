@@ -21,7 +21,7 @@ div#qna{
 	<section style="padding:200px 0 0 0">
 		 <div id="qna">
         <h1>Q&A</h1>
-        <form action="/qna2/search" method="GET">
+        <form action="/qna/search" method="GET">
         	<select>
 	            <option selected>-- 선택 --</option>
 	            <option>제목</option>
@@ -44,7 +44,7 @@ div#qna{
       	<c:forEach var="data" items="${boardList}">
       		<tr>
       			<td>${data.bid}</td>
-      			<td><a href="/qna2/detail?bid=${data.bid}">${data.btitle}</a></td>
+      			<td><a href="/qna/detail?bid=${data.bid}">${data.btitle}</a></td>
       			<td>${data.bname}</td>
       			<td></td>
       			<td>${data.bdate}</td>
@@ -55,7 +55,7 @@ div#qna{
       	</c:forEach>
       	
       	<tr>
-      		<td colspan="5"><a href="/qna2/write">글쓰기</a>  </td>
+      		<td colspan="5"><a href="/qna/write">글쓰기</a>  </td>
       	</tr>
       	
     </table>
