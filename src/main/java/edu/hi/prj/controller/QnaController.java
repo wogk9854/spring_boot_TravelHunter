@@ -43,8 +43,8 @@ public class QnaController {
 	@GetMapping("/search")
 	public String search(Model model,BoardVO boardVO) {
 		
-		String bname = boardVO.getMember_id();
-		model.addAttribute("boardList",service.searchList(bname));
+		String member_id = boardVO.getMember_id();
+		model.addAttribute("boardList",service.searchList(member_id));
 		
 		return "/qna/qna";
 	}

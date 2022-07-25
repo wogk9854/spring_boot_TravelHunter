@@ -28,7 +28,7 @@ div#qna{
 	            <option>내용</option>
 	            <option>작성자</option>
 	          </select>
-	    	검색 : <input type="text" name="bname">
+	    	검색 : <input type="text" name="member_id">
 	    	<input type='submit' value="검색">
         </form>
           
@@ -44,7 +44,7 @@ div#qna{
       	<c:forEach var="data" items="${boardList}">
       		<tr>
       			<td>${data.id}</td>
-      			<td><a href="/qna/detail?bid=${data.id}">${data.btitle}</a></td>
+      			<td><a href="/qna/detail?id=${data.id}">${data.btitle}</a></td>
       			<td>${data.member_id}</td>
       			<td></td>
       			<td>${data.bdate}</td>

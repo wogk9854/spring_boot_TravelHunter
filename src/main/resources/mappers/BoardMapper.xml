@@ -19,6 +19,7 @@
     <select id="getBoard" resultType="BoardVO">
        <![CDATA[
            select * from board where id = #{id}
+          
        ]]>
     </select>
     
