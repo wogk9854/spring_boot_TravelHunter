@@ -5,7 +5,7 @@
 		<table border="1" style="width:100%">
 			<tr>
 				<td>번호</td>
-				<td>${data.bid}</td>
+				<td>${data.id}</td>
 			</tr>
 			<tr>
 				<td>제목</td>
@@ -13,7 +13,7 @@
 			</tr>
 			<tr>
 				<td>작성자</td>
-				<td>${data.bname}</td>
+				<td>${data.member_id}</td>
 			</tr>
 			<tr>
 				<td>날짜</td>

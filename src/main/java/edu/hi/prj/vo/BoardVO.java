@@ -23,7 +23,6 @@ public class BoardVO{
 	private String btitle;
 	private String bcontent;
 	private Timestamp bdate;
-	private int bhit;
 	private int bgrade;
 	private int bview;
 

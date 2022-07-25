@@ -24,8 +24,8 @@
     
     <insert id="insert" >
        <![CDATA[
-           insert into board (id, member_id, btitle, bcontent, place_num, board_type_num, bgrade, bview)
-            values (board_seq.nextval, #{member_id}, #{btitle}, #{bcontent}, #{place_num}, #{board_type_num}, bgrade_seq.currval, bview_seq.currval)
+           insert into board (id, member_id,place_num,board_type_num,btitle, bcontent,bdate,bgrade, bview)
+            values (board_seq.nextval, #{member_id},01, 01,#{btitle}, #{bcontent}, bgrade_seq.currval,01, bview_seq.currval)
        ]]>
     </insert>
     

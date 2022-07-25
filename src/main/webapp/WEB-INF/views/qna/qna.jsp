@@ -43,9 +43,9 @@ div#qna{
        
       	<c:forEach var="data" items="${boardList}">
       		<tr>
-      			<td>${data.bid}</td>
-      			<td><a href="/qna/detail?bid=${data.bid}">${data.btitle}</a></td>
-      			<td>${data.bname}</td>
+      			<td>${data.id}</td>
+      			<td><a href="/qna/detail?bid=${data.id}">${data.btitle}</a></td>
+      			<td>${data.member_id}</td>
       			<td></td>
       			<td>${data.bdate}</td>
       			
