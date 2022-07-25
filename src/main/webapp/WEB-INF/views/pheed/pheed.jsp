@@ -29,6 +29,7 @@
 		<div class="pheed_wrapper">
 			<div class="pheed_list">
 				<ul>
+				<c:forEach var="data" items="${boardList}">
 					<li>
 						<div class="photo">
 							<img src="/images/place.jpg">
@@ -37,14 +38,14 @@
 							<div class="profile">
 								<div class=p_img><img src="/images/profile_img.png"></div>
 								<div class="user_info">
-									<div class="p_id">홍길동</div>
-									<div class="date">July25.2022</div>
+									<div class="p_id">${data.member_id}</div>
+									<div class="date">${data.bdate }</div>
 								</div>
 							</div>
 							
 							<div class="context">
-								<div class="title">title</div>
-								<div class="content">sadfasdfasdfas</div>
+								<div class="title">${data.btitle}</div>
+								<div class="content">${data.bcontent}</div>
 							</div>
 							<div class="show_area">
 								<ul>
@@ -56,146 +57,8 @@
 							</div>
 						</div>
 					</li>
+					</c:forEach>
 					
-					<li>
-						<div class="photo">
-							<img src="/images/place.jpg">
-						</div>
-						<div class="pheed">
-							<div class="profile">
-								<div class=p_img><img src="/images/profile_img.png"></div>
-								<div class="user_info">
-									<div class="p_id">홍길동</div>
-									<div class="date">July25.2022</div>
-								</div>
-							</div>
-							
-							<div class="context">
-								<div class="title">title</div>
-								<div class="content">sadfasdfasdfas</div>
-							</div>
-							<div class="show_area">
-								<ul>
-									<li><span>0</span>views</li>
-									<li><span>0</span>comments</li>
-									<li><span>0</span>like</li>
-								</ul>
-								<div class="like"></div>
-							</div>
-						</div>
-					</li>
-					
-					<li>
-						<div class="photo">
-							<img src="/images/place.jpg">
-						</div>
-						<div class="pheed">
-							<div class="profile">
-								<div class=p_img><img src="/images/profile_img.png"></div>
-								<div class="user_info">
-									<div class="p_id">홍길동</div>
-									<div class="date">July25.2022</div>
-								</div>
-							</div>
-							
-							<div class="context">
-								<div class="title">title</div>
-								<div class="content">sadfasdfasdfas</div>
-							</div>
-							<div class="show_area">
-								<ul>
-									<li><span>0</span>views</li>
-									<li><span>0</span>comments</li>
-									<li><span>0</span>like</li>
-								</ul>
-								<div class="like"></div>
-							</div>
-						</div>
-					</li>
-					
-					<li>
-						<div class="photo">
-							<img src="/images/place.jpg">
-						</div>
-						<div class="pheed">
-							<div class="profile">
-								<div class=p_img><img src="/images/profile_img.png"></div>
-								<div class="user_info">
-									<div class="p_id">홍길동</div>
-									<div class="date">July25.2022</div>
-								</div>
-							</div>
-							
-							<div class="context">
-								<div class="title">title</div>
-								<div class="content">sadfasdfasdfas</div>
-							</div>
-							<div class="show_area">
-								<ul>
-									<li><span>0</span>views</li>
-									<li><span>0</span>comments</li>
-									<li><span>0</span>like</li>
-								</ul>
-								<div class="like"></div>
-							</div>
-						</div>
-					</li>
-					
-					<li>
-						<div class="photo">
-							<img src="/images/place.jpg">
-						</div>
-						<div class="pheed">
-							<div class="profile">
-								<div class=p_img><img src="/images/profile_img.png"></div>
-								<div class="user_info">
-									<div class="p_id">홍길동</div>
-									<div class="date">July25.2022</div>
-								</div>
-							</div>
-							
-							<div class="context">
-								<div class="title">title</div>
-								<div class="content">sadfasdfasdfas</div>
-							</div>
-							<div class="show_area">
-								<ul>
-									<li><span>0</span>views</li>
-									<li><span>0</span>comments</li>
-									<li><span>0</span>like</li>
-								</ul>
-								<div class="like"></div>
-							</div>
-						</div>
-					</li>
-					
-					<li>
-						<div class="photo">
-							<img src="/images/place.jpg">
-						</div>
-						<div class="pheed">
-							<div class="profile">
-								<div class=p_img><img src="/images/profile_img.png"></div>
-								<div class="user_info">
-									<div class="p_id">홍길동</div>
-									<div class="date">July25.2022</div>
-								</div>
-							</div>
-							
-							<div class="context">
-								<div class="title">title</div>
-								<div class="content">sadfasdfasdfas</div>
-							</div>
-							<div class="show_area">
-								<ul>
-									<li><span>0</span>views</li>
-									<li><span>0</span>comments</li>
-									<li><span>0</span>like</li>
-								</ul>
-								<div class="like"></div>
-							</div>
-						</div>
-					</li>
 					
 					
 				</ul>
