@@ -31,7 +31,7 @@ public class QnaController {
 	}
 		
 	@PostMapping("/complete")
-	public String complete(Model model,BoardVO boardVO) {
+	public String complete(BoardVO boardVO) {
 		
 		service.write(boardVO);
 		

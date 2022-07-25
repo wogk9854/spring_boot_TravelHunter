@@ -39,7 +39,7 @@
 								<div class=p_img><img src="/images/profile_img.png"></div>
 								<div class="user_info">
 									<div class="p_id">${data.member_id}</div>
-									<div class="date">${data.bdate }</div>
+									<div class="date">${data.bdate}</div>
 								</div>
 							</div>
 							
@@ -59,11 +59,11 @@
 					</li>
 					</c:forEach>
 					
-					
-					
 				</ul>
+				
 			</div>
 		</div>
+		<a href="/pheed/write"><input type="button" value="작성"></a>
 	</section>
 <%@include file ="../include/footer.jsp" %>
 
