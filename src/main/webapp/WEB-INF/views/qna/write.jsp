@@ -3,7 +3,7 @@
 <%@include file ="../include/header.jsp" %>
 	<section style="padding:200px 0 0 100px">
 		<form action="/qna/complete" method="POST">
-			작성자: <input type="text" name="bname"/><br>
+			작성자: <input type="text" name="member_id"/><br>
 			제 목: <input type="text"  name="btitle"/><br>
 			내용<br>
 			<textarea style="width:200px;height:200px" name="bcontent"></textarea><br>
