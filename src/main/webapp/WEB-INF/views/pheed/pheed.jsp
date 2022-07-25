@@ -3,6 +3,10 @@
 <%@include file ="../include/header.jsp" %>
 <style>
 	.pheed_wrapper{width:1536px; margin:0 auto}
+	.pheed_wrapper .tit{text-align:center; font-size:40px;font-weight:600;}
+	.pheed_wrapper .btn_wrpper{text-align: right;}
+	.pheed_wrapper .write_btn{display:inline-block;background-color:#AD9E87;margin:20px 0;border-radius:50px}
+	.pheed_wrapper .write_btn a{display:block;padding:0 50px; line-height:50px; border-radius:50px;color:#fff}
 	.pheed_wrapper .pheed_list{overflow:hidden}
 	.pheed_wrapper .pheed_list > ul > li{float:left; width:calc((100% - 40px)/3); margin-left:20px; margin-bottom:20px; border:1px solid #000;box-sizing:border-box;}
 	.pheed_wrapper .pheed_list > ul > li:nth-child(3n+1){margin-left:0}
@@ -27,6 +31,12 @@
 
 	<section style="padding:300px 0 100px; 0">
 		<div class="pheed_wrapper">
+		<div class="tit"><h2>Pheeds</h2></div>
+		<div class="btn_wrpper">
+			<div class="write_btn">
+				<a href="/pheed/write">피드작성</a>
+			</div>
+		</div>
 			<div class="pheed_list">
 				<ul>
 				<c:forEach var="data" items="${boardList}">
@@ -63,7 +73,6 @@
 				
 			</div>
 		</div>
-		<a href="/pheed/write"><input type="button" value="작성"></a>
 	</section>
 <%@include file ="../include/footer.jsp" %>
 

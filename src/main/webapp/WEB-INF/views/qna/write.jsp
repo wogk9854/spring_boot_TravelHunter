@@ -3,6 +3,7 @@
 <%@include file ="../include/header.jsp" %>
 	<section style="padding:200px 0 0 100px">
 		<form action="/qna/complete" method="POST">
+			<input type="hidden" name="board_type_num" value="2"/>
 			작성자: <input type="text" name="member_id"/><br>
 			제 목: <input type="text"  name="btitle"/><br>
 			내용<br>

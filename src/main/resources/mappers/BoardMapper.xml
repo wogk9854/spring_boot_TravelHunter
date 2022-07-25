@@ -6,7 +6,8 @@
     
     <select id="getList" resultType="BoardVO">
        <![CDATA[ 
-           select * from board order by id desc
+           select * from board where board_type_num = #{board_type_num} order by id desc
+           	
        ]]>
     </select>
     
@@ -26,7 +27,7 @@
     <insert id="insert" >
        <![CDATA[
            insert into board (id, member_id,place_num,board_type_num,btitle, bcontent,bdate,bgrade, bview)
-            values (board_seq.nextval, #{member_id} ,01,  1,#{btitle}, #{bcontent},sysdate,01, 0)
+            values (board_seq.nextval,#{member_id} ,0, #{board_type_num},#{btitle},#{bcontent},sysdate,0,0)
        ]]>
     </insert>
     

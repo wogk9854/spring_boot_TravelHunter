@@ -2,6 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file ="../include/header.jsp" %>
 <style>
+#qna .tit{text-align:center; font-size:40px;font-weight:600;}
+#qna .btn_wrpper{text-align: right;}
+#qna .write_btn{display:inline-block;background-color:#AD9E87;margin:20px 0;border-radius:50px}
+#qna .write_btn a{display:block;padding:0 50px; line-height:50px; border-radius:50px;color:#fff}
 div#qna{
         margin-left: 156px;
         margin-right: 156px;
@@ -19,8 +23,13 @@ div#qna{
        }
 </style>
 	<section style="padding:200px 0 0 0">
-		 <div id="qna">
-        <h1>Q&A</h1>
+		<div id="qna">
+        <div class="tit"><h2>Q&A</h2></div>
+        <div class="btn_wrpper">
+			<div class="write_btn">
+				<a href="/qna/write">문의하기</a>
+			</div>
+		</div>
         <form action="/qna/search" method="GET">
         	<select>
 	            <option selected>-- 선택 --</option>
@@ -53,10 +62,6 @@ div#qna{
       		</tr>
       	
       	</c:forEach>
-      	
-      	<tr>
-      		<td colspan="5"><a href="/qna/write">글쓰기</a>  </td>
-      	</tr>
       	
     </table>
     <br/>

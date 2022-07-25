@@ -10,34 +10,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edu.hi.prj.service.BoardService;
 import edu.hi.prj.vo.BoardVO;
 
-@RequestMapping("/pheed")
+@RequestMapping("/review")
 @Controller
-public class PheedController {
+public class ReviewController {
 
 	@Autowired
 	private BoardService service;
 	
 	@GetMapping("")
-	public String pheed(Model model) {
+	public String review(Model model) {
 		
-		model.addAttribute("boardList", service.getList(0));
+		model.addAttribute("boardList", service.getList(1));
 		
-		return "/pheed/pheed";
+		return "/review/review";
 	}
-	@GetMapping("/write")
-		public String write() {
-			
-			return "/pheed/pheedwrite";
-		
-		
-	}
-	@PostMapping("/complete")
-	public String complete(BoardVO boardVO) {
-		
-		service.write(boardVO);
-		
-		return "redirect:/pheed";
-	}
+	
 	
 
 }

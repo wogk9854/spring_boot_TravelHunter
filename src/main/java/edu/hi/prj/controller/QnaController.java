@@ -20,12 +20,15 @@ public class QnaController {
 	
 	@GetMapping("")
 	public String place(Model model) {
-		model.addAttribute("boardList",service.getList());
+		
+		model.addAttribute("boardList",service.getList(2));
+		
 		return "/qna/qna";
 	}
 	
 	@GetMapping("/write")
 	public String write() {
+		
 		
 		return "/qna/write";
 	}

@@ -4,7 +4,8 @@
 	<section style="padding:300px 0 100px; 0">
 		
 		
-		<form action="/pheed/complete" method="post">
+		<form action="/pheed/complete" method="POST">
+		<input type="hidden" name="board_type_num" value="0">
     	<table border="1">
     		<tr>
     			<td>이름</td>

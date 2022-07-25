@@ -12,13 +12,13 @@ import edu.hi.prj.vo.BoardVO;
 public class BoardServiceImpl implements BoardService{
 	@Autowired
 	private BoardMapper mapper;
-
+	
 	@Override
-	public List<BoardVO> getList() {
-		// TODO Auto-generated method stub
-		return mapper.getList();
+	public List<BoardVO> getList(int type) {
+		
+		return mapper.getList(type);
 	}
-
+	
 	@Override
 	public void write(BoardVO boardVO) {
 		mapper.insert(boardVO);

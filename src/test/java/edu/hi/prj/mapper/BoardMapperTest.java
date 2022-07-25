@@ -17,7 +17,7 @@ class BoardMapperTest {
 	@Test
 	void testgetList() {
 		
-		List<BoardVO> list = mapper.getList();
+		List<BoardVO> list = mapper.getList(0);
 		
 		for(BoardVO board : list) {
 			System.out.println(board.getId());

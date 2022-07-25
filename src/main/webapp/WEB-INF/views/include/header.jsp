@@ -49,45 +49,47 @@
 						<li>
 							<a href="">캠핑장 예약</a>
 							<div class="search_pop">
-								<div class="pop_inner">
-									<div class="input_area">
-										<label>장소 또는 도시</label>
-										<input type="text"  placeholder="도시, 장소, 지역명을 입력하세요.">
-									</div>
-									<div class="date_area">
-										<div class="date_col">
-											<div class="rent">
-												<span>예약 날짜</span>
-												<a href="">00월00일(월)</a>
-											</div>
-											<div class="return">
-												<span>종료 날짜</span>
-												<a href="">00월00일(월)</a>
-											</div>
+								<form action="/reservation" method="GET">
+									<div class="pop_inner">
+										<div class="input_area">
+											<label>장소 또는 도시</label>
+											<input type="text"  placeholder="도시, 장소, 지역명을 입력하세요.">
 										</div>
-									</div>
-									<div class="car_type">
-										<div class="type_col">
-											<span>장소</span>
-											<select>
-												<option selected>장소 선택</option>
-												<option>노지 캠핑장</option>
-												<option>오토 캠핑장</option>
-												<option>글램핑</option>
-												<option>차박</option>
-											</select>
-										</div>
-									</div>
-									<div class="right">
-										<div class="right_inner">
-											<a href="/place/monthspot" class="promotion">promotion</a>
-											<div class="confirm">
-												<input type="submit" value="검색">
+										<div class="date_area">
+											<div class="date_col">
+												<div class="rent">
+													<span>예약 날짜</span>
+													<a href="">00월00일(월)</a>
+												</div>
+												<div class="return">
+													<span>종료 날짜</span>
+													<a href="">00월00일(월)</a>
+												</div>
 											</div>
 										</div>
+										<div class="car_type">
+											<div class="type_col">
+												<span>캠핑타입</span>
+												<select>
+													<option selected>타입선택</option>
+													<option name="place_type_group" value="outdoor">노지 캠핑장</option>
+													<option name="place_type_group" value="autocamp">오토 캠핑장</option>
+													<option name="place_type_group" value="glamping">글램핑</option>
+													<option name="place_type_group" value="carcamp">차박</option>
+												</select>
+											</div>
+										</div>
+										<div class="right">
+											<div class="right_inner">
+												<a href="/place/monthspot" class="promotion">promotion</a>
+												<div class="confirm">
+													<input type="submit" value="검색">
+												</div>
+											</div>
+										</div>
+										<div class="close"><a href="">숨기기</a></div>
 									</div>
-									<div class="close"><a href="">숨기기</a></div>
-								</div>
+								</form>
 							</div>
 						</li>
 						<li>
@@ -136,7 +138,7 @@
 							<a href="/pheed">피드</a>
 						</li>
 						<li>
-							<a href="/qna">Q&A</a>
+							<a href="/qna?board_type_num=2">Q&A</a>
 						</li>
 					</ul>
 				</nav>

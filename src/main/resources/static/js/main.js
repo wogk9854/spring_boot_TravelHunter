@@ -7,7 +7,8 @@ window.addEventListener("load",function(){
 		var gnbUl=gnb.firstElementChild;
 		var dep1Li=gnbUl.children;
 		var search_pop=document.getElementsByClassName("search_pop")[0];
-		var pop_inner=search_pop.firstElementChild;
+		var pop_inner=document.getElementsByClassName("pop_inner")[0];
+		//var pop_inner=search_pop.firstElementChild;
 		var pop_close=pop_inner.lastElementChild;
 		
 		
