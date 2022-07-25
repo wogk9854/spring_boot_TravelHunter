@@ -25,15 +25,15 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public List<BoardVO> searchList(String bname) {
+	public List<BoardVO> searchList(String member_id) {
 		
-		return mapper.searchList(bname);
+		return mapper.searchList(member_id);
 	}
 
 	@Override
-	public BoardVO getBoard(int bid) {
+	public BoardVO getBoard(int id) {
 		// TODO Auto-generated method stub
-		return mapper.getBoard(bid);
+		return mapper.getBoard(id);
 	}
 
 }

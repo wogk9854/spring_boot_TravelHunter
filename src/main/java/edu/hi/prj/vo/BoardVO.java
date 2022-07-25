@@ -16,14 +16,15 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 public class BoardVO{
-	private int bid;
-	private String bname;
+	private int id;
+	private String member_id;
+	private int place_num;
+	private int board_type_num;
 	private String btitle;
 	private String bcontent;
 	private Timestamp bdate;
 	private int bhit;
-	private int bgroup;
-	private int bstep;
-	private int bindent;
+	private int bgrade;
+	private int bview;
 
 }

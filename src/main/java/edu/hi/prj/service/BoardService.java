@@ -8,7 +8,7 @@ import edu.hi.prj.vo.BoardVO;
 
 public interface BoardService{
 	List<BoardVO> getList();
-	BoardVO getBoard(int bid);
+	BoardVO getBoard(int id);
 	void write(BoardVO boardVO);
-	List<BoardVO> searchList(String bname);
+	List<BoardVO> searchList(String member_id);
 }

@@ -20,7 +20,7 @@ class BoardMapperTest {
 		List<BoardVO> list = mapper.getList();
 		
 		for(BoardVO board : list) {
-			System.out.println(board.getBid());
+			System.out.println(board.getId());
 		}
 		
 	}
