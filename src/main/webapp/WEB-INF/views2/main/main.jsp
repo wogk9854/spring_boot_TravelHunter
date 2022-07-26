@@ -7,37 +7,37 @@
         <div class="slider-area ">
             <!-- Mobile Menu -->
             <div class="slider-active dot-style">
-                <div class="single-slider  hero-overly slider-height d-flex align-items-center" data-background="assets/img/hero/h1_hero.jpg" >
+                <div class="single-slider  hero-overly slider-height d-flex align-items-center" data-background="/images/main_slider5.png" >
                     <div class="container">
                         <div class="row justify-content-center text-center">
                             <div class="col-xl-9">
                                 <div class="h1-slider-caption">
-                                    <h1 data-animation="fadeInUp" data-delay=".4s">top hotel in the city</h1>
-                                    <h3 data-animation="fadeInDown" data-delay=".4s">Hotel & Resourt</h3>
+                                    <h1 data-animation="fadeInUp" data-delay=".4s">Travel Hunter</h1>
+                                    <h3 data-animation="fadeInDown" data-delay=".4s">Camping</h3>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="single-slider  hero-overly slider-height d-flex align-items-center" data-background="assets/img/hero/h1_hero.jpg" >
+                <div class="single-slider  hero-overly slider-height d-flex align-items-center" data-background="/images/main_slider1.png" >
                     <div class="container">
                         <div class="row justify-content-center text-center">
                             <div class="col-xl-9">
                                 <div class="h1-slider-caption">
-                                    <h1 data-animation="fadeInUp" data-delay=".4s">top hotel in the city</h1>
-                                    <h3 data-animation="fadeInDown" data-delay=".4s">Hotel & Resourt</h3>
+                                    <h1 data-animation="fadeInUp" data-delay=".4s">Travel Hunter</h1>
+                                    <h3 data-animation="fadeInDown" data-delay=".4s">Camping</h3>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="single-slider  hero-overly slider-height d-flex align-items-center" data-background="assets/img/hero/h1_hero.jpg" >
+                <div class="single-slider  hero-overly slider-height d-flex align-items-center" data-background="/images/main_slider3.png" >
                     <div class="container">
                         <div class="row justify-content-center text-center">
                             <div class="col-xl-9">
                                 <div class="h1-slider-caption">
-                                    <h1 data-animation="fadeInUp" data-delay=".4s">top hotel in the city</h1>
-                                    <h3 data-animation="fadeInDown" data-delay=".4s">Hotel & Resourt</h3>
+                                    <h1 data-animation="fadeInUp" data-delay=".4s">Travel Hunter</h1>
+                                    <h3 data-animation="fadeInDown" data-delay=".4s">Camping</h3>
                                 </div>
                             </div>
                         </div>
@@ -113,7 +113,7 @@
                                     </select>
                                 </div>
                                	-->
-                                <input class="text" type="text" placeholder="장소입력"/>
+                                <input class="text"  placeholder="장소입력" />
                             </form>
                         </div>
                    </div>
@@ -138,7 +138,7 @@
                    </div>
                     <!-- Single Select Box -->
                     <div class="single-select-box pt-45 mb-30">
-                        <a href="#" class="btn select-btn">Book Now</a>
+                        <a href="#" class="btn select-btn">예약하기</a>
                    </div>
                 </div>
             </form>
@@ -167,7 +167,7 @@
                         <!-- Single Room -->
                         <div class="single-room mb-50">
                             <div class="room-img">
-                               <a href="rooms.html"><img src="assets/img/rooms/room1.jpg" alt=""></a>
+                               <a href="rooms.html"><img src="/assets/img/rooms/room1.jpg" alt=""></a>
                             </div>
                             <div class="room-caption">
                                 <h3><a href="rooms.html">Classic Double Bed</a></h3>
@@ -181,7 +181,7 @@
                         <!-- Single Room -->
                         <div class="single-room mb-50">
                             <div class="room-img">
-                               <a href="rooms.html"><img src="assets/img/rooms/room2.jpg" alt=""></a>
+                               <a href="rooms.html"><img src="/assets/img/rooms/room2.jpg" alt=""></a>
                             </div>
                             <div class="room-caption">
                                 <h3><a href="rooms.html">Classic Double Bed</a></h3>
@@ -195,7 +195,7 @@
                         <!-- Single Room -->
                         <div class="single-room mb-50">
                             <div class="room-img">
-                               <a href="rooms.html"> <img src="assets/img/rooms/room3.jpg" alt=""></a>
+                               <a href="rooms.html"> <img src="/assets/img/rooms/room3.jpg" alt=""></a>
                             </div>
                             <div class="room-caption">
                                 <h3><a href="rooms.html">Classic Double Bed</a></h3>
@@ -209,7 +209,7 @@
                         <!-- Single Room -->
                         <div class="single-room mb-50">
                             <div class="room-img">
-                                <a href="rooms.html"><img src="assets/img/rooms/room4.jpg" alt=""></a>
+                                <a href="rooms.html"><img src="/assets/img/rooms/room4.jpg" alt=""></a>
                             </div>
                             <div class="room-caption">
                                 <h3><a href="rooms.html">Classic Double Bed</a></h3>
@@ -223,7 +223,7 @@
                         <!-- Single Room -->
                         <div class="single-room mb-50">
                             <div class="room-img">
-                                <a href="rooms.html"><img src="assets/img/rooms/room5.jpg" alt=""></a>
+                                <a href="rooms.html"><img src="/assets/img/rooms/room5.jpg" alt=""></a>
                             </div>
                             <div class="room-caption">
                                 <h3><a href="rooms.html">Classic Double Bed</a></h3>

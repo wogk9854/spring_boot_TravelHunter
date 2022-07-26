@@ -15,10 +15,11 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class ReplyVO{
+public class PlaceVO{
 	private int num;
-	private int board_id;
 	private String member_id;
-	private String reply;
-	private Timestamp repdate;
+	private String pname;
+	private String location;
+	private int pphone;
+
 }

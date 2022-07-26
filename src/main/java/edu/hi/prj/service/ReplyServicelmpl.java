@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.hi.prj.mapper.ReplyMapper;
-import edu.hi.prj.vo.BoardVO;
 import edu.hi.prj.vo.ReplyVO;
 
 @Service
@@ -15,8 +14,9 @@ public class ReplyServicelmpl implements ReplyService{
 	private ReplyMapper mapper;
 	
 	@Override
-	public List<ReplyVO> getList(){
-		return mapper.getList();
+	public List<ReplyVO> getList(int id) {
+		
+		return mapper.getList(id);
 	}
 	
 	@Override

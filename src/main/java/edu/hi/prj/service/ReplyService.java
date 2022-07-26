@@ -5,7 +5,7 @@ import java.util.List;
 import edu.hi.prj.vo.ReplyVO;
 
 public interface ReplyService{
-	List<ReplyVO> getList();
+	public List<ReplyVO> getList(int id);
 	void write(ReplyVO replyVO);
 	int delete(ReplyVO replyVO);
 	ReplyVO getReply(int num);

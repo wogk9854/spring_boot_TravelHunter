@@ -25,6 +25,9 @@
             <link rel="stylesheet" href="/assets/css/nice-select.css">
             <link rel="stylesheet" href="/assets/css/style.css">
             <link rel="stylesheet" href="/assets/css/responsive.css">
+            
+            <link rel="stylesheet" href="/css/style.css">
+			
    </head>
 
    <body>
@@ -65,7 +68,7 @@
                                         	<ul class="submenu">
                                         		<li><a href="/place">장소 소개</a></li>
                                                 <li><a href="/place/introduce">장소 타입</a></li>
-                                                <li><a href="/place/monthlybest">이달의 장소</a></li>
+                                                <li><a href="/place/monthspot">이달의 장소</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="/pheed">피드</a></li>
@@ -77,7 +80,7 @@
                         <div class="col-xl-2 col-lg-2">
                             <!-- header-btn -->
                             <div class="header-btn">
-                                <a href="#" class="btn btn1 d-none d-lg-block ">Book Online</a>
+                                <a href="/mypage" class="btn btn1 d-none d-lg-block ">My Page</a>
                             </div>
                         </div>
                         <!-- Mobile Menu -->

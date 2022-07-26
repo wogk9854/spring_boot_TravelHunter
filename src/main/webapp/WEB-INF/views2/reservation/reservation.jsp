@@ -5,7 +5,7 @@
 
         <!-- slider Area Start-->
         <div class="slider-area">
-            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="assets/img/hero/roomspage_hero.jpg" >
+            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="/assets/img/hero/roomspage_hero.jpg" >
                 <div class="container">
                     <div class="row ">
                         <div class="col-md-11 offset-xl-1 offset-lg-1 offset-md-1">
@@ -86,7 +86,7 @@
                                     </select>
                                 </div>
                                	-->
-                                <input class="text" type="text" placeholder="장소입력"/>
+                                <input class="text"  placeholder="장소입력" />
                             </form>
                         </div>
                    </div>
@@ -135,99 +135,28 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="row">
-                    <div class="col-xl-4 col-lg-6 col-md-6">
+                
+                <c:forEach var="data" items="${getAllPlace}">
+                	<div class="col-xl-4 col-lg-6 col-md-6">
                         <!-- Single Room -->
-                        <div class="single-room mb-50">
-                            <div class="room-img">
-                               <a href="rooms.html"><img src="assets/img/rooms/room1.jpg" alt=""></a>
-                            </div>
-                            <div class="room-caption">
-                                <h3><a href="rooms.html">Classic Double Bed</a></h3>
-                                <div class="per-night">
-                                    <span><u>$</u>150 <span>/ par night</span></span>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="/reservation/detail?place_num=">
+	                        <div class="single-room mb-50">
+	                            <div class="room-img">
+	                               <img src="assets/img/rooms/room2.jpg" alt="">
+	                            </div>
+	                            <div class="room-caption">
+	                                <h3>${data.pname}</h3>
+	                                <div class="per-night">
+	                                    <span>${data.location}</span>
+	                                </div>
+	                            </div>
+	                        </div>
+	                      </a>
                     </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <!-- Single Room -->
-                        <div class="single-room mb-50">
-                            <div class="room-img">
-                               <a href="rooms.html"><img src="assets/img/rooms/room2.jpg" alt=""></a>
-                            </div>
-                            <div class="room-caption">
-                                <h3><a href="rooms.html">Classic Double Bed</a></h3>
-                                <div class="per-night">
-                                    <span><u>$</u>150 <span>/ par night</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <!-- Single Room -->
-                        <div class="single-room mb-50">
-                            <div class="room-img">
-                               <a href="rooms.html"> <img src="assets/img/rooms/room3.jpg" alt=""></a>
-                            </div>
-                            <div class="room-caption">
-                                <h3><a href="rooms.html">Classic Double Bed</a></h3>
-                                <div class="per-night">
-                                    <span><u>$</u>150 <span>/ par night</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <!-- Single Room -->
-                        <div class="single-room mb-50">
-                            <div class="room-img">
-                                <a href="rooms.html"><img src="assets/img/rooms/room4.jpg" alt=""></a>
-                            </div>
-                            <div class="room-caption">
-                                <h3><a href="rooms.html">Classic Double Bed</a></h3>
-                                <div class="per-night">
-                                    <span><u>$</u>150 <span>/ par night</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <!-- Single Room -->
-                        <div class="single-room mb-50">
-                            <div class="room-img">
-                                <a href="rooms.html"><img src="assets/img/rooms/room5.jpg" alt=""></a>
-                            </div>
-                            <div class="room-caption">
-                                <h3><a href="rooms.html">Classic Double Bed</a></h3>
-                                <div class="per-night">
-                                    <span><u>$</u>150 <span>/ par night</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <!-- Single Room -->
-                        <div class="single-room mb-50">
-                            <div class="room-img">
-                               <a href="rooms.html"> <img src="assets/img/rooms/room6.jpg" alt=""></a>
-                            </div>
-                            <div class="room-caption">
-                                <h3><a href="rooms.html">Classic Double Bed</a></h3>
-                                <div class="per-night">
-                                    <span><u>$</u>150 <span>/ par night</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="room-btn pt-70">
-                        <a href="#" class="btn view-btn1">View more  <i class="ti-angle-right"></i> </a>
-                    </div>
-                </div>
-            </div>
-
+                </c:forEach>
+                
         </section>
         <!-- Room End -->
 

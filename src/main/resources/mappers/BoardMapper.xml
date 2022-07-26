@@ -79,5 +79,6 @@
          ) WHERE RNUM > (#{pageNum}-1) * #{amount}
       ]]>
    </select>
+   
     
 </mapper>

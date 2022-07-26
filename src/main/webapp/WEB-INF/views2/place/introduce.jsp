@@ -4,155 +4,98 @@
     
     <main>
 
-        <!-- slider Area Start-->
-        <div class="slider-area">
-            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="assets/img/hero/roomspage_hero.jpg" >
-                <div class="container">
-                    <div class="row ">
-                        <div class="col-md-11 offset-xl-1 offset-lg-1 offset-md-1">
-                            <div class="hero-caption">
-                                <span>Camping Spot</span>
-                                <h2>Reservation</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- slider Area End-->
+        
 
-        <!-- Room Start -->
-        <section class="room-area r-padding1">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-xl-8">
-                        <!--font-back-tittle  -->
-                        <div class="font-back-tittle mb-45">
-                            <div class="archivment-front">
-                                <h3>Camping Spot</h3>
-                            </div>
-                            <h3 class="archivment-back">Camping</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <!-- Single Room -->
-                        <div class="single-room mb-50">
-                            <div class="room-img">
-                               <a href="rooms.html"><img src="assets/img/rooms/room1.jpg" alt=""></a>
-                            </div>
-                            <div class="room-caption">
-                                <h3><a href="rooms.html">Classic Double Bed</a></h3>
-                                <div class="per-night">
-                                    <span><u>$</u>150 <span>/ par night</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <!-- Single Room -->
-                        <div class="single-room mb-50">
-                            <div class="room-img">
-                               <a href="rooms.html"><img src="assets/img/rooms/room2.jpg" alt=""></a>
-                            </div>
-                            <div class="room-caption">
-                                <h3><a href="rooms.html">Classic Double Bed</a></h3>
-                                <div class="per-night">
-                                    <span><u>$</u>150 <span>/ par night</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <!-- Single Room -->
-                        <div class="single-room mb-50">
-                            <div class="room-img">
-                               <a href="rooms.html"> <img src="assets/img/rooms/room3.jpg" alt=""></a>
-                            </div>
-                            <div class="room-caption">
-                                <h3><a href="rooms.html">Classic Double Bed</a></h3>
-                                <div class="per-night">
-                                    <span><u>$</u>150 <span>/ par night</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <!-- Single Room -->
-                        <div class="single-room mb-50">
-                            <div class="room-img">
-                                <a href="rooms.html"><img src="assets/img/rooms/room4.jpg" alt=""></a>
-                            </div>
-                            <div class="room-caption">
-                                <h3><a href="rooms.html">Classic Double Bed</a></h3>
-                                <div class="per-night">
-                                    <span><u>$</u>150 <span>/ par night</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <!-- Single Room -->
-                        <div class="single-room mb-50">
-                            <div class="room-img">
-                                <a href="rooms.html"><img src="assets/img/rooms/room5.jpg" alt=""></a>
-                            </div>
-                            <div class="room-caption">
-                                <h3><a href="rooms.html">Classic Double Bed</a></h3>
-                                <div class="per-night">
-                                    <span><u>$</u>150 <span>/ par night</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-lg-6 col-md-6">
-                        <!-- Single Room -->
-                        <div class="single-room mb-50">
-                            <div class="room-img">
-                               <a href="rooms.html"> <img src="assets/img/rooms/room6.jpg" alt=""></a>
-                            </div>
-                            <div class="room-caption">
-                                <h3><a href="rooms.html">Classic Double Bed</a></h3>
-                                <div class="per-night">
-                                    <span><u>$</u>150 <span>/ par night</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center">
-                    <div class="room-btn pt-70">
-                        <a href="#" class="btn view-btn1">View more  <i class="ti-angle-right"></i> </a>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-        <!-- Room End -->
-
-        <!-- Gallery img Start-->
-        <div class="gallery-area fix">
-            <div class="container-fluid p-0">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="gallery-active owl-carousel">
-                            <div class="gallery-img">
-                                <a href="#"><img src="assets/img/gallery/gallery1.jpg" alt=""></a>
-                            </div>
-                            <div class="gallery-img">
-                                <a href="#"><img src="assets/img/gallery/gallery2.jpg" alt=""></a>
-                            </div>
-                            <div class="gallery-img">
-                                <a href="#"><img src="assets/img/gallery/gallery3.jpg" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Gallery img End-->
+       <div id="page1">
+			<div id="page1_bg"></div>
+			<div class="inner">
+				<div class="logo">
+					<ul>
+						<li>
+							<a href=""class="brand">노지캠핑</a>
+							<div class="copy">
+								<ul>
+									<li><strong>Classic Upper Upscale</strong>
+									</li>
+									<li><p>캠퍼는 사용자 맞춤 시설과 서비스로 비교할 수 없는 국내 최다 캠핑카 보유를 자랑합니다. 전국 각 지점의 보증된 서비스와 시설을 제공하고 있으며 변함없는 만족감을 선사하고 있습니다.</p></li>
+									<li><a href=""><span>자세히 보기</span></a></li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<a href=""class="brand">오토캠핑</a>
+							<div class="copy">
+								<ul>
+									<li><strong>Light your moments at all around destination</strong>
+									</li>
+									<li><p>제주 공항에서 가장 가깝게 만날 수 있는 차박용 세미 캠핑카.<br>
+										2인 사용에 최적화 된 세미 캠핑카는 가볍게 몸만 오셔도 충분한 감성 캠핑과 차박을 즐길 수 있도록 필수 IT-ITEM으로 준비되어 있습니다.</p></li>
+									<li><a href=""><span>자세히 보기</span></a></li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<a href="" class="brand">글램핑</a>
+							<div class="copy">
+								<ul>
+									<li><strong>A journey for inspiration</strong>
+									</li>
+									<li><p>여행은 낯선 곳으로의 여정 안에서 다양한 라이프스타일을 가진 사람들과의 만남을 통해 새로운 경험과 발견을 하고, 끊임없이 창조와 성장을 해가는 과정입니다.<br>그 새로운 경험과 영감의 여정에 잇츠캠핑이 함께합니다.</p></li>
+									<li><a href=""><span>자세히 보기</span></a></li>
+								</ul>
+							</div>
+						</li>
+						<li>
+							<a href=""class="brand">차박</a>
+							<div class="copy">
+								<ul>
+									<li><strong>Mordern conveneience and design for balanced travel</strong>
+									</li>
+									<li><p>모든 것이 활동적인 캠퍼들을 위해 이상적으로 설계되었습니다.<br>다이브인로드의 편리한 대여서비스, 캠핑에 필요한 모든 옵션을 이용해 가장 다이나믹한 캠핑을 떠나세요.<br>다이브인로드는 캠퍼들의 새로운도전을 든든하게 뒷받침 합니다.</p></li>
+									<li><a href=""><span>자세히 보기</span></a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+       
     </main>
+    <script src="/assets/js/jquery.min.js"></script>
+    
+    <script>
+  	//page1 마우스효과
+		var bgn=0;
+		
+		motionBackground(bgn);
+		
+		$("#page1 .logo > ul > li").mouseenter(function(e){
+			e.preventDefault();
+			bgn=$(this).index();
+			motionBackground(bgn);
+		});
+		
+		function motionBackground(n){
+			$("#page1_bg").addClass("active");
+			$("#page1_bg").attr("class","case"+n)
+		
+			$("#page1_bg").fadeIn(500, function(){
+				$("#page1").attr("class", "case"+n);
+				$("#page1").addClass("active");
+				$(this).hide();
+				$(this).removeClass("active");
+			});
+			$("#page1 .logo > ul > li").each(function(i){
+				if(i == bgn){
+					$(this).addClass("active");
+				}
+				else{
+					$(this).removeClass("active");
+				}
+			});
+		}
+    </script>
     
 <%@include file ="../include/footer.jsp" %>
    

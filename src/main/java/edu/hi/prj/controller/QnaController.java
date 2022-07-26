@@ -21,6 +21,7 @@ public class QnaController {
 
 	@Autowired
 	private BoardService service;
+	
 	@Autowired
 	private ReplyService reply_service;
 	
@@ -66,7 +67,7 @@ public class QnaController {
 		service.updateView(id);
 		
 		//댓글
-		model.addAttribute("reply", reply_service.getList());
+		model.addAttribute("reply", reply_service.getList(id));
 		
 		return "/qna/detail";
 	}

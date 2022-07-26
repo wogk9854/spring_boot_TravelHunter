@@ -34,13 +34,15 @@
 		<br>
 		
 		<table width="500" cellpadding="0" border="1">
+			<c:forEach var="reply" items="${reply}">
+				<tr>
+					<td>${reply.member_id }</td>
+					<td>${reply.reply }</td>
+					<td>${reply.repdate }</td>
+					<td>삭제</td>
+				</tr>
+			</c:forEach>
 			
-			<tr>
-				<td>${reply.member_id }</td>
-				<td>${reply.reply }</td>
-				<td>${reply.repdate }</td>
-				<td>삭제</td>
-			</tr>
 		
 		
 		</table>

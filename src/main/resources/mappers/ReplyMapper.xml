@@ -6,7 +6,7 @@
     
     <select id="getList" resultType="ReplyVO">
        <![CDATA[ 
-           select * from reply where num = 3 order by repdate desc
+           select * from reply where board_id = #{id} order by repdate desc
            	
        ]]>
     </select>  
@@ -17,8 +17,6 @@
             values (reply_seq.nextval, #{board_id}, #{member_id}, #{reply}, sysdate)
        ]]>
     </insert>
-    
-    
     
     <delete id="delete" >
     	<![CDATA[
