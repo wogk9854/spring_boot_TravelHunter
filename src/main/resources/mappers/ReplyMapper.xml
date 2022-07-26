@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.hi.prj.mapper.ReplyMapper">
+    
+    <select id="getList" resultType="ReplyVO">
+       <![CDATA[ 
+           select * from reply where num = 3 order by repdate desc
+           	
+       ]]>
+    </select>  
+    
+    <insert id="insert" >
+       <![CDATA[
+           insert into reply (num, board_id, member_id, reply, repdate)
+            values (reply_seq.nextval, #{board_id}, #{member_id}, #{reply}, sysdate)
+       ]]>
+    </insert>
+    
+    
+    
+    <delete id="delete" >
+    	<![CDATA[
+    		delete from reply where num = #{num}
+    	]]>
+    </delete>
+    
+     <select id="getReply" resultType="ReplyVO">
+       <![CDATA[
+           select * from reply where num = #{num}
+          
+       ]]>
+    </select>
+
+    
+</mapper>

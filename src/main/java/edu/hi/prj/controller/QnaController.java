@@ -1,5 +1,7 @@
 package edu.hi.prj.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -8,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.hi.prj.service.BoardService;
+import edu.hi.prj.service.ReplyService;
 import edu.hi.prj.vo.BoardVO;
+import edu.hi.prj.vo.ReplyVO;
 
 
 @RequestMapping("/qna")
@@ -17,6 +21,8 @@ public class QnaController {
 
 	@Autowired
 	private BoardService service;
+	@Autowired
+	private ReplyService reply_service;
 	
 	@GetMapping("")
 	public String place(Model model) {
@@ -51,10 +57,17 @@ public class QnaController {
 	}
 	
 	@GetMapping("/detail")
-	public String detail(Model model,BoardVO boardVO) {
+	public String detail(Model model,BoardVO boardVO, ReplyVO replyVO) {
 		int id = boardVO.getId();
+		
 		model.addAttribute("data",service.getBoard(id));
+		
+		
 		service.updateView(id);
+		
+		//댓글
+		model.addAttribute("reply", reply_service.getList());
+		
 		return "/qna/detail";
 	}
 	

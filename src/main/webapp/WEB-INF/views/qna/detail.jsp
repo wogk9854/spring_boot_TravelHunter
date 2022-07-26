@@ -23,9 +23,27 @@
 				<td colspan="2" style="text-align:center">내용:</td>
 			</tr>
 			<tr style="height:300px"><td colspan="2">${data.bcontent}</td></tr>
+			<tr>
+				<td colspan="2">
+					&nbsp;&nbsp;<a href="/qna/edit?id=${data.id }"><input type="button" value="수정하기"></a>&nbsp;&nbsp;
+					<a href="/qna"><input type="button" value="목록보기"></a>
+				</td>
+			</tr>
 		</table>
-		&nbsp;&nbsp;<a href="/qna/edit?id=${data.id }"><input type="button" value="수정하기"></a>&nbsp;&nbsp;
-		<a href="/qna"><input type="button" value="목록보기"></a>
+		
+		<br>
+		
+		<table width="500" cellpadding="0" border="1">
+			
+			<tr>
+				<td>${reply.member_id }</td>
+				<td>${reply.reply }</td>
+				<td>${reply.repdate }</td>
+				<td>삭제</td>
+			</tr>
+		
+		
+		</table>
 	</section>
 <%@include file ="../include/footer.jsp" %>
 
