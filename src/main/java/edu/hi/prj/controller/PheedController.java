@@ -24,6 +24,19 @@ public class PheedController {
 		
 		return "/pheed/pheed";
 	}
+	
+	@GetMapping("/detail")
+	public String detail(Model model,BoardVO boardVO) {
+		
+		int id = boardVO.getId();
+		
+		service.updateView(id);
+		
+		model.addAttribute("data",service.getBoard(id));
+		
+		return "/pheed/detail";
+	}
+	
 	@GetMapping("/write")
 		public String write() {
 			
@@ -31,6 +44,7 @@ public class PheedController {
 		
 		
 	}
+	
 	@PostMapping("/complete")
 	public String complete(BoardVO boardVO) {
 		

@@ -6,6 +6,7 @@ import edu.hi.prj.vo.BoardVO;
 
 public interface BoardService{
 	List<BoardVO> getList(int type);
+	List<BoardVO> getHotList(int type);
 	BoardVO getBoard(int id);
 	void write(BoardVO boardVO);
 	List<BoardVO> searchList(String member_id);

@@ -14,7 +14,9 @@ public class HomeController {
 	private BoardServiceImpl service;
 	
 	@GetMapping("/")
-	public String main() {
+	public String main(Model model) {
+		
+		model.addAttribute("data",service.getHotList(0));
 		
 		return "/main/main";
 	}

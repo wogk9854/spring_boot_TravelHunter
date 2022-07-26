@@ -11,6 +11,12 @@
        ]]>
     </select>
     
+     <select id="getHotList" resultType="BoardVO">
+       <![CDATA[ 
+           select * from board where board_type_num = #{board_type_num} order by bview desc,id desc	
+       ]]>
+    </select>
+    
     <select id="searchList" resultType="BoardVO">
        <![CDATA[ 
            select * from board  where member_id = #{member_id}

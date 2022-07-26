@@ -21,6 +21,12 @@ public class BoardServiceImpl implements BoardService{
 	}
 	
 	@Override
+	public List<BoardVO> getHotList(int type) {
+		
+		return mapper.getHotList(type);
+	}
+	
+	@Override
 	public void write(BoardVO boardVO) {
 		mapper.insert(boardVO);
 	}
@@ -33,7 +39,7 @@ public class BoardServiceImpl implements BoardService{
 
 	@Override
 	public BoardVO getBoard(int id) {
-		// TODO Auto-generated method stub
+		
 		return mapper.getBoard(id);
 	}
 	
