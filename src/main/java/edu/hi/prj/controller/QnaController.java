@@ -52,10 +52,9 @@ public class QnaController {
 	
 	@GetMapping("/detail")
 	public String detail(Model model,BoardVO boardVO) {
-		
 		int id = boardVO.getId();
 		model.addAttribute("data",service.getBoard(id));
-		
+		service.updateView(id);
 		return "/qna/detail";
 	}
 	

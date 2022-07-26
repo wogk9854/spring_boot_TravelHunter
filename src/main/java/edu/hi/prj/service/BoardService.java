@@ -13,4 +13,5 @@ public interface BoardService{
 	List<BoardVO> searchList(String member_id);
 	int update(BoardVO boardVO);
 	int delete(BoardVO boardVO);
+	int updateView(int id);
 }

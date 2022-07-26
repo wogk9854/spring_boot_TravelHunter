@@ -54,9 +54,9 @@
    ]]>
    </insert>
    
-   <update id="updateHit">
+   <update id="updateView">
       <![CDATA[
-          update board set bhit = bhit + 1 where bid = #{bid}
+          update board set bview = bview + 1 where id = #{id}
       ]]>
    </update>
    
