@@ -24,6 +24,8 @@
 			</tr>
 			<tr style="height:300px"><td colspan="2">${data.bcontent}</td></tr>
 		</table>
+		&nbsp;&nbsp;<a href="/qna/edit?id=${data.id }"><input type="button" value="수정하기"></a>&nbsp;&nbsp;
+		<a href="/qna"><input type="button" value="목록보기"></a>
 	</section>
 <%@include file ="../include/footer.jsp" %>
 

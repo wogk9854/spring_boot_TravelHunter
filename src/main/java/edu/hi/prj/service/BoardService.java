@@ -11,4 +11,6 @@ public interface BoardService{
 	BoardVO getBoard(int id);
 	void write(BoardVO boardVO);
 	List<BoardVO> searchList(String member_id);
+	int update(BoardVO boardVO);
+	int delete(BoardVO boardVO);
 }

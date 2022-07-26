@@ -12,5 +12,7 @@ public interface BoardMapper{
 	BoardVO getBoard(int id);
 	void insert(BoardVO boardVO);
 	List<BoardVO> searchList(String member_id);
+	int update(BoardVO boardVO);
+	int delete(BoardVO boardVO);
 
 }

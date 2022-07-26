@@ -59,4 +59,32 @@ public class QnaController {
 		return "/qna/detail";
 	}
 	
+	@GetMapping("/edit")
+	public String edit(Model model, BoardVO boardVO) {
+		
+		int id = boardVO.getId();
+		model.addAttribute("data", service.getBoard(id));
+		
+		return "/qna/edit";
+	}
+	
+	@PostMapping("/update")
+	public String update(BoardVO boardVO) {
+		
+		service.update(boardVO);
+		
+		return "redirect:/qna;";
+	}
+	
+	@PostMapping("/delete")
+	public String delete(BoardVO boardVO) {
+		
+		service.delete(boardVO);
+		return "redirect:/qna;";
+	}
+	
+
+	
+	
+	
 }
