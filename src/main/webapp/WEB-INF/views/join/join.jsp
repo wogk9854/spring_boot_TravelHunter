@@ -63,6 +63,14 @@
 					$("#mphone").focus();
 					return false;
 				}
+				var idChkVal = $("#idcheck").val();
+				if(idChkVal == "N"){
+					alert("중복확인 버튼을 눌러주세요.");
+					return false;
+				}else if(idChkVal == "Y"){
+					$("#regForm").submit();
+				}
+				
 			});
 		})
 		
