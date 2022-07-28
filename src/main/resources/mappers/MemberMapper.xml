@@ -12,6 +12,16 @@
        ]]>
     </select>
     
+    <select id="logincheck" resultType="MemberVO">
+    	
+    	<![CDATA[ 
+           select mname, nick_name, mphone, memail, mbirth, payment from member
+			where id = #{id} and mpw = #{mpw}
+           	
+       ]]>
+    
+    </select>
+    
    
     
 </mapper>

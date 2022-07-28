@@ -16,6 +16,11 @@ public class MemberServicelmpl implements MemberService{
 		mapper.create(memberVO);
 		
 	}
+
+	@Override
+	public MemberVO logincheck(MemberVO memberVO) {
+		return mapper.logincheck(memberVO);
+	}
 	
 	
 }

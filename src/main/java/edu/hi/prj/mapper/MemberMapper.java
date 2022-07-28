@@ -7,6 +7,6 @@ import edu.hi.prj.vo.MemberVO;
 @Mapper
 public interface MemberMapper{
 	void create(MemberVO memberVO);
+	MemberVO logincheck(MemberVO memberVO);
 	
-
 }
