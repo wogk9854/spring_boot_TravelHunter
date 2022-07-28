@@ -1,5 +1,7 @@
 package edu.hi.prj.controller;
 
+
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -11,12 +13,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import ch.qos.logback.classic.Logger;
 import edu.hi.prj.service.BoardServiceImpl;
 import edu.hi.prj.service.MemberService;
 import edu.hi.prj.vo.MemberVO;
-import lombok.extern.slf4j.Slf4j;
-@Slf4j
+
 @Controller
 public class HomeController {
 
@@ -46,16 +46,9 @@ public class HomeController {
 	}
 	
 	//회원가입
-	@PostMapping("/join")
+	@PostMapping("/create")
 	public String create(MemberVO memberVO) {
-		log.info("post join");
-		int result = member_service.idcheck(memberVO);
-		if(result == 1) {
-			return "/join/join";
-		}else if(result == 0) {
-			member_service.create(memberVO);
-		}
-		
+		member_service.create(memberVO);
 		return "/login/login";
 	}
 	
@@ -85,7 +78,7 @@ public class HomeController {
 	}
 	
 	@ResponseBody
-	@GetMapping("/idcheck")
+	@PostMapping("/idcheck")
 	public int idcheck(MemberVO memberVO) {
 		
 		int result = member_service.idcheck(memberVO);

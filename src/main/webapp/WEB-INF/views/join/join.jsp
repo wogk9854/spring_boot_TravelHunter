@@ -2,13 +2,10 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file ="../include/header.jsp" %>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	
 	<section style="padding:200px 0 0 100px">
+		<form action="/create" method="post">
 		아이디 : <input type="text" id="id" name="id" />
-		<form action="/idcheck" method="post">
-		<button type="submit" id="idcheck" onclick="fn_idcheck();" value="N">중복확인</button><br>
-		</form>
-				
+		<button type="button" id="idcheck" onclick="fn_idcheck();" value="N">중복확인</button>	<br>
          비밀번호 : <input type="password" name="mpw" id="mpw" /><br>
         비밀번호확인 : <br>
         이름 : <input type="text" name="mname" id="mname" /><br>
@@ -16,7 +13,7 @@
         이메일 : <input type="text" name="memail" id="memail" /><br>
         핸드폰번호 : <input type="text" name="mphone" id="mphone" /><br>
         생년월일 : <br>
-		<form action="/join" method="post">
+		
 		<button type="submit" id="submit">회원가입</button>
 		<button type="button">취소</button>	
 		</form>
