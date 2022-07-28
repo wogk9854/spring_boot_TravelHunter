@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.hi.prj.mapper.MemberMapper">
+    
+    <select id="create" resultType="MemberVO">
+       <![CDATA[ 
+           insert into member (id, mpw, mname, nick_name, memail, mphone, mbirth, payment)
+           		values (#{id}, #{mpw}, #{mname}, #{nick_name}, #{memail}, #{mphone}, 0, 0)
+           	
+       ]]>
+    </select>
+    
+   
+    
+</mapper>
