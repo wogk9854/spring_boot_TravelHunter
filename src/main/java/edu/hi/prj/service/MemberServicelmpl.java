@@ -11,7 +11,7 @@ public class MemberServicelmpl implements MemberService{
 	@Autowired
 	private MemberMapper mapper;
 	
-	@Override
+	@Override//회원가입
 	public void create(MemberVO memberVO) {
 		mapper.create(memberVO);
 		
@@ -20,6 +20,12 @@ public class MemberServicelmpl implements MemberService{
 	@Override
 	public MemberVO logincheck(MemberVO memberVO) {
 		return mapper.logincheck(memberVO);
+	}
+
+	@Override
+	public int idcheck(MemberVO memberVO) {
+		int result = mapper.idcheck(memberVO);
+		return result;
 	}
 	
 	

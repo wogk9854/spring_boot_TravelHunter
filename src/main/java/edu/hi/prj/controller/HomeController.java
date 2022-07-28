@@ -8,12 +8,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import ch.qos.logback.classic.Logger;
 import edu.hi.prj.service.BoardServiceImpl;
 import edu.hi.prj.service.MemberService;
 import edu.hi.prj.vo.MemberVO;
-
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Controller
 public class HomeController {
 
@@ -43,14 +46,21 @@ public class HomeController {
 	}
 	
 	//회원가입
-	@PostMapping("/create")
+	@PostMapping("/join")
 	public String create(MemberVO memberVO) {
-		member_service.create(memberVO);
-		System.out.println("회원가입넘어옴");
+		log.info("post join");
+		int result = member_service.idcheck(memberVO);
+		if(result == 1) {
+			return "/join/join";
+		}else if(result == 0) {
+			member_service.create(memberVO);
+		}
+		
 		return "/login/login";
 	}
 	
 	//로그인
+	
 	@PostMapping("/logincheck")
 	public String logincheck(MemberVO memberVO, 
 							 HttpServletRequest req, 
@@ -67,13 +77,23 @@ public class HomeController {
 		
 		return "/main/main";
 	}
-	
+	//로그아웃
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		session.invalidate();
 		return "/main/main";
 	}
 	
+	@ResponseBody
+	@GetMapping("/idcheck")
+	public int idcheck(MemberVO memberVO) {
+		
+		int result = member_service.idcheck(memberVO);
+		return result;
+	}
 		
 
 }
+
+
+

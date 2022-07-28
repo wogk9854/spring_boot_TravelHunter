@@ -8,5 +8,6 @@ import edu.hi.prj.vo.MemberVO;
 public interface MemberMapper{
 	void create(MemberVO memberVO);
 	MemberVO logincheck(MemberVO memberVO);
+	int idcheck(MemberVO memberVO);
 	
 }

@@ -7,18 +7,11 @@
 			<label for="id">아이디 : </label>
 			<input type="text" id="id" name="id"><br>
 			<label for="mpw">비밀번호 : </label>
-			<input type="text" id="mpw" name="mpw"><br>
+			<input type="password" id="mpw" name="mpw"><br>
 			
 			<button type="submit">로그인</button>
-			<button type="button">회원가입</button>
+			<a href="/join"><input type="button" value="회원가입"></a>
 		
-		</c:if>
-		<c:if test="${member != null }">
-			<p>${member.nick_name}님 환영홥니다.</p>
-			<a href="/logout"><input type="button" value="로그아웃"></a>
-		</c:if>
-		<c:if test="${msg == false }">
-			<p style="color: red;">로그인실패</p>
 		</c:if>
 	</form>	
 	

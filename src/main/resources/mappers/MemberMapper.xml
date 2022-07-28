@@ -16,12 +16,19 @@
     	
     	<![CDATA[ 
            select mname, nick_name, mphone, memail, mbirth, payment from member
-			where id = #{id} and mpw = #{mpw}
-           	
-       ]]>
-    
+			where id = #{id} and mpw = #{mpw}          	
+       ]]>  
     </select>
     
+   
+    <select id="idcheck" resultType="int">
+		select count(*) from member
+		where id = #{id}
+	</select>
+    
+    
+			
+	
    
     
 </mapper>
