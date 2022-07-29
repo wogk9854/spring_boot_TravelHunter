@@ -15,15 +15,8 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class PlaceVO{
-	private int num;
-	private String member_id;
-	private String pname;
-	private String location;
-	private int pphone;
-	
-	List<PlaceAvgGradeVO> placeAvgGradeList;
-	List<PlaceImgVO> placeImg;
-	List<PriceVO> priceList;
+public class ReviewCountVO{
+	private int review;
 
+	
 }

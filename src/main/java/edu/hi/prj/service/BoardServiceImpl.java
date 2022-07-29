@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import edu.hi.prj.mapper.BoardMapper;
 import edu.hi.prj.vo.BoardVO;
-import edu.hi.prj.vo.PlaceVO;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -57,6 +56,12 @@ public class BoardServiceImpl implements BoardService{
 	@Override
 	public int updateView(int id) {
 		return mapper.updateView(id);
+	}
+
+	@Override
+	public List<BoardVO> getReview(int place_num) {
+		
+		return mapper.getReview(place_num);
 	}
 
 	

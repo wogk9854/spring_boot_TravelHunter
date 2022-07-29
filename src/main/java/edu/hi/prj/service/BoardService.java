@@ -13,4 +13,6 @@ public interface BoardService{
 	int update(BoardVO boardVO);
 	int delete(BoardVO boardVO);
 	int updateView(int id);
+	
+	List<BoardVO> getReview(int place_num);
 }

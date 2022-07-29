@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file ="../include/header.jsp" %>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <main>
 
         <!-- slider Area Start-->
@@ -58,7 +59,7 @@
                                 <div class="select-itms">
                                     <select name="select" id="select1">
                                         <option value="">1</option>
-                                        <option value="">2</option>
+                                        <option value="" selected>2</option>
                                         <option value="">3</option>
                                         <option value="">4+</option>
                                     </select>
@@ -138,24 +139,31 @@
                 
                 <div class="row">
                 
-                <c:forEach var="data" items="${getAllPlace}">
-                	<div class="col-xl-4 col-lg-6 col-md-6">
-                        <!-- Single Room -->
-                        <a href="/reservation/detail?place_num=">
-	                        <div class="single-room mb-50">
-	                            <div class="room-img">
-	                               <img src="assets/img/rooms/room2.jpg" alt="">
-	                            </div>
-	                            <div class="room-caption">
-	                                <h3>${data.pname}</h3>
-	                                <div class="per-night">
-	                                    <span>${data.location}</span>
-	                                </div>
-	                            </div>
-	                        </div>
-	                      </a>
-                    </div>
-                </c:forEach>
+                <c:forEach var="placeData" items="${getPlaceData}">
+                	<c:forEach var="grade" items="${placeData.placeAvgGradeList}">
+			                
+		                	<div class="col-xl-4 col-lg-6 col-md-6">
+		                        <!-- Single Room -->
+		                        <a href="/reservation/detail?num=${placeData.num}">
+			                        <div class="single-room mb-50">
+			                            <div class="room-img">
+			                               <img src="${placeData.getPlaceImg()[0].ipath}" alt="">
+			                            </div>
+			                            <div class="room-caption">
+			                                <h3 class="pname">${placeData.pname}</h3><span class="grade">평점:${grade.bgrade}</span>
+			                                <div class="per-night">
+			                                    <span>가격: ${placeData.getPriceList()[0].price}원</span>
+			                                </div>
+			                                <div class="per-night">
+			                                    <span>${placeData.location}</span>
+			                                </div>
+			                            </div>
+			                        </div>
+			                      </a>
+		                    </div>
+	               </c:forEach>
+               </c:forEach>
+                
                 
         </section>
         <!-- Room End -->
