@@ -7,7 +7,7 @@
 		아이디 : <input type="text" id="id" name="id" />
 		<button type="button" id="idcheck" onclick="fn_idcheck();" value="N">중복확인</button>	<br>
          비밀번호 : <input type="password" name="mpw" id="mpw" required="required" /><br>
-        비밀번호확인 : <input type="password" name="mpw" id="mpw1"><br>
+        비밀번호확인 : <input type="password" name="testpw" id="mpw1"><br>
         <div id="alert-success">비밀번호가 일치합니다.</div>
 		<div id="alert-danger">비밀번호가 일치하지 않습니다.</div>
         이름 : <input type="text" name="mname" id="mname" /><br>
