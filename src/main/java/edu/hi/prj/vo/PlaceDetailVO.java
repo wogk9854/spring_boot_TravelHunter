@@ -22,7 +22,7 @@ public class PlaceDetailVO{
 	private String location;
 	private int pphone;
 	
-	List<ReviewCountVO> reviewCountList;
-
+	private int review;
+	private double grade;
 	
 }

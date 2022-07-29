@@ -17,6 +17,4 @@ import lombok.ToString;
 @NoArgsConstructor
 public class ReviewCountVO{
 	private int review;
-
-	
 }

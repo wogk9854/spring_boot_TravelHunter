@@ -63,8 +63,8 @@
 				</div>
 				<div class="place_desc">
 					<h1>${placeDetail.pname}</h1>
-					<div class="place_grade">평점<span class="grade"></span></div>
-					<span class="review">리뷰 ${placeDetail.getReviewCountList()[0]}개</span>
+					<div class="place_grade">평점<span class="grade">${placeDetail.grade}</span></div>
+					<span class="review">리뷰 ${placeDetail.review}개</span>
 					<div class="place_address">${placeDetail.location}</div>
 					<div class="notice">
 						<div class="tit">공지사항</div>

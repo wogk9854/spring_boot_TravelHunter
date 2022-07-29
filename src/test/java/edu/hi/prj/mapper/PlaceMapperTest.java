@@ -16,10 +16,11 @@ class PlaceMapperTest {
 	@Test
 	void test() {
 		
+		PlaceDetailVO p = mapper.getPlaceDetail(5);
 		
-		
-		System.out.println(mapper.getPlaceDetail(5).getReviewCountList()); 
-		
+		System.out.println(p);
+		System.out.println(p.getReview());
+		System.out.println(p.getGrade());
 		
 		System.out.println("suscess");
 		

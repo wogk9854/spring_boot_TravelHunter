@@ -11,7 +11,6 @@ import edu.hi.prj.vo.PlaceDetailVO;
 import edu.hi.prj.vo.PlaceImgVO;
 import edu.hi.prj.vo.PlaceVO;
 import edu.hi.prj.vo.PriceVO;
-import edu.hi.prj.vo.ReviewCountVO;
 
 @Service
 public class PlaceServiceImpl implements PlaceService{
@@ -19,7 +18,7 @@ public class PlaceServiceImpl implements PlaceService{
 	private PlaceMapper mapper;
 
 	@Override
-	public List<PlaceAvgGradeVO> getPlaceGrade() {
+	public PlaceAvgGradeVO getPlaceGrade() {
 		
 		return mapper.getPlaceGrade();
 	}
@@ -31,7 +30,7 @@ public class PlaceServiceImpl implements PlaceService{
 	}
 
 	@Override
-	public List<PlaceImgVO> getPlaceImg() {
+	public PlaceImgVO getPlaceImg() {
 		
 		return mapper.getPlaceImg();
 	}
@@ -50,8 +49,14 @@ public class PlaceServiceImpl implements PlaceService{
 
 	@Override
 	public int getReviewCountList(int num) {
-		// TODO Auto-generated method stub
+		
 		return mapper.getReviewCountList(num);
+	}
+
+	@Override
+	public double getGrade(int num) {
+		// TODO Auto-generated method stub
+		return mapper.getGrade(num);
 	}
 
 }

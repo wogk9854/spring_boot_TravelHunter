@@ -7,15 +7,15 @@ import edu.hi.prj.vo.PlaceDetailVO;
 import edu.hi.prj.vo.PlaceImgVO;
 import edu.hi.prj.vo.PlaceVO;
 import edu.hi.prj.vo.PriceVO;
-import edu.hi.prj.vo.ReviewCountVO;
 
 public interface PlaceService{
 	
-	List<PlaceAvgGradeVO> getPlaceGrade();
-	List<PlaceVO>getPlaceData();
-	List<PlaceImgVO>getPlaceImg();
-	List<PriceVO>getPriceList();
+	List<PlaceVO> getPlaceData();
+	PlaceAvgGradeVO getPlaceGrade();
+	PlaceImgVO getPlaceImg();
+	List<PriceVO> getPriceList();
 	
 	PlaceDetailVO getPlaceDetail(int num);
 	int getReviewCountList(int num);
+	double getGrade(int num);
 }

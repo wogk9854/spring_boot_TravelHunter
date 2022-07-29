@@ -80,9 +80,23 @@
        ]]>
     </select>
     
+    <select id="getGrade" resultType="double">
+       <![CDATA[ 
+           select round(avg(bgrade),1) grade from place p,board b,room r where p.num = b.place_num and p.num = r.place_num and p.num = #{num} group by p.num
+       ]]>
+    </select>
+    
+    
+    
     <resultMap id="getReviewCountList" type="int">
       <result property="review" column="review"/>    
-  	 </resultMap>
+  	</resultMap>
+  	
+  	<resultMap id="getGrade" type="double">
+      <result property="grade" column="grade"/>    
+  	</resultMap>
+  	 
+  	 
     
     <resultMap id="placeDetailMap" type="PlaceDetailVO">
       <id property="num" column="num"/>
@@ -90,7 +104,8 @@
       <result property="pname" column="pname"/>
       <result property="location" column="location"/>
       <result property="pphone" column="pphone"/>
-      <collection property="reviewCountList" resultMap="getReviewCountList"></collection>
+      <association property="review" resultMap="getReviewCountList"></association>
+      <association property="grade" resultMap="getGrade"></association>
       
    	</resultMap>
    	
