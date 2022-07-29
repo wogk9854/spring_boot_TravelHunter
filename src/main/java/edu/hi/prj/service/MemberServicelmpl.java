@@ -38,6 +38,12 @@ public class MemberServicelmpl implements MemberService{
 		mapper.memberDelete(memberVO);
 	}
 
+	@Override
+	public int delpwcheck(MemberVO memberVO) {
+		int result = mapper.delpwcheck(memberVO);
+		return result;
+	}
+
 
 	
 	

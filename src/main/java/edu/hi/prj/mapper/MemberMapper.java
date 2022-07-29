@@ -11,6 +11,7 @@ public interface MemberMapper{
 	int idcheck(MemberVO memberVO);
 	void memberUpdate(MemberVO memberVO);
 	void memberDelete(MemberVO memberVO);
+	int delpwcheck(MemberVO memberVO);
 
 	
 }

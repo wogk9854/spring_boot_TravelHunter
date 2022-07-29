@@ -116,6 +116,13 @@ public class HomeController {
 		session.invalidate();
 		return "/main/main";
 	}
+	@ResponseBody
+	@PostMapping("/delpwcheck")
+	public int delpwcheck(MemberVO memberVO) {
+		int result = member_service.delpwcheck(memberVO);
+		return result;
+		
+	}
 	
 
 }

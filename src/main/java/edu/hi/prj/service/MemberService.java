@@ -8,4 +8,5 @@ public interface MemberService{
 	int idcheck(MemberVO memberVO);
 	void memberUpdate(MemberVO memberVO);
 	void memberDelete(MemberVO memberVO);
+	int delpwcheck(MemberVO memberVO);
 }

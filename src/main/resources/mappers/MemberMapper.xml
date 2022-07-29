@@ -47,7 +47,14 @@
        ]]> 
 	
 	</delete>
-    
+	
+	<select id="delpwcheck" resultType="int">
+		<![CDATA[ 
+            select count(*) from member
+			where id = #{id}
+			and mpw = #{mpw}  	
+       ]]> 
+	</select>
     
 			
 	
