@@ -12,7 +12,7 @@
         닉네임 : <input type="text" name="nick_name" id="nick_name" /><br>
         이메일 : <input type="text" name="memail" id="memail" /><br>
         핸드폰번호 : <input type="text" name="mphone" id="mphone" /><br>
-        생년월일 : <br>
+        생년월일 : <input type="text" name="mbirth" id="mbirth"><br>
 		
 		<button type="submit" id="submit">회원가입</button>
 		<button type="button">취소</button>	

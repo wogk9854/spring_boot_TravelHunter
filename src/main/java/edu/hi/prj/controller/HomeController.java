@@ -49,7 +49,7 @@ public class HomeController {
 	@PostMapping("/create")
 	public String create(MemberVO memberVO) {
 		member_service.create(memberVO);
-		return "/login/login";
+		return "/main/main";
 	}
 	
 	//로그인
@@ -80,11 +80,43 @@ public class HomeController {
 	@ResponseBody
 	@PostMapping("/idcheck")
 	public int idcheck(MemberVO memberVO) {
-		
 		int result = member_service.idcheck(memberVO);
 		return result;
 	}
+	
+	@GetMapping("/memberUpdateView")
+	public String memberUpdateView() {
+
+		return "/mypage/memberUpdateView";
+	}
+	
+	@PostMapping("/memberUpdate")
+	public String memberUpdate(MemberVO memberVO) {
+		member_service.memberUpdate(memberVO);
+		return "/main/main";
+	}
+	@GetMapping("/memberDeleteView")
+	public String memberDeleteView() {
+		return "/mypage/memberDeleteView";
+	}
+	@PostMapping("/memberDelete")
+	public String memberDelete(MemberVO memberVO,
+							   HttpSession session,
+							   RedirectAttributes rttr
+							   ) {
+		MemberVO member = (MemberVO) session.getAttribute("member");
+		String sessionpw = member.getMpw();
+		String vopw = memberVO.getMpw();
 		
+		if(!(sessionpw.equals(vopw))) {
+			rttr.addFlashAttribute("msg", false);
+			return "redirect:/memberDeleteView";
+		}
+		member_service.memberDelete(memberVO);
+		session.invalidate();
+		return "/main/main";
+	}
+	
 
 }
 

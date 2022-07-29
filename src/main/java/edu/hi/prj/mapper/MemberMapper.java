@@ -9,5 +9,8 @@ public interface MemberMapper{
 	void create(MemberVO memberVO);
 	MemberVO logincheck(MemberVO memberVO);
 	int idcheck(MemberVO memberVO);
+	void memberUpdate(MemberVO memberVO);
+	void memberDelete(MemberVO memberVO);
+
 	
 }

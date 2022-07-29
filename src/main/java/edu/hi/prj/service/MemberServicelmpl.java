@@ -27,6 +27,18 @@ public class MemberServicelmpl implements MemberService{
 		int result = mapper.idcheck(memberVO);
 		return result;
 	}
+
+	@Override
+	public void memberUpdate(MemberVO memberVO) {
+		mapper.memberUpdate(memberVO);
+	}
+
+	@Override
+	public void memberDelete(MemberVO memberVO) {
+		mapper.memberDelete(memberVO);
+	}
+
+
 	
 	
 }
