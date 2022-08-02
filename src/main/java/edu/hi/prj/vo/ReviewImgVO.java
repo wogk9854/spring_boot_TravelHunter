@@ -1,6 +1,6 @@
 package edu.hi.prj.vo;
 
-import java.sql.Timestamp;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,16 +15,8 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class BoardVO{
+public class ReviewImgVO{
 	private int id;
-	private String member_id;
-	private int place_num;
-	private int board_type_num;
-	private String btitle;
-	private String bcontent;
-	private Timestamp bdate;
-	private double bgrade;
-	private int bview;
-	private int rownum;
+	private String ipath;
 
 }

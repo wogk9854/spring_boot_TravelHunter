@@ -9,11 +9,10 @@
            select * from 
            		(select rownum,id,member_id,place_num,board_type_num,btitle,bcontent,bdate,bgrade,bview from board where board_type_num = #{board_type_num})
            			order by rownum desc
-           	
        ]]>
     </select>
     
-     <select id="getHotList" resultType="BoardVO">
+    <select id="getHotList" resultType="BoardVO">
        <![CDATA[ 
            select * from board where board_type_num = #{board_type_num} order by bview desc,id desc	
        ]]>
@@ -21,7 +20,9 @@
     
     <select id="searchList" resultType="BoardVO">
        <![CDATA[ 
-           select * from board  where member_id = #{member_id}
+          select * from 
+          		(select rownum,id,member_id,place_num,board_type_num,btitle,bcontent,bdate,bgrade,bview from board  where member_id = #{member_id} and board_type_num = 2) 
+          			order by rownum desc
        ]]>
     </select>
     
@@ -32,11 +33,18 @@
        ]]>
     </select>
     
-    <insert id="insert" >
+    <select id="getReviewImgList" resultType="ReviewImgVO">
        <![CDATA[
-           insert into board (id, member_id,place_num,board_type_num,btitle, bcontent,bdate,bgrade, bview)
-            values (board_seq.nextval,#{member_id},null,#{board_type_num},#{btitle},#{bcontent},sysdate,0,0)
+           select id,ipath from
+		        image i,
+		        (select id from place p, board b where p.num = b.place_num and p.num =#{num})B
+		            where i.board_id = B.id
        ]]>
+    </select>
+    
+    <insert id="insert">
+           insert into board (id,member_id,place_num,board_type_num,btitle,bcontent,bdate,bgrade,bview)
+            	values (board_seq.nextval,#{member_id},#{place_num, jdbcType=INTEGER},#{board_type_num},#{btitle},#{bcontent},sysdate,#{bgrade, jdbcType=DOUBLE},0)
     </insert>
     
     <update id="update" >
@@ -90,7 +98,7 @@
    
    <select id="getReview" resultType="BoardVO">
        <![CDATA[ 
-           select * from board  where place_num = #{num}
+          select * from (select rownum,id,member_id,place_num,board_type_num,btitle,bcontent,bdate,bgrade,bview from board  where place_num = #{num}) order by rownum desc
        ]]>
     </select>
     

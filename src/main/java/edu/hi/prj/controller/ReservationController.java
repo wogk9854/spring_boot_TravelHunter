@@ -40,6 +40,7 @@ public class ReservationController {
 		model.addAttribute("placeDetail",service.getPlaceDetail(num));
 		model.addAttribute("room",rservice.getRoom(num));
 		model.addAttribute("reviewList",bservice.getReview(num));
+		model.addAttribute("reviewImgList",bservice.getReviewImgList(num));
 		
 		return "/reservation/detail";
 	}

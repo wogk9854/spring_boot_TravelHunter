@@ -6,28 +6,24 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import edu.hi.prj.vo.PlaceDetailVO;
+import edu.hi.prj.vo.ReviewImgVO;
 
 @SpringBootTest
 class PlaceMapperTest {
 	
 	@Autowired
-	private PlaceMapper mapper;
+	private BoardMapper  mapper;
 	
 	
 	@Test
 	void test() {
 		
-		PlaceDetailVO p = mapper.getPlaceDetail(5);
+		List<ReviewImgVO> img = mapper.getReviewImgList(5);
 		
-		System.out.println(p);
-		System.out.println(p.getReview());
-		System.out.println(p.getGrade());
-		
-		List<String> img = p.getIpath();
-		for(String i: img) {
+		for(ReviewImgVO i:img) {
 			System.out.println(i);
 		}
+		
 		
 		System.out.println("suscess");
 		

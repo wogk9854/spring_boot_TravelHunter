@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import edu.hi.prj.vo.BoardVO;
-import edu.hi.prj.vo.PlaceVO;
+import edu.hi.prj.vo.ReviewImgVO;
 
 @Mapper
 public interface BoardMapper{
@@ -18,7 +18,8 @@ public interface BoardMapper{
 	int delete(BoardVO boardVO);
 	int updateView(int id);
 	
-	List<BoardVO> getReview(int num);
+	List<BoardVO> getReview(int num);//해당 캠핑장의 리뷰글 불러오기
+	List<ReviewImgVO> getReviewImgList(int num);
 	
 
 }

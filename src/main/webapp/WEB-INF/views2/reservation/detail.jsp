@@ -34,14 +34,20 @@
 	.tab_contents .room_info .info_box{padding:40px;background:#eaeaea;color:#0000008f}
 	
 	.tab_contents .review_top{padding:40px 0;border-bottom: 2px solid #eaeaea;text-align:center}
-	.tab_contents .review_list li {padding:20px;overflow:hidden}
+	.tab_contents .review_top .grade{font-size:30px; font-weight:600;}
+	.tab_contents .review_list > ul > li {padding:20px;overflow:hidden;border-bottom: 1px solid #eaeaea;}
 	.tab_contents .review_list li .pic{float:left;width:100px; height:100px; border-radius:100%;overflow:hidden}
 	.tab_contents .review_list li .pic img{width:100%}
 	.tab_contents .review_list li .r_list_head{margin-left:30px;padding: 10px 0;float:left;height:100px}
 	.tab_contents .review_list li .r_list_contents{float:left;width:100%;margin:20px 0 0 120px}
 	.tab_contents .review_list li .r_list_contents .reply_date{padding:20px 0;}
-	.tab_contents .review_list li .r_list_contents .img_zone{width:300px;}
+	.tab_contents .review_list li .r_list_contents .img_zone{}
 	.tab_contents .review_list li .r_list_contents .img_zone img{width:100%;}
+	
+	.room_img img{width:300px; height:200px}
+	.review_list li li{width:300px;float:left;}
+	.rsv_info{font-size:15px; font-weight:300; color:#ccc;}
+	.reply_date{font-size:14px; color:#ccc}
 </style>
     <main>
     	<!-- s.contents_wrapper -->
@@ -93,12 +99,7 @@
 	     		</div>
 	     	</div>
 	     	
-	     	<style>
-	     		.room_img img{width:300px; height:200px}
-	     		.review_list li{border-bottom: 1px solid #eaeaea;}
-	     		.rsv_info{font-size:15px; font-weight:300; color:#ccc;}
-	     		.reply_date{font-size:14px; color:#ccc}
-	     	</style>
+	     
 	     	
 	     	<!-- s.객실예약 -->
 	     	<div class="tab_contents active">
@@ -138,11 +139,36 @@
 	     	</div>
 	     	<!-- e.객실정보 -->
 	     	
+	     	<style>
+	     		.grade_img{width:100px; height:20px;display: inline-block;margin-right:20px;vertical-align: middle; background:url(/assets/img/boards/bg_score.png);background-size:cover;}
+	     		.grade_img.score_50{background-position:0 0}
+	     		.grade_img.score_45{background-position:0 -20px}
+	     		.grade_img.score_40{background-position:0 -40px}
+	     		.grade_img.score_35{background-position:0 -60px}
+	     		.grade_img.score_30{background-position:0 -80px}
+	     		.grade_img.score_25{background-position:0 -100px}
+	     		.grade_img.score_20{background-position:0 -120px}
+	     		.grade_img.score_15{background-position:0 -140px}
+	     		.grade_img.score_10{background-position:0 -160px}
+	     		.grade_img.score_5{background-position:0 -180px}
+	     		.grade_img.score_0{background-position:0 -200px}
+	     	</style>
 	     	<!-- s.리뷰 -->
 			<div class="tab_contents">
 				<div class="review_top">
 					<h1>평균 평점</h1>
-					<div class="grade"><img src="">${placeDetail.grade}</div>
+					<c:if test="${placeDetail.grade == 0}"><div class="grade_img score_0" style="margin:0 auto"></div></c:if>
+					<c:if test="${placeDetail.grade > 0 && placeDetail.grade < 1}"><div class="grade_img score_5" style="margin:0 auto"></div></c:if>
+					<c:if test="${placeDetail.grade == 1}"><div class="grade_img score_10" style="margin:0 auto"></div></c:if>
+					<c:if test="${placeDetail.grade > 1 && placeDetail.grade < 2}"><div class="grade_img score_15" style="margin:0 auto"></div></c:if>
+					<c:if test="${placeDetail.grade == 2}"><div class="grade_img score_20" style="margin:0 auto"></div></c:if>
+					<c:if test="${placeDetail.grade > 2 && placeDetail.grade < 3}"><div class="grade_img score_25" style="margin:0 auto"></div></c:if>
+					<c:if test="${placeDetail.grade == 3}"><div class="grade_img score_30" style="margin:0 auto"></div></c:if>
+					<c:if test="${placeDetail.grade > 3 && placeDetail.grade < 4}"><div class="grade_img score_35" style="margin:0 auto"></div></c:if>
+					<c:if test="${placeDetail.grade == 4}"><div class="grade_img score_40" style="margin:0 auto"></div></c:if>
+					<c:if test="${placeDetail.grade > 4 && placeDetail.grade < 5}"><div class="grade_img score_45" style="margin:0 auto"></div></c:if>
+					<c:if test="${placeDetail.grade == 5}"><div class="grade_img score_50" style="margin:0 auto"></div></c:if>
+					<div class="grade">${placeDetail.grade}</div>
 					<p>전체리뷰 ${placeDetail.review}개</p>
 				</div>
 				<div class="review_list">
@@ -154,13 +180,32 @@
 								</div>
 								<div class="r_list_head">
 									<div class="review_title"><h2>${review.btitle}</h2></div>
-									<div class="grade"><img src="">평점: ${review.bgrade}</div>
+									<div class="grade">
+										<c:if test="${review.bgrade == 0}"><div class="grade_img score_0"></div></c:if>
+										<c:if test="${review.bgrade > 0 && review.bgrade < 1}"><div class="grade_img score_5"></div></c:if>
+										<c:if test="${review.bgrade == 1}"><div class="grade_img score_10"></div></c:if>
+										<c:if test="${review.bgrade > 1 && review.bgrade < 2}"><div class="grade_img score_15"></div></c:if>
+										<c:if test="${review.bgrade == 2}"><div class="grade_img score_20"></div></c:if>
+										<c:if test="${review.bgrade > 2 && review.bgrade < 3}"><div class="grade_img score_25"></div></c:if>
+										<c:if test="${review.bgrade == 3}"><div class="grade_img score_30"></div></c:if>
+										<c:if test="${review.bgrade > 3 && review.bgrade < 4}"><div class="grade_img score_35"></div></c:if>
+										<c:if test="${review.bgrade == 4}"><div class="grade_img score_40"></div></c:if>
+										<c:if test="${review.bgrade > 4 && review.bgrade < 5}"><div class="grade_img score_45"></div></c:if>
+										<c:if test="${review.bgrade == 5}"><div class="grade_img score_50"></div></c:if>
+										<span>평점: ${review.bgrade}</span>
+									</div>
 									<div class="rsv_info">${review.place_num} / 작성자:  ${review.member_id}</div>
 								</div>
 								<div class="r_list_contents">
 									<div class="exp">${review.bcontent}</div>
-									<div class="img_zone">
-										<img src="/assets/img/rooms/room2.jpg">
+									<div class="img_zone clearfix">
+										<ul>
+											<c:forEach items="${reviewImgList}" var="data">
+												<c:if test="${data.id == review.id}">
+													<li><img src="${data.ipath}"></li>
+												</c:if>
+											</c:forEach>
+										</ul>
 									</div>
 									<div class="reply_date">${review.bdate}</div>
 								</div>
