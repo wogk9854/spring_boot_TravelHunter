@@ -1,5 +1,7 @@
 package edu.hi.prj.mapper;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -21,6 +23,11 @@ class PlaceMapperTest {
 		System.out.println(p);
 		System.out.println(p.getReview());
 		System.out.println(p.getGrade());
+		
+		List<String> img = p.getIpath();
+		for(String i: img) {
+			System.out.println(i);
+		}
 		
 		System.out.println("suscess");
 		

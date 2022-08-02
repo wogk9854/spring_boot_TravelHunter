@@ -47,14 +47,15 @@
 		
 			<div class="top_contents clearfix">
 				<div class="place_photo">
-					<div class="main_photo"><img src="/assets/img/rooms/room1.jpg"></div>
-					<div class="photo_banner ">
+					<div class="main_photo"><img scr=""></div>
+					<div class="photo_banner">
 						<ul>
-							<li><img src="/assets/img/rooms/room1.jpg"></li>
-							<li><img src="/assets/img/rooms/room2.jpg"></li>
-							<li><img src="/assets/img/rooms/room3.jpg"></li>
-							<li><img src="/assets/img/rooms/room4.jpg"></li>
+							<c:forEach items="${placeDetail.getIpath()}" var="img">
+								<li><img class="room_list" src="${img}"></li>
+							</c:forEach>
 						</ul>
+
+										
 						<div class="arrow">
 							<div class="left"></div>
 							<div class="right"></div>
@@ -69,9 +70,14 @@
 					<div class="notice">
 						<div class="tit">공지사항</div>
 						<div class="text">
-							1. 가나다라마바사아자<br>
-							2. 가나다라마바사아자<br>
-							3. 가나다라마바사아자<br>
+							체크인 : 15:00 | 체크아웃 : 11:00<br>
+							22시 이후 체크인 시 호텔 프론트 문의<br>
+							무료 Wi-Fi<br>
+							전 객실 금연<br>
+							Bath Amenity (치약칫솔무료)<br>
+							전객실 내 인덕션(취사) 사용불가<br>
+							주차가능 (무료) / 장애인 주차장 구비<br>
+							장애인 편의시설 구비<br>
 						</div>
 					</div>
 					
@@ -165,13 +171,18 @@
 		</div>
 		<!-- e.contents_wrapper -->
     </main>
-    <!-- tab메뉴 클릭시 컨텐츠변경 -->
+    
     <script>
+    	//대표사진 설정			
+		var ipath = $(".room_list").eq(0).attr("src");
+		$(".main_photo img").attr("src",ipath);
+	
+    	//tab메뉴 클릭시 컨텐츠변경
     	var tab = document.getElementById("tab");
     	var tabLi = tab.children;
     	var tab_contents = document.getElementsByClassName("tab_contents");
     	
-    	for(var i=0; tabLi.length; i++){
+    	for(var i=0; i<tabLi.length; i++){
     		
     		tabLi[i].idx = i;
     		tabLi[i].addEventListener("click",function(e){

@@ -22,4 +22,5 @@ public interface PlaceMapper{
 	PlaceDetailVO getPlaceDetail(int num);
 	int getReviewCountList(int num);
 	double getGrade(int num);
+	List<String> getPlaceDetailImg(int num);
 }

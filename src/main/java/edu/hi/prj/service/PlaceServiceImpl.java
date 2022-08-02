@@ -59,4 +59,12 @@ public class PlaceServiceImpl implements PlaceService{
 		return mapper.getGrade(num);
 	}
 
+	@Override
+	public List<String> getPlaceDetailImg(int num) {
+		
+		return mapper.getPlaceDetailImg(num);
+	}
+
+
+
 }

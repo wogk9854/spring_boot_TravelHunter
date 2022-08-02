@@ -24,5 +24,6 @@ public class PlaceDetailVO{
 	
 	private int review;
 	private double grade;
+	List<String> ipath;
 	
 }
