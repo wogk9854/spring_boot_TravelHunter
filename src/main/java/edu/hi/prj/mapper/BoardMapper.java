@@ -18,7 +18,7 @@ public interface BoardMapper{
 	int delete(BoardVO boardVO);
 	int updateView(int id);
 	
-	List<BoardVO> getReview(int place_num);
+	List<BoardVO> getReview(int num);
 	
 
 }

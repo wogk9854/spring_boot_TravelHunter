@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.hi.prj.mapper.RoomMapper">
+    
+    <select id="getRoom" resultType="RoomVO">
+       <![CDATA[ 
+           select r.num,place_num,price,capacity,rinfo,rname,ipath roomImg from room r,image i 
+           		where place_num = #{num} and r.num = i.room_num
+       ]]>
+    </select>  
+    
+</mapper>

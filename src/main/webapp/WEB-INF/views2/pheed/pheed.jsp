@@ -55,25 +55,26 @@
 			</div>
 			<div class="pheed_list">
 				<ul>
-				<c:forEach var="data" items="${boardList}">
-					<li>
-						<a href="/pheed/detail?id=${data.id}">
-							<div class="photo">
-								<img src="/images/place.jpg">
-							</div>
-							<div class="pheed">
-								<div class="profile">
-									<div class=p_img><img src="/images/profile_img.png"></div>
-									<div class="user_info">
-										<div class="p_id">${data.member_id}</div>
-										<div class="date">${data.bdate}</div>
+					<c:forEach var="data" items="${boardList}">
+						<li>
+							<a href="/pheed/detail?id=${data.id}">
+								<div class="photo">
+									<img src="/images/place.jpg">
+								</div>
+								<div class="pheed">
+									<div class="profile">
+										<div class=p_img><img src="/images/profile_img.png"></div>
+										<div class="user_info">
+											<div class="p_id">${data.member_id}</div>
+											<div class="date">${data.bdate}</div>
+										</div>
 									</div>
-								</div>
-								
-								<div class="context">
-									<div class="title">${data.btitle}</div>
-									<div class="content">${data.bcontent}</div>
-								</div>
+									
+									<div class="context">
+										<div class="title">${data.btitle}</div>
+										<div class="content">${data.bcontent}</div>
+									</div>
+								</a>
 								<div class="show_area">
 									<ul>
 										<li><span>${data.bview}</span>views</li>
@@ -83,7 +84,6 @@
 									<div class="like"></div>
 								</div>
 							</div>
-						</a>
 						</li>
 					</c:forEach>
 					

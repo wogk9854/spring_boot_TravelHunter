@@ -139,19 +139,18 @@
                 <div class="row">
                 
                 <c:forEach var="placeData" items="${getPlaceData}">
-                	<c:forEach var="grade" items="${placeData.placeAvgGradeList}">
 			                
 		                	<div class="col-xl-4 col-lg-6 col-md-6">
 		                        <!-- Single Room -->
 		                        <a href="/reservation/detail?num=${placeData.num}">
 			                        <div class="single-room mb-50">
 			                            <div class="room-img">
-			                               <img src="${placeData.getPlaceImg()[0].ipath}" alt="">
+			                               <img src="${placeData.placeImg}" alt="">
 			                            </div>
 			                            <div class="room-caption">
-			                                <h3 class="pname">${placeData.pname}</h3><span class="grade">평점:${grade.bgrade}</span>
+			                                <h3 class="pname">${placeData.pname}</h3><span class="grade">평점:${placeData.placeAvgGrade}</span>
 			                                <div class="per-night">
-			                                    <span>가격: ${placeData.getPriceList()[0].price}원</span>
+			                                    <span>가격: ${placeData.price}원</span>
 			                                </div>
 			                                <div class="per-night">
 			                                    <span>${placeData.location}</span>
@@ -161,7 +160,6 @@
 			                      </a>
 		                    </div>
 	               </c:forEach>
-               </c:forEach>
                 
                 
         </section>

@@ -1,7 +1,5 @@
 package edu.hi.prj.vo;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -22,8 +20,8 @@ public class PlaceVO{
 	private String location;
 	private int pphone;
 	
-	List<PlaceAvgGradeVO> placeAvgGradeList;
-	List<PlaceImgVO> placeImg;
-	List<PriceVO> priceList;
+	private Double placeAvgGrade;
+	private String placeImg;
+	private Integer price;
 
 }

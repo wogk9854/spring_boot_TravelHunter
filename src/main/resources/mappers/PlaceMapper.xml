@@ -3,20 +3,20 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="edu.hi.prj.mapper.PlaceMapper">
-    
+    <!-- 예약페이지 -->
     <select id="getAllPlace" resultType="PlaceVO">
        <![CDATA[ 
            select * from place order by num desc
        ]]>
     </select>
     
-    <select id="getPlaceGrade" resultType="PlaceAvgGradeVO">
+    <select id="getPlaceGrade" resultType="double">
        <![CDATA[ 
            select round(avg(bgrade),1) bgrade from place,board where place.num = board.place_num group by place.num order by place.num desc
        ]]>
     </select>
     
-    <select id="getPlaceImg" resultType="PlaceImgVO">
+    <select id="getPlaceImg" resultType="String">
        <![CDATA[ 
            select ipath from 
 		        image i,
@@ -25,7 +25,7 @@
        ]]>
     </select>
     
-    <select id="getPriceList" resultType="PriceVO">
+    <select id="getPriceList" resultType="int">
        <![CDATA[ 
            select ipath from 
 		        image i,
@@ -34,28 +34,27 @@
        ]]>
     </select>
     
-    <resultMap id="placeAvgGradeMap" type="PlaceAvgGradeVO">
-      <result property="bgrade" column="bgrade"/>    
+    <resultMap id="placeAvgGrade" type="double">
+    	<result property="bgrade" column="bgrade"/>    
+	</resultMap>
+  	 
+  	 <resultMap id="getPlaceImg" type="String">
+     	<result property="ipath" column="ipath"/>    
   	 </resultMap>
   	 
-  	 <resultMap id="getPlaceImg" type="PlaceImgVO">
-      <result property="ipath" column="ipath"/>    
-  	 </resultMap>
-  	 
-  	 <resultMap id="getPriceList" type="PriceVO">
-      <result property="price" column="price"/>    
+  	 <resultMap id="getPriceList" type="int">
+     	<result property="price" column="price"/>    
   	 </resultMap>
   	 
   	 <resultMap id="placeMap" type="PlaceVO">
-      <id property="num" column="num"/>
-      <result property="member_id" column="member_id"/>
-      <result property="pname" column="pname"/>
-      <result property="location" column="location"/>
-      <result property="pphone" column="pphone"/>
-      <collection property="placeAvgGradeList" resultMap="placeAvgGradeMap"></collection>
-      <collection property="placeImg" resultMap="getPlaceImg"></collection>
-      <collection property="priceList" resultMap="getPriceList"></collection>  
-      
+	     <id property="num" column="num"/>
+	     <result property="member_id" column="member_id"/>
+	     <result property="pname" column="pname"/>
+	     <result property="location" column="location"/>
+	     <result property="pphone" column="pphone"/>
+	     <collection property="placeAvgGrade" resultMap="placeAvgGrade"></collection>
+	     <collection property="placeImg" resultMap="getPlaceImg"></collection>
+	     <collection property="price" resultMap="getPriceList"></collection>  
    	</resultMap>
    	
    	<select id="getPlaceData" resultMap="placeMap">
@@ -68,12 +67,12 @@
 			        image i,
 			        (select r.place_num,min(i.num) inum from room r,image i where r.num = i.room_num group by r.place_num)A 
 			            where  i.num = A.inum order by place_num desc)B
-			        where place.num = A.num and place.num = P.place_num and place.num = B.place_num
+			        		where place.num = A.num and place.num = P.place_num and place.num = B.place_num
        ]]>
     </select>
     
     
-    
+    <!-- 캠핑장 상세 페이지  -->
     <select id="getReviewCountList" resultType="int">
        <![CDATA[ 
            select count(b.id) review from place p,board b where p.num = b.place_num and p.num = #{num} group by p.num
@@ -91,8 +90,6 @@
            select ipath from place p,room r,image i where p.num = r.place_num and i.room_num = r.num and p.num = #{num}
        ]]>
     </select>
-    
-    
     
     <resultMap id="getReviewCountList" type="int">
       <result property="review" column="review"/>    

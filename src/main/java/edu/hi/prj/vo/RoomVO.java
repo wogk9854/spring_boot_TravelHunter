@@ -1,6 +1,6 @@
 package edu.hi.prj.vo;
 
-import java.util.List;
+import java.sql.Timestamp;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,6 +15,12 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class PriceVO{
+public class RoomVO{
+	private int num;
+	private int place_num;
 	private int price;
+	private int capacity;
+	private String rinfo;
+	private String rname;
+	private String roomImg;
 }

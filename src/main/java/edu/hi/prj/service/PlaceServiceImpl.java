@@ -6,11 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.hi.prj.mapper.PlaceMapper;
-import edu.hi.prj.vo.PlaceAvgGradeVO;
 import edu.hi.prj.vo.PlaceDetailVO;
-import edu.hi.prj.vo.PlaceImgVO;
 import edu.hi.prj.vo.PlaceVO;
-import edu.hi.prj.vo.PriceVO;
 
 @Service
 public class PlaceServiceImpl implements PlaceService{
@@ -18,7 +15,7 @@ public class PlaceServiceImpl implements PlaceService{
 	private PlaceMapper mapper;
 
 	@Override
-	public PlaceAvgGradeVO getPlaceGrade() {
+	public double getPlaceGrade() {
 		
 		return mapper.getPlaceGrade();
 	}
@@ -30,13 +27,13 @@ public class PlaceServiceImpl implements PlaceService{
 	}
 
 	@Override
-	public PlaceImgVO getPlaceImg() {
+	public String getPlaceImg() {
 		
 		return mapper.getPlaceImg();
 	}
 
 	@Override
-	public List<PriceVO> getPriceList() {
+	public int getPriceList() {
 		
 		return mapper.getPriceList();
 	}
