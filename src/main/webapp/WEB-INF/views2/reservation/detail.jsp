@@ -38,8 +38,10 @@
 	.tab_contents .review_list li .pic{float:left;width:100px; height:100px; border-radius:100%;overflow:hidden}
 	.tab_contents .review_list li .pic img{width:100%}
 	.tab_contents .review_list li .r_list_head{margin-left:30px;padding: 10px 0;float:left;height:100px}
-	.tab_contents .review_list li .r_list_contents{float:left;width:100%;margin:20px}
-	
+	.tab_contents .review_list li .r_list_contents{float:left;width:100%;margin:20px 0 0 120px}
+	.tab_contents .review_list li .r_list_contents .reply_date{padding:20px 0;}
+	.tab_contents .review_list li .r_list_contents .img_zone{width:300px;}
+	.tab_contents .review_list li .r_list_contents .img_zone img{width:100%;}
 </style>
     <main>
     	<!-- s.contents_wrapper -->
@@ -85,7 +87,7 @@
 	     		<div class="select_tab clearfix">
 	     			<ul id="tab">
 	     				<li class="active">객실예약</li>
-	     				<li>숙소정보</li>
+	     				<li>위치정보</li>
 	     				<li>리뷰</li>
 	     			</ul>
 	     		</div>
@@ -93,6 +95,9 @@
 	     	
 	     	<style>
 	     		.room_img img{width:300px; height:200px}
+	     		.review_list li{border-bottom: 1px solid #eaeaea;}
+	     		.rsv_info{font-size:15px; font-weight:300; color:#ccc;}
+	     		.reply_date{font-size:14px; color:#ccc}
 	     	</style>
 	     	
 	     	<!-- s.객실예약 -->
@@ -124,16 +129,10 @@
 	     	<!-- s.객실정보 -->
 	     	<div class="tab_contents">
 	     		<div class="room_info">
-	     			<h3>기본정보</h3>
+	     			<h3>위치정보</h3>
 	     			<div class="info_box">
-	     				체크인 : 15:00 | 체크아웃 : 11:00<br>
-						22시 이후 체크인 시 호텔 프론트 문의<br>
-						무료 Wi-Fi<br>
-						전 객실 금연<br>
-						Bath Amenity (치약칫솔무료)<br>
-						전객실 내 인덕션(취사) 사용불가<br>
-						주차가능 (무료) / 장애인 주차장 구비<br>
-						장애인 편의시설 구비<br>
+	     				
+
 	     			</div>
 	     		</div>
 	     	</div>
@@ -154,14 +153,14 @@
 									<img src="/images/profile_img.png">
 								</div>
 								<div class="r_list_head">
-									<div class="review_title">${review.btitle}</div>
-									<div class="grade"><img src="">${review.bgrade}</div>
-									<div class="rsv_info">${review.place_num} / ${review.member_id}</div>
+									<div class="review_title"><h2>${review.btitle}</h2></div>
+									<div class="grade"><img src="">평점: ${review.bgrade}</div>
+									<div class="rsv_info">${review.place_num} / 작성자:  ${review.member_id}</div>
 								</div>
 								<div class="r_list_contents">
 									<div class="exp">${review.bcontent}</div>
 									<div class="img_zone">
-										<!--<img src="/assets/img/rooms/room2.jpg">-->
+										<img src="/assets/img/rooms/room2.jpg">
 									</div>
 									<div class="reply_date">${review.bdate}</div>
 								</div>

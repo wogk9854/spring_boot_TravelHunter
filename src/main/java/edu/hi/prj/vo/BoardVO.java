@@ -25,5 +25,6 @@ public class BoardVO{
 	private Timestamp bdate;
 	private float bgrade;
 	private int bview;
+	private int rownum;
 
 }

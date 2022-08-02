@@ -6,7 +6,9 @@
     
     <select id="getList" resultType="BoardVO">
        <![CDATA[ 
-           select * from board where board_type_num = #{board_type_num} order by id desc
+           select * from 
+           		(select rownum,id,member_id,place_num,board_type_num,btitle,bcontent,bdate,bgrade,bview from board where board_type_num = #{board_type_num})
+           			order by rownum desc
            	
        ]]>
     </select>
@@ -33,7 +35,7 @@
     <insert id="insert" >
        <![CDATA[
            insert into board (id, member_id,place_num,board_type_num,btitle, bcontent,bdate,bgrade, bview)
-            values (board_seq.nextval,#{member_id} ,0, #{board_type_num},#{btitle},#{bcontent},sysdate,0,0)
+            values (board_seq.nextval,#{member_id},null,#{board_type_num},#{btitle},#{bcontent},sysdate,0,0)
        ]]>
     </insert>
     

@@ -19,5 +19,5 @@ public interface PlaceMapper{
 	PlaceDetailVO getPlaceDetail(int num);//캠핑장(예약) 상세페이지 정보 불러오기
 	int getReviewCountList(int num);//해당 캠핑장 리뷰갯수 가져오기
 	double getGrade(int num);//해당 캠핑장 평균평점가져오기
-	List<String> getPlaceDetailImg(int num);
+	List<String> getPlaceDetailImg(int num);//해당 캨핑장 객실 이미지 가져오기
 }
