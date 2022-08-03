@@ -31,7 +31,11 @@
 		<form action="/qna/delete?id=${data.id }" method="POST">
 		<button type="submit">글삭제</button>
 		</form>
+		
+		
+		
 	</section>
+	
 <%@include file ="../include/footer.jsp" %>
 
 <script>

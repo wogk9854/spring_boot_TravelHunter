@@ -20,6 +20,8 @@ public interface BoardMapper{
 	
 	List<BoardVO> getReview(int num);//해당 캠핑장의 리뷰글 불러오기
 	List<ReviewImgVO> getReviewImgList(int num);
+	int replyCount(int num);
+	
 	
 
 }

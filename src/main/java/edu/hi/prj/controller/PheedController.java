@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.hi.prj.service.BoardService;
+import edu.hi.prj.service.ReplyService;
 import edu.hi.prj.vo.BoardVO;
+import edu.hi.prj.vo.ReplyVO;
 
 @RequestMapping("/pheed")
 @Controller
@@ -16,6 +18,9 @@ public class PheedController {
 
 	@Autowired
 	private BoardService service;
+	
+	@Autowired
+	private ReplyService reply_service;
 	
 	@GetMapping("")
 	public String pheed(Model model) {
@@ -34,7 +39,9 @@ public class PheedController {
 		
 		model.addAttribute("data",service.getBoard(id));
 		
-		return "/pheed/detail";
+		model.addAttribute("reply", reply_service.getList(id));
+		
+		return "/pheed/pheeddetail";
 	}
 	
 	@GetMapping("/write")
@@ -52,6 +59,22 @@ public class PheedController {
 		
 		return "redirect:/pheed";
 	}
+	
+	@PostMapping("/replywrite")
+	public String replyWrite(ReplyVO replyVO) {
+		reply_service.write(replyVO);
+		
+		return "redirect:";
+		
+	}
+	
+	@PostMapping("/delete")
+	public String delete(BoardVO boardVO) {
+		service.delete(boardVO);
+		return "redirect:/pheed";
+	}
+	
+	
 	
 
 }

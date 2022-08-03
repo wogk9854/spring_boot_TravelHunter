@@ -1,7 +1,5 @@
 package edu.hi.prj.vo;
 
-import java.sql.Timestamp;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -24,5 +22,7 @@ public class MemberVO{
 	private int mphone;
 	private int mbirth;
 	private int payment;
+	
+	
 
 }

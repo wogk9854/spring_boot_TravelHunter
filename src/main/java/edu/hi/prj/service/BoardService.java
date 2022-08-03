@@ -17,4 +17,6 @@ public interface BoardService{
 	
 	List<BoardVO> getReview(int place_num);
 	List<ReviewImgVO> getReviewImgList(int num);
+	int replyCount(int num);
+	
 }

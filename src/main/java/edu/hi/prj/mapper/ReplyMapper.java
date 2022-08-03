@@ -12,4 +12,6 @@ public interface ReplyMapper{
 	void insert(ReplyVO replydVO);
 	int delete(ReplyVO replyVO);
 	ReplyVO getReply(int num);
+	int replyCount(int count);
+	
 }

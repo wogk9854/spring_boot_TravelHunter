@@ -23,12 +23,21 @@
 				<td colspan="2" style="text-align:center">내용:</td>
 			</tr>
 			<tr style="height:300px"><td colspan="2">${data.bcontent}</td></tr>
+			<c:if test="${member.id == data.member_id }">
 			<tr>
 				<td colspan="2">
 					&nbsp;&nbsp;<a href="/qna/edit?id=${data.id }"><input type="button" value="수정하기"></a>&nbsp;&nbsp;
 					<a href="/qna"><input type="button" value="목록보기"></a>
 				</td>
 			</tr>
+			</c:if>
+			<c:if test="${member.id != data.member_id }">
+			<tr>
+				<td colspan="2">
+					&nbsp;&nbsp;<a href="/qna"><input type="button" value="목록보기"></a>
+				</td>
+			</tr>
+			</c:if>
 		</table>
 		
 		<br>

@@ -1,7 +1,5 @@
 package edu.hi.prj.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,8 +11,9 @@ import edu.hi.prj.service.BoardService;
 import edu.hi.prj.service.ReplyService;
 import edu.hi.prj.vo.BoardVO;
 import edu.hi.prj.vo.ReplyVO;
+import lombok.extern.slf4j.Slf4j;
 
-
+@Slf4j
 @RequestMapping("/qna")
 @Controller
 public class QnaController {

@@ -30,6 +30,22 @@
           
        ]]>
     </select>
+    
+    <select id="replyCount" resultType="int">
+       <![CDATA[
+           select count(*) reply from reply where board_id = #{board_id}
+          
+       ]]>
+    </select>
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
     
 </mapper>

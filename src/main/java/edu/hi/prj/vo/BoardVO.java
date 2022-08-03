@@ -26,5 +26,7 @@ public class BoardVO{
 	private double bgrade;
 	private int bview;
 	private int rownum;
+	
+	private int reply;
 
 }

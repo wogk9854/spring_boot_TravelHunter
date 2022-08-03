@@ -31,7 +31,9 @@
 
 	<section style="padding:300px 0 100px; 0">
 		<div class="pheed_wrapper">
+		
 		<div class="tit"><h2>Pheeds</h2></div>
+		
 		<div class="btn_wrpper">
 			<div class="write_btn">
 				<a href="/pheed/write">피드작성</a>
@@ -42,7 +44,7 @@
 				<c:forEach var="data" items="${boardList}">
 					<li>
 						<div class="photo">
-							<img src="/images/place.jpg">
+							<a href="/pheed/detail?id=${data.id }"><img src="/images/place.jpg"></a>
 						</div>
 						<div class="pheed">
 							<div class="profile">
@@ -60,7 +62,7 @@
 							<div class="show_area">
 								<ul>
 									<li><span>0</span>views</li>
-									<li><span>0</span>comments</li>
+									<li><span>${data.reply}</span>comments</li>
 									<li><span>0</span>like</li>
 								</ul>
 								<div class="like"></div>
@@ -68,6 +70,7 @@
 						</div>
 					</li>
 					</c:forEach>
+					
 					
 				</ul>
 				

@@ -35,5 +35,15 @@ public class ReplyServicelmpl implements ReplyService{
 		
 		return mapper.getReply(num);
 	}
+
+	@Override
+	public int replyCount(int count) {
+		
+		return mapper.replyCount(count);
+	}
+	
+	
+
+	
 	
 }

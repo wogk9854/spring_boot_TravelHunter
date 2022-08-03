@@ -71,6 +71,14 @@ public class BoardServiceImpl implements BoardService{
 		return mapper.getReviewImgList(num);
 	}
 
+	@Override
+	public int replyCount(int num) {
+		
+		return mapper.replyCount(num);
+	}
+
+	
+
 	
 
 }

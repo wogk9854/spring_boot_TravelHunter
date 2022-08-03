@@ -102,4 +102,35 @@
        ]]>
     </select>
     
+    <select id="replyCount" resultType="int">
+       <![CDATA[
+             select count(reply) reply from reply, board
+             where reply.board_id = board.id group by board.id order by board.id desc
+          
+       ]]>
+    </select>
+    
+    <resultMap id="replyCount" type="int">
+    	<result property="reply" column="reply"/>    
+	</resultMap>
+	
+	<resultMap id="BoardMap" type="BoardVO">
+		 <id property="id" column="id"/>
+	     <result property="member_id" column="member_id"/>
+	     <result property="place_num" column="place_num"/>
+	     <result property="board_type_num" column="board_type_num"/>
+	     <result property="btitle" column="btitle"/>
+	     <result property="bcontent" column="bcontent"/>
+	     <result property="bdate" column="bdate"/> 
+	     <result property="bgrade" column="bgrade"/>
+	     <result property="bview" column="bview"/>
+		 <collection property="reply" resultMap="replyCount"></collection>
+	</resultMap>
+	
+	
+    
+
+    
+    
+    
 </mapper>
