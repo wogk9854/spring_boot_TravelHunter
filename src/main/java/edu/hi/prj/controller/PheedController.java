@@ -32,7 +32,7 @@ public class PheedController {
 	
 	@GetMapping("/detail")
 	public String detail(Model model,BoardVO boardVO) {
-		
+		model.addAttribute("boardList", service.getList(0));
 		int id = boardVO.getId();
 		
 		service.updateView(id);
@@ -41,7 +41,7 @@ public class PheedController {
 		
 		model.addAttribute("reply", reply_service.getList(id));
 		
-		return "/pheed/pheeddetail";
+		return "/pheed/pheed";
 	}
 	
 	@GetMapping("/write")

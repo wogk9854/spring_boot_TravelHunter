@@ -5,11 +5,19 @@
 	.contents_wrapper{width:1200px;margin:100px auto;}
 	.top_contents{margin-bottom:50px;}
 	.top_contents .place_photo{float:left;width:calc((100% - 40px)/2)}
-	.top_contents .place_photo .main_photo{width:100%}
-	.top_contents .place_photo .main_photo img{width:100%; height:400px;}
-	.top_contents .place_photo .photo_banner{margin-top:20px;}
-	.top_contents .place_photo .photo_banner li{float:left;margin-left:10px;width:calc((100% - 50px)/4)}
+	.top_contents .place_photo #main_photo{width:100%}
+	.top_contents .place_photo #main_photo img{width:100%; height:400px;}
+	.top_contents .place_photo .banner_wrapper{position: relative;}
+	.top_contents .place_photo .photo_banner{margin:20px;overflow:hidden}
+	.top_contents .place_photo .photo_banner ul {width:200%;height:85px}
+	.top_contents .place_photo .photo_banner li{float:left;margin-left:10px;width:127px}
+	.top_contents .place_photo .photo_banner li.active{border:2px solid #ffa726;border-radius:5px;padding:2px;}
+	.top_contents .place_photo .photo_banner li:first-child{margin-left:0;}
 	.top_contents .place_photo .photo_banner img{width:100%;}
+	.top_contents .place_photo .photo_banner .arrow{width:572px;position:absolute;left:3px;top:50%;z-index:-1;transform:translateY(-50%);}
+	.top_contents .place_photo .photo_banner .arrow .left{float:left;width:10px;height:10px;border:2px solid #000;border-top:none;border-right:none;transform:rotate(45deg);}
+	.top_contents .place_photo .photo_banner .arrow .right{float:right;width:10px;height:10px;border:2px solid #000;border-top:none;border-right:none;transform:rotate(-135deg)}
+	
 	.top_contents .place_desc{float:left;width:calc((100% - 40px)/2);margin-left:40px;}
 	.top_contents .place_desc h1{font-weight:600;margin-bottom:20px;}
 	.top_contents .place_desc .place_grade{color:#ffa726;display:inline-block}
@@ -52,24 +60,57 @@
     <main>
     	<!-- s.contents_wrapper -->
 		<div class="contents_wrapper">
-		
 			<div class="top_contents clearfix">
 				<div class="place_photo">
-					<div class="main_photo"><img scr=""></div>
-					<div class="photo_banner">
-						<ul>
-							<c:forEach items="${placeDetail.getIpath()}" var="img">
-								<li><img class="room_list" src="${img}"></li>
-							</c:forEach>
-						</ul>
-
-										
-						<div class="arrow">
-							<div class="left"></div>
-							<div class="right"></div>
+					<div id="main_photo"><img scr=""></div>
+					<div class="banner_wrapper">
+						<div class="photo_banner clearfix">
+							<ul>
+								<c:forEach items="${placeDetail.getIpath()}" var="img">
+									<li  class="room_list"><img class="room_img" src="${img}"></li>
+								</c:forEach>
+							</ul>			
+							<div class="arrow clearfix">
+								<div class="left"></div>
+								<div class="right"></div>
+							</div>
 						</div>
 					</div>
 				</div>
+				<script>
+					//대표사진 설정			
+					var imgNum = 0;
+					var main_photo = document.getElementById("main_photo").firstElementChild;
+					var room_img = document.getElementsByClassName("room_img");
+					var room_list = document.getElementsByClassName("room_list");
+					var ipath = room_img[imgNum].getAttribute("src");
+					var arrow = document.getElementsByClassName("arrow");
+					
+					
+					main_photo.setAttribute("src",ipath);
+					room_list[0].classList.add("active");
+									
+					for(var i=0; i<room_list.length; i++){
+						room_list[i].idx = i;
+						room_list[i].addEventListener("click",function(e){
+							var n = e.currentTarget.idx;
+						
+							for(var j=0; j<room_list.length; j++){
+								if(n == j){
+									room_list[j].classList.add("active");
+									imgNum = j
+									ipath = room_img[imgNum].getAttribute("src");
+									main_photo.setAttribute("src",ipath);
+								}else{
+									room_list[j].classList.remove("active");
+								}
+							}
+						});
+					}
+					//console.log(room_list);
+				
+				
+				</script>
 				<div class="place_desc">
 					<h1>${placeDetail.pname}</h1>
 					<div class="place_grade">평점<span class="grade">${placeDetail.grade}</span></div>
@@ -223,9 +264,7 @@
     </main>
     
     <script>
-    	//대표사진 설정			
-		var ipath = $(".room_list").eq(0).attr("src");
-		$(".main_photo img").attr("src",ipath);
+    	
 	
     	//tab메뉴 클릭시 컨텐츠변경
     	var tab = document.getElementById("tab");

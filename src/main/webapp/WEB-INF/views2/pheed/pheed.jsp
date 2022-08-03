@@ -24,7 +24,10 @@
 	.pheed_wrapper .pheed_list .pheed .show_area li{float:left;margin-right:10px;}
 	.pheed_wrapper .pheed_list .pheed .show_area .like{float:right;width:24px; height:20px;display:inline-block; background:url("/images/like_icon.png")no-repeat 0 0}
 	.pheed_wrapper .pheed_list .pheed .show_area .like.active{background:url("/images/like_icon.png")no-repeat -24px 0}
-	
+	.dim{width:100%;height:100%; background-color:rgb(0,0,0,0.7);position:absolute; left:0; top:0;z-index:1000000;display:none}
+	.dim .comment_view{width: 70%;height: 750px;position: absolute;left: 50%;top: 50%;transform: translate(-50%,-50%);background-color:#fff;border-radius:30px;}
+    .dim.active{display:block;overflow-scroll:Y}
+    .cancle{width:24px;height:24px;position:absolute;right:20px;top:20px;}
 </style>
 
 
@@ -32,7 +35,7 @@
 	
 		<!-- slider Area Start-->
         <div class="slider-area">
-            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="assets/img/hero/roomspage_hero.jpg" >
+            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="/assets/img/hero/roomspage_hero.jpg" >
                 <div class="container">
                     <div class="row ">
                         <div class="col-md-11 offset-xl-1 offset-lg-1 offset-md-1">
@@ -57,28 +60,31 @@
 				<ul>
 					<c:forEach var="data" items="${boardList}">
 						<li>
-							<a href="/pheed/detail?id=${data.id}">
-								<div class="photo">
-									<img src="/images/place.jpg">
+							<div class="photo">
+								<img src="/images/place.jpg">
+							</div>
+							<div class="pheed">
+								<div class="profile">
+									<div class=p_img><img src="/images/profile_img.png"></div>
+									<div class="user_info">
+										<div class="p_id">${data.member_id}</div>
+										<div class="date">${data.bdate}</div>
+									</div>
 								</div>
-								<div class="pheed">
-									<div class="profile">
-										<div class=p_img><img src="/images/profile_img.png"></div>
-										<div class="user_info">
-											<div class="p_id">${data.member_id}</div>
-											<div class="date">${data.bdate}</div>
-										</div>
-									</div>
-									
-									<div class="context">
-										<div class="title">${data.btitle}</div>
-										<div class="content">${data.bcontent}</div>
-									</div>
-								</a>
+								
+								<div class="context">
+									<div class="title">${data.btitle}</div>
+									<div class="content">${data.bcontent}</div>
+								</div>
+								
 								<div class="show_area">
 									<ul>
 										<li><span>${data.bview}</span>views</li>
-										<li><span>0</span>comments</li>
+										<li>
+											<a href="" class="comments" id="${data.id}">
+												<span>${data.reply}</span>comments
+											</a>
+										</li>
 										<li><span>0</span>likes</li>
 									</ul>
 									<div class="like"></div>
@@ -86,11 +92,45 @@
 							</div>
 						</li>
 					</c:forEach>
-					
 				</ul>
-				
 			</div>
 		</div>
+		<div class="dim">
+			<div class="comment_view"></div>
+			<div class="cancle"><img src="/assets/img/icon/ico_tab_close.png"></div>
+		</div>
+		<script>
+			$(".comments").click(function(e){
+				e.preventDefault();
+				var offsetTop = $(window).scrollTop();
+				$(".dim").addClass("active");
+				$(".dim").css({top:offsetTop});
+				$("body").addClass("fixed");
+				
+				$.ajax({
+					
+					type : "GET",
+					url : "/jason/boards/" + $(this).attr('id'),
+					success : function(data) {
+						$("<tr>" , {
+		                      html : "<td>" + data.id + "</td>"+  // 컬럼명들
+		                            "<td>" + data.btitle + "</td>"+
+		                            "<td>" + data.bcontent + "</td>"+
+		                            "<td>" + data.bdate + "</td>"            
+		                            
+		                   }).appendTo(".comment_view")
+					},
+					
+				});
+			});
+			
+			$(".dim").click(function(e){
+				e.preventDefault();
+				
+				$(".dim").removeClass("active");
+				$("body").removeClass("fixed");
+			});
+		</script>
 	</section>
 <%@include file ="../include/footer.jsp" %>
 
@@ -105,6 +145,8 @@
 				if(n == j){
 					if(like[j].classList.contains("active") == false){
 						like[j].classList.add("active");
+
+						
 					}else{
 						like[j].classList.remove("active");
 					}

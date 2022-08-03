@@ -20,8 +20,8 @@ public class PlaceVO{
 	private String location;
 	private int pphone;
 	
-	private Double placeAvgGrade;
+	private double placeAvgGrade;
 	private String placeImg;
-	private Integer price;
+	private int price;
 
 }
