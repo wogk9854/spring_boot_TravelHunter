@@ -6,9 +6,9 @@
     
     <select id="getList" resultType="BoardVO">
        <![CDATA[ 
-           select * from 
-           		(select rownum,id,member_id,place_num,board_type_num,btitle,bcontent,bdate,bgrade,bview from board where board_type_num = #{board_type_num})
-           			order by rownum desc
+           select id,board.member_id, place_num, board_type_num, btitle, bcontent, bdate, bgrade, bview, reply from board, 
+           (select r.board_id, count(reply) reply from reply r, board b where r.board_id = b.id group by b.id order by b.id) reply 
+           where board.id = reply.board_id(+) and board_type_num = #{board_type_num} order by id desc
        ]]>
     </select>
     
@@ -126,6 +126,8 @@
 	     <result property="bview" column="bview"/>
 		 <collection property="reply" resultMap="replyCount"></collection>
 	</resultMap>
+	
+	
 	
 	
     

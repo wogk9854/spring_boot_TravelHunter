@@ -61,7 +61,7 @@
 							</div>
 							<div class="show_area">
 								<ul>
-									<li><span>0</span>views</li>
+									<li><span>${data.bview}</span>views</li>
 									<li><span>${data.reply}</span>comments</li>
 									<li><span>0</span>like</li>
 								</ul>
