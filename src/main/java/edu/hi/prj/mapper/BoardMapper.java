@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import edu.hi.prj.vo.BoardVO;
+import edu.hi.prj.vo.ImageVO;
 import edu.hi.prj.vo.ReviewImgVO;
 
 @Mapper
@@ -17,6 +18,9 @@ public interface BoardMapper{
 	int update(BoardVO boardVO);
 	int delete(BoardVO boardVO);
 	int updateView(int id);
+	int imginsert(ImageVO imageVO);
+	int boardGetid(BoardVO boardVO);
+	
 	
 	List<BoardVO> getReview(int num);//해당 캠핑장의 리뷰글 불러오기
 	List<ReviewImgVO> getReviewImgList(int num);

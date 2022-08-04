@@ -1,6 +1,7 @@
 package edu.hi.prj.vo;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,5 +29,7 @@ public class BoardVO{
 	private int rownum;
 	
 	private int reply;
+	private String iname;
+	List<String> inamelist;
 
 }

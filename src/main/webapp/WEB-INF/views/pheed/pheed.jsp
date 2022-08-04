@@ -44,7 +44,7 @@
 				<c:forEach var="data" items="${boardList}">
 					<li>
 						<div class="photo">
-							<a href="/pheed/detail?id=${data.id }"><img src="/images/place.jpg"></a>
+							<a href="/pheed/detail?id=${data.id }"><img src="/pheedimg/1${data.iname }"></a>
 						</div>
 						<div class="pheed">
 							<div class="profile">

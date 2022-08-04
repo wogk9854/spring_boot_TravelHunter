@@ -39,6 +39,20 @@
             	values (board_seq.nextval,#{member_id},#{place_num, jdbcType=INTEGER},#{board_type_num},#{btitle},#{bcontent},sysdate,#{bgrade, jdbcType=DOUBLE},0)
     </insert>
     
+    <insert id="imginsert" parameterType="ImageVO">
+           <![CDATA[
+           		insert into image(num, board_id, image_type_num, iname, ioriname, ipath)
+				values(image_seq.nextval, #{board_id}, 1, #{iname}, #{ioriname}, #{ipath})
+   			]]>
+    </insert>
+    
+        <select id="boardGetid" resultType="int">
+       <![CDATA[
+           select board_seq.currval as id from dual
+       ]]>
+    </select>
+    
+    
     <update id="update" >
     	<![CDATA[
     		update board set member_id=#{member_id}, btitle=#{btitle}, bcontent=#{bcontent}
@@ -98,12 +112,21 @@
        <![CDATA[
              select count(reply) reply from reply, board
              	where reply.board_id = board.id group by board.id order by board.id desc
-          
+       ]]>
+    </select>
+    
+    <select id="img" resultType="int">
+       <![CDATA[
+             select i.board_id, iname from image i, board b where i.board_id = b.id order by b.id desc
        ]]>
     </select>
     
     <resultMap id="replyCount" type="int">
     	<result property="reply" column="reply"/>    
+	</resultMap>
+	
+	<resultMap id="img" type="String">
+    	<result property="iname" column="iname"/>    
 	</resultMap>
 	
 	<resultMap id="BoardMap" type="BoardVO">
@@ -117,13 +140,15 @@
 	     <result property="bgrade" column="bgrade"/>
 	     <result property="bview" column="bview"/>
 		 <collection property="reply" resultMap="replyCount"></collection>
+		 <collection property="iname" resultMap="img"></collection>
 	</resultMap>
 	
 	<select id="getList" resultType="BoardVO">
        <![CDATA[ 
-           select id,board.member_id, place_num, board_type_num, btitle, bcontent, bdate, bgrade, bview, reply from board, 
-           (select r.board_id, count(reply) reply from reply r, board b where r.board_id = b.id group by b.id order by b.id) reply 
-           where board.id = reply.board_id(+) and board_type_num = #{board_type_num} order by id desc
+           select id,board.member_id,place_num,board_type_num,btitle,bcontent,bdate,bgrade,bview,reply,iname from board,
+           (select r.board_id, count(reply) reply from reply r, board b where r.board_id = b.id group by b.id order by b.id) reply,
+           (select i.board_id, iname from image i, board b where i.board_id = b.id order by b.id) iname
+           where board.id = reply.board_id(+) and board_type_num = #{board_type_num} and iname.board_id(+) = board.id order by id desc
        ]]>
     </select>
 	

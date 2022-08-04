@@ -4,7 +4,7 @@
 	<section style="padding:300px 0 100px; 0">
 		
 		
-		<form action="/pheed/complete" method="POST">
+		<form action="/pheed/complete" method="POST" enctype="multipart/form-data">
 		<input type="hidden" name="board_type_num" value="0">
     	<table border="1">
     		<tr>
@@ -25,7 +25,7 @@
     			<td colspan="2">
     			&nbsp;&nbsp;<button type="submit">작성</button>&nbsp;&nbsp;
     			<a href="/pheed"><input type="button" value="목록보기"></a>&nbsp;&nbsp;
-    			<input type="button" value="첨부파일">
+    			<input type="file" name="files" multiple required />
     			</td>
     			
     		</tr>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import edu.hi.prj.mapper.BoardMapper;
 import edu.hi.prj.vo.BoardVO;
+import edu.hi.prj.vo.ImageVO;
 import edu.hi.prj.vo.ReviewImgVO;
 
 @Service
@@ -76,6 +77,19 @@ public class BoardServiceImpl implements BoardService{
 		
 		return mapper.replyCount(num);
 	}
+
+	@Override
+	public int imginsert(ImageVO imageVO) {
+		
+		return mapper.imginsert(imageVO);
+	}
+
+	@Override
+	public int boardGetid(BoardVO boardVO) {
+		
+		return mapper.boardGetid(boardVO);
+	}
+
 
 	
 
