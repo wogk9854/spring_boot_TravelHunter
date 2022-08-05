@@ -63,7 +63,7 @@ public class QnaController {
 		model.addAttribute("data",service.getBoard(id));
 		
 		
-		service.updateView(id);
+		service.updateView(boardVO.getId());
 		
 		//댓글
 		model.addAttribute("reply", reply_service.getList(id));

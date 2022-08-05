@@ -25,99 +25,99 @@
 <%@include file ="../include/footer.jsp" %>
 
 <script type="text/javascript">
-$(function(){
-    $("#alert-success").hide();
-    $("#alert-danger").hide();
-    $("input").keyup(function(){
-        var pwd1=$("#mpw").val();
-        var pwd2=$("#mpw1").val();
-        if(pwd1 != "" || pwd2 != ""){
-            if(pwd1 == pwd2){
-                $("#alert-success").show();
-                $("#alert-danger").hide();
-                $("#submit").removeAttr("disabled");
-            }else{
-                $("#alert-success").hide();
-                $("#alert-danger").show();
-                $("#submit").attr("disabled", "disabled");
-            }    
-        }
-    });
-});
+	$(function(){
+	    $("#alert-success").hide();
+	    $("#alert-danger").hide();
+	    $("input").keyup(function(){
+	        var pwd1=$("#mpw").val();
+	        var pwd2=$("#mpw1").val();
+	        if(pwd1 != "" || pwd2 != ""){
+	            if(pwd1 == pwd2){
+	                $("#alert-success").show();
+	                $("#alert-danger").hide();
+	                $("#submit").removeAttr("disabled");
+	            }else{
+	                $("#alert-success").hide();
+	                $("#alert-danger").show();
+	                $("#submit").attr("disabled", "disabled");
+	            }    
+	        }
+	    });
+	});
 
 		
 		
 		
-		$(document).ready(function(){
-			// 취소
-			$(".cencle").on("click", function(){
-				
-				location.href = "/login";
-						    
-			})
-		
-			$("#submit").on("click", function(){
-				if($("#id").val()==""){
-					alert("아이디를 입력해주세요.");
-					$("#id").focus();
-					return false;
-				}
-				if($("#mpw").val()==""){
-					alert("비밀번호를 입력해주세요.");
-					$("#mpw").focus();
-					return false;
-				}
-				if($("#mname").val()==""){
-					alert("성명을 입력해주세요.");
-					$("#mname").focus();
-					return false;
-				}
-				if($("#nick_name").val()==""){
-					alert("닉네임을 입력해주세요.");
-					$("#nick_name").focus();
-					return false;
-				}
-				
-				if($("#memail").val()==""){
-					alert("이메일을 입력해주세요.");
-					$("#memail").focus();
-					return false;
-				}
-				if($("#mphone").val()==""){
-					alert("전화번호를 입력해주세요.");
-					$("#mphone").focus();
-					return false;
-				}
-				var idChkVal = $("#idcheck").val();
-				if(idChkVal == "N"){
-					alert("중복확인 버튼을 눌러주세요.");
-					return false;
-				}else if(idChkVal == "Y"){
-					$("#regForm").submit();
-				}
-				
-			});
+	$(document).ready(function(){
+		// 취소
+		$(".cencle").on("click", function(){
 			
-			
-			
+			location.href = "/login";
+					    
 		})
-		function fn_idcheck(){
-			$.ajax({
-				url : "/idcheck",
-				type : "post",
-				dataType : "json",
-				data : {"id" : $("#id").val()},
-				success : function(data){
-					if(data == 1){
-						alert("중복된 아이디입니다.");
-					}else if(data == 0){
-						$("#idcheck").attr("value", "Y");
-						alert("사용가능한 아이디입니다.");
-					}
+	
+		$("#submit").on("click", function(){
+			if($("#id").val()==""){
+				alert("아이디를 입력해주세요.");
+				$("#id").focus();
+				return false;
+			}
+			if($("#mpw").val()==""){
+				alert("비밀번호를 입력해주세요.");
+				$("#mpw").focus();
+				return false;
+			}
+			if($("#mname").val()==""){
+				alert("성명을 입력해주세요.");
+				$("#mname").focus();
+				return false;
+			}
+			if($("#nick_name").val()==""){
+				alert("닉네임을 입력해주세요.");
+				$("#nick_name").focus();
+				return false;
+			}
+			
+			if($("#memail").val()==""){
+				alert("이메일을 입력해주세요.");
+				$("#memail").focus();
+				return false;
+			}
+			if($("#mphone").val()==""){
+				alert("전화번호를 입력해주세요.");
+				$("#mphone").focus();
+				return false;
+			}
+			var idChkVal = $("#idcheck").val();
+			if(idChkVal == "N"){
+				alert("중복확인 버튼을 눌러주세요.");
+				return false;
+			}else if(idChkVal == "Y"){
+				$("#regForm").submit();
+			}
+			
+		});
+		
+		
+		
+	})
+	function fn_idcheck(){
+		$.ajax({
+			url : "/idcheck",
+			type : "post",
+			dataType : "json",
+			data : {"id" : $("#id").val()},
+			success : function(data){
+				if(data == 1){
+					alert("중복된 아이디입니다.");
+				}else if(data == 0){
+					$("#idcheck").attr("value", "Y");
+					alert("사용가능한 아이디입니다.");
 				}
-			})
-		}
+			}
+		})
+	}
 		
 		
 		
-	</script>
+</script>
