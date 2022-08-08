@@ -110,38 +110,47 @@ ul.tabs li.current{
 
 	});
 </script>
-<script type="text/javascript">
-	$("#submit").on("click", function(){
-		if($("#delpw").val()==""){
-			alert("비밀번호를 입력해주세요.");
-			$("#delpw").focus();
-			return false;
-		}
-	});
-	
-	
-</script>
-<script>
-$.ajax({
-	url : "/delpwcheck",
-	type : "POST",
-	dataType : "json",
-	data : $("delForm").serializeArray(),
-	success : function(data){
-		if(data==0){
-			alert("패스워드가틀렸습니다.");
-			return;
-		}else{
-			if(confirm("회원탈퇴하시겠습니까?")){
-				$("delForm").submit();
-			}
-		}
-		
-	}
-	
-});
 
-</script>	
+<script type="text/javascript">
+		$(document).ready(function(){
+			// 취소
+			$(".cencle").on("click", function(){
+				
+				location.href = "/";
+						    
+			})
+		
+			$("#submit").on("click", function(){
+				if($("#delpw").val()==""){
+					alert("비밀번호를 입력해주세요.");
+					$("#delpw").focus();
+					return false;
+				}
+				$.ajax({
+					url : "/delpwcheck",
+					type : "POST",
+					dataType : "json",
+					data : $("#delForm").serializeArray(),
+					success: function(data){
+						
+						if(data==null){
+							alert("패스워드가 틀렸습니다.");
+							return;
+						}else{
+							if(confirm("회원탈퇴하시겠습니까?")){
+								$("#delForm").submit();
+							}
+							
+						}
+					}
+				})
+				
+			});
+			
+				
+			
+		})
+	</script>
 		
 		
 		

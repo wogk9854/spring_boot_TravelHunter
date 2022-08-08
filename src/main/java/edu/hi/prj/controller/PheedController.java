@@ -59,7 +59,7 @@ public class PheedController {
 	}
 	
 	@PostMapping("/complete")
-	public String complete(BoardVO boardVO, MultipartFile files, ImageVO imageVO, MultipartFile[] file) throws Exception {
+	public String complete(BoardVO boardVO, MultipartFile files, ImageVO imageVO) throws Exception {
 		 
 		
 			String FileName = files.getOriginalFilename();
