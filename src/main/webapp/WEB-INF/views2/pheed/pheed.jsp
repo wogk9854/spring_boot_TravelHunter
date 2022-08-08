@@ -161,10 +161,12 @@
 		registReply.register();
 	});
 	
-	// 게시버튼 클릭시(mouseup) 댓글정보 불러와 화면 최신화 
+	// 게시버튼 클릭시(mouseup)
 	$("#write_btn").mouseup(function(){
-		
+		//댓글정보 불러와 화면 최신화 
 		registReply.getBoard();
+		$("#member_id").val("");
+		$("#reply").val("");
 	});
 	
 	//상세페이지 닫기
@@ -173,6 +175,8 @@
 		
 		$("#detail,.dim").removeClass("active");
 		$("body").removeClass("fixed");
+		$("#member_id").val("");
+		$("#reply").val("");
 	});
 	
 	//좋아요 아이콘
