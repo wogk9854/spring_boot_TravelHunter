@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import edu.hi.prj.mapper.BoardMapper;
 import edu.hi.prj.vo.BoardVO;
+import edu.hi.prj.vo.Criteria;
 import edu.hi.prj.vo.ImageVO;
+import edu.hi.prj.vo.PheedCriteria;
 import edu.hi.prj.vo.ReviewImgVO;
 
 @Service
@@ -88,6 +90,30 @@ public class BoardServiceImpl implements BoardService{
 	public int boardGetid(BoardVO boardVO) {
 		
 		return mapper.boardGetid(boardVO);
+	}
+
+	@Override
+	public int getTotalCount() {
+		
+		return mapper.getTotalCount();
+	}
+
+	@Override
+	public List<BoardVO> pagingList(Criteria cri) {
+		
+		return mapper.pagingList(cri);
+	}
+
+	@Override
+	public int pheedCount() {
+		
+		return mapper.pheedCount();
+	}
+
+	@Override
+	public List<BoardVO> pheedpaging(PheedCriteria cri) {
+		
+		return mapper.pheedpaging(cri);
 	}
 
 

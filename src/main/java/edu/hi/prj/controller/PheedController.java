@@ -16,6 +16,8 @@ import edu.hi.prj.service.BoardService;
 import edu.hi.prj.service.ReplyService;
 import edu.hi.prj.vo.BoardVO;
 import edu.hi.prj.vo.ImageVO;
+import edu.hi.prj.vo.PheedCriteria;
+import edu.hi.prj.vo.PheedPagingVO;
 import edu.hi.prj.vo.ReplyVO;
 
 @RequestMapping("/pheed")
@@ -29,10 +31,11 @@ public class PheedController {
 	private ReplyService reply_service;
 	
 	@GetMapping("")
-	public String pheed(Model model) {
+	public String pheed(Model model, PheedCriteria cri) {
 		
-		model.addAttribute("boardList", service.getList(0));
-		
+		model.addAttribute("boardList", service.pheedpaging(cri));
+		int total =service.pheedCount();
+		model.addAttribute("pageMaker", new PheedPagingVO(cri, total));
 		return "/pheed/pheed";
 	}
 	
@@ -57,11 +60,8 @@ public class PheedController {
 	
 	@PostMapping("/complete")
 	public String complete(BoardVO boardVO, MultipartFile files, ImageVO imageVO) throws Exception {
+		 
 		
-		
-		if(files.isEmpty()) {//업로드할파일없을시
-			service.write(boardVO);//작성
-		}else {
 			String FileName = files.getOriginalFilename();
 			String FileNameExtension = 
 					FilenameUtils.getExtension(FileName).toLowerCase();
@@ -86,7 +86,7 @@ public class PheedController {
 			imageVO.setIpath(fileUrl);
 
 			service.imginsert(imageVO);//img업로드
-		}
+		
 		return "redirect:/pheed";
 	}
 	

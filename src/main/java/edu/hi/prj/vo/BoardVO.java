@@ -31,5 +31,6 @@ public class BoardVO{
 	private int reply;
 	private String iname;
 	List<String> inamelist;
+	private int count;
 
 }

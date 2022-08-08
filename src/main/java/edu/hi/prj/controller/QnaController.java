@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edu.hi.prj.service.BoardService;
 import edu.hi.prj.service.ReplyService;
 import edu.hi.prj.vo.BoardVO;
+import edu.hi.prj.vo.Criteria;
+import edu.hi.prj.vo.PagingVO;
 import edu.hi.prj.vo.ReplyVO;
 import lombok.extern.slf4j.Slf4j;
 
@@ -25,12 +27,17 @@ public class QnaController {
 	private ReplyService reply_service;
 	
 	@GetMapping("")
-	public String place(Model model) {
+	public String Qna(Model model, Criteria cri) {
 		
-		model.addAttribute("boardList",service.getList(2));
+		model.addAttribute("boardList", service.pagingList(cri));
+		int total = service.getTotalCount();
 		
+		model.addAttribute("pageMaker", new PagingVO(cri, total));
 		return "/qna/qna";
 	}
+	
+
+
 	
 	@GetMapping("/write")
 	public String write() {

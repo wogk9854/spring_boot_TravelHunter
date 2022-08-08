@@ -76,6 +76,21 @@
 				
 			</div>
 		</div>
+		
+		<c:if test="${pageMaker.prev}">
+			<a href="pheed${pageMaker.makeQuery(pageMaker.startPage - 1) }">«</a>
+		</c:if>
+    
+    	<c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
+			<c:out value="${pageMaker.cri.pageNum == idx?'':''}" />
+			<a href="pheed${pageMaker.makeQuery(idx)}">${idx}</a>
+		</c:forEach>
+		
+		<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+			<a href="pheed${pageMaker.makeQuery(pageMaker.endPage +1) }"> » </a>
+		</c:if> <br>
+		
+		
 	</section>
 <%@include file ="../include/footer.jsp" %>
 

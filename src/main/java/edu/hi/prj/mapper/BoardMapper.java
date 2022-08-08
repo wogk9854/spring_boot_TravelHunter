@@ -5,7 +5,9 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import edu.hi.prj.vo.BoardVO;
+import edu.hi.prj.vo.Criteria;
 import edu.hi.prj.vo.ImageVO;
+import edu.hi.prj.vo.PheedCriteria;
 import edu.hi.prj.vo.ReviewImgVO;
 
 @Mapper
@@ -20,6 +22,12 @@ public interface BoardMapper{
 	int updateView(int id);
 	int imginsert(ImageVO imageVO);
 	int boardGetid(BoardVO boardVO);
+	
+	
+	int getTotalCount();
+	List<BoardVO> pagingList(Criteria cri);
+	int pheedCount();
+	List<BoardVO> pheedpaging(PheedCriteria cri);
 	
 	
 	List<BoardVO> getReview(int num);//해당 캠핑장의 리뷰글 불러오기

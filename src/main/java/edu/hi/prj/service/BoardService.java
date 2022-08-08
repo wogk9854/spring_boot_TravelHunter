@@ -3,7 +3,9 @@ package edu.hi.prj.service;
 import java.util.List;
 
 import edu.hi.prj.vo.BoardVO;
+import edu.hi.prj.vo.Criteria;
 import edu.hi.prj.vo.ImageVO;
+import edu.hi.prj.vo.PheedCriteria;
 import edu.hi.prj.vo.ReviewImgVO;
 
 public interface BoardService{
@@ -17,6 +19,12 @@ public interface BoardService{
 	int updateView(int id);
 	int imginsert(ImageVO imageVO);
 	int boardGetid(BoardVO boardVO);
+	
+	
+	int getTotalCount();
+	List<BoardVO> pagingList(Criteria cri);
+	int pheedCount();
+	List<BoardVO> pheedpaging(PheedCriteria cri);
 	
 	
 	List<BoardVO> getReview(int place_num);
