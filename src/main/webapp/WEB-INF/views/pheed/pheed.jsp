@@ -44,7 +44,11 @@
 				<c:forEach var="data" items="${boardList}">
 					<li>
 						<div class="photo">
-							<a href="/pheed/detail?id=${data.id }"><img src="/pheedimg/1${data.iname }"></a>
+							<c:forEach var="boardImg" items="${boardImg}">
+								<c:if test="${boardImg.board_id == data.id}">
+									<a href="/pheed/detail?id=${data.id }"><img src="/assets/img/boards/${boardImg.iname}"></a>	
+								</c:if>
+							</c:forEach>
 						</div>
 						<div class="pheed">
 							<div class="profile">

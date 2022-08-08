@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import edu.hi.prj.vo.BoardImgVO;
 import edu.hi.prj.vo.BoardVO;
 
 @SpringBootTest
@@ -16,11 +17,14 @@ class BoardMapperTest {
 	
 	@Test
 	void testgetList() {
+			
+		List<BoardImgVO> img = mapper.getBoardImg();
+		
 		
 		List<BoardVO> list = mapper.getList(0);
 		
-		for(BoardVO board : list) {
-			System.out.println(board.getId());
+		for(BoardImgVO board : img) {
+			System.out.println(board);
 		}
 		
 	}

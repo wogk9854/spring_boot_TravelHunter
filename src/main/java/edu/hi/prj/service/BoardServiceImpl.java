@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.hi.prj.mapper.BoardMapper;
+import edu.hi.prj.vo.BoardImgVO;
 import edu.hi.prj.vo.BoardVO;
 import edu.hi.prj.vo.Criteria;
 import edu.hi.prj.vo.ImageVO;
@@ -114,6 +115,12 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardVO> pheedpaging(PheedCriteria cri) {
 		
 		return mapper.pheedpaging(cri);
+	}
+
+	@Override
+	public List<BoardImgVO> getBoardImg() {
+		
+		return mapper.getBoardImg();
 	}
 
 

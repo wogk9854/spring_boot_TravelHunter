@@ -142,7 +142,7 @@
 			                
 		                	<div class="col-xl-4 col-lg-6 col-md-6">
 		                        <!-- Single Room -->
-		                        <a href="/reservation/detail?num=${placeData.num}">
+		                        <a href="/product/detail?num=${placeData.num}">
 			                        <div class="single-room mb-50">
 			                            <div class="room-img">
 			                               <img src="${placeData.placeImg}" alt="">

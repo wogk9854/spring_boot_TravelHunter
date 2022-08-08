@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import edu.hi.prj.vo.BoardImgVO;
 import edu.hi.prj.vo.BoardVO;
 import edu.hi.prj.vo.Criteria;
 import edu.hi.prj.vo.ImageVO;
@@ -22,6 +23,7 @@ public interface BoardMapper{
 	int updateView(int id);
 	int imginsert(ImageVO imageVO);
 	int boardGetid(BoardVO boardVO);
+	List<BoardImgVO> getBoardImg();
 	
 	
 	int getTotalCount();

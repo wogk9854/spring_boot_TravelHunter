@@ -63,7 +63,7 @@
                             <div class="main-menu f-right d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">                                                                                                                                     
-                                        <li><a href="/reservation">예약하기</a></li>
+                                        <li><a href="/product">예약하기</a></li>
                                         <li>
                                         	<a href="/place">Camping Spot</a>
                                         	<ul class="submenu">

@@ -56,6 +56,19 @@
 	.review_list li li{width:300px;float:left;}
 	.rsv_info{font-size:15px; font-weight:300; color:#ccc;}
 	.reply_date{font-size:14px; color:#ccc}
+	
+	.grade_img{width:100px; height:20px;display: inline-block;margin-right:20px;vertical-align: middle; background:url(/assets/img/boards/bg_score.png);background-size:cover;}
+ 	.grade_img.score_50{background-position:0 0}
+ 	.grade_img.score_45{background-position:0 -20px}
+ 	.grade_img.score_40{background-position:0 -40px}
+ 	.grade_img.score_35{background-position:0 -60px}
+ 	.grade_img.score_30{background-position:0 -80px}
+ 	.grade_img.score_25{background-position:0 -100px}
+ 	.grade_img.score_20{background-position:0 -120px}
+ 	.grade_img.score_15{background-position:0 -140px}
+ 	.grade_img.score_10{background-position:0 -160px}
+ 	.grade_img.score_5{background-position:0 -180px}
+ 	.grade_img.score_0{background-position:0 -200px}
 </style>
     <main>
     	<!-- s.contents_wrapper -->
@@ -129,7 +142,6 @@
 				</div>
 	     	</div>
 	     	
-	     	
 	     	<div class="tab_list">
 	     		<div class="select_tab clearfix">
 	     			<ul id="tab">
@@ -140,8 +152,6 @@
 	     		</div>
 	     	</div>
 	     	
-	     
-	     	
 	     	<!-- s.객실예약 -->
 	     	<div class="tab_contents active">
 	     		<form action="" method="GET">
@@ -149,20 +159,19 @@
 	     		</form>
 	     		<div class="room_list">
 	     			<ul>
-	     			<c:forEach items="${room}" var="room">
-	     				<li>
-	     					<div class="room_img"><img src="${room.roomImg}"></div>
-	     					<div class="room_desc">
-	     						<h2>${room.rname}호</h2>
-	     						<div class="cpacity">기준${room.capacity}명/최대${(room.capacity)+2}명</div>
-	     						<div class="check_in">체크인  15:00</div>
-	     						<div class="check_out">체크아웃 11:00</div>
-	     						<div class="price">${room.price}원</div>
-	     						<button>예약하기</button>
-	     					</div>
-	     				</li>
-	     			</c:forEach>
-	     				
+		     			<c:forEach items="${room}" var="room">
+		     				<li>
+		     					<div class="room_img"><img src="${room.roomImg}"></div>
+		     					<div class="room_desc">
+		     						<h2>${room.rname}호</h2>
+		     						<div class="cpacity">기준${room.capacity}명/최대${(room.capacity)+2}명</div>
+		     						<div class="check_in">체크인  15:00</div>
+		     						<div class="check_out">체크아웃 11:00</div>
+		     						<div class="price">${room.price}원</div>
+		     						<button>예약하기</button>
+		     					</div>
+		     				</li>
+		     			</c:forEach>
 	     			</ul>
 	     		</div>
 	     	</div>
@@ -181,18 +190,7 @@
 	     	<!-- e.객실정보 -->
 	     	
 	     	<style>
-	     		.grade_img{width:100px; height:20px;display: inline-block;margin-right:20px;vertical-align: middle; background:url(/assets/img/boards/bg_score.png);background-size:cover;}
-	     		.grade_img.score_50{background-position:0 0}
-	     		.grade_img.score_45{background-position:0 -20px}
-	     		.grade_img.score_40{background-position:0 -40px}
-	     		.grade_img.score_35{background-position:0 -60px}
-	     		.grade_img.score_30{background-position:0 -80px}
-	     		.grade_img.score_25{background-position:0 -100px}
-	     		.grade_img.score_20{background-position:0 -120px}
-	     		.grade_img.score_15{background-position:0 -140px}
-	     		.grade_img.score_10{background-position:0 -160px}
-	     		.grade_img.score_5{background-position:0 -180px}
-	     		.grade_img.score_0{background-position:0 -200px}
+	     		
 	     	</style>
 	     	<!-- s.리뷰 -->
 			<div class="tab_contents">

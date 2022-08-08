@@ -142,7 +142,7 @@ input[type=text]::placeholder{color:#fff}
 #page1 .logo > ul > li{display:inline-block;position:relative;margin-right:67px;vertical-align:top;opacity:.5;transition:opacity .3s}
 #page1 .logo > ul > li.active{opacity:1}
 #page1 .logo > ul > li:last-child{margin-right:0}
-#page1 .logo > ul > li > a.brand{display:block;width:330px;padding:20px 0;border-top:2px solid #fff;color:#fff; font-size:30px;}
+#page1 .logo > ul > li > a.brand{display:block;width:328px;padding:20px 0;border-top:2px solid #fff;color:#fff; font-size:30px;}
 #page1 .logo .copy{position:absolute;color:#fff;text-align:left;opacity:0}
 #page1 .logo > ul > li.active .copy{opacity:1}
 #page1 .logo .copy li{line-height:1.8;opacity:0;transform:translateY(80px);transition:transform 0.4s,opacity .6s}

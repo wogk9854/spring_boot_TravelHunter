@@ -128,6 +128,12 @@
        ]]>
     </select>
     
+    <select id="getBoardImg" resultType="BoardImgVO">
+       <![CDATA[
+           select i.board_id, iname from image i, board b where i.board_id = b.id order by b.id desc
+       ]]>
+    </select>
+    
     <resultMap id="replyCount" type="int">
     	<result property="reply" column="reply"/>    
 	</resultMap>
@@ -147,15 +153,14 @@
 	     <result property="bgrade" column="bgrade"/>
 	     <result property="bview" column="bview"/>
 		 <collection property="reply" resultMap="replyCount"></collection>
-		 <collection property="iname" resultMap="img"></collection>
+		 <collection property="inameList" resultMap="getBoardImg"></collection>
 	</resultMap>
 	
 	<select id="getList" resultType="BoardVO">
        <![CDATA[ 
-           select id,board.member_id,place_num,board_type_num,btitle,bcontent,bdate,bgrade,bview,reply,iname from board,
-           (select r.board_id, count(reply) reply from reply r, board b where r.board_id = b.id group by b.id order by b.id) reply,
-           (select i.board_id, iname from image i, board b where i.board_id = b.id order by b.id) iname
-           where board.id = reply.board_id(+) and board_type_num = #{board_type_num} and iname.board_id(+) = board.id order by id desc
+           select id,board.member_id,place_num,board_type_num,btitle,bcontent,bdate,bgrade,bview,reply from board,
+           (select r.board_id, count(reply) reply from reply r, board b where r.board_id = b.id group by b.id order by b.id) R
+           where board.id = R.board_id(+) and board_type_num = #{board_type_num} order by id desc
        ]]>
     </select>
     
@@ -177,11 +182,10 @@
        <![CDATA[ 
            SELECT * FROM (
            SELECT ROWNUM AS RNUM, A.* FROM (SELECT * FROM
-           (select id,board.member_id,place_num,board_type_num,btitle,bcontent,bdate,bgrade,bview,reply,iname from board,
-           (select r.board_id, count(reply) reply from reply r, board b where r.board_id = b.id group by b.id order by b.id) reply,
-           (select i.board_id, iname from image i, board b where i.board_id = b.id order by b.id) iname
-           where board.id = reply.board_id(+) and board_type_num = 0 and iname.board_id(+) = board.id order by id desc)
-           board order by id desc
+           (select id,board.member_id,place_num,board_type_num,btitle,bcontent,bdate,bgrade,bview,reply from board,
+           		(select r.board_id, count(reply) reply from reply r, board b where r.board_id = b.id group by b.id order by b.id) reply
+           			where board.id = reply.board_id(+) and board_type_num = 0 order by id desc)
+           				board order by id desc
            ) A WHERE ROWNUM <= #{pageNum} * #{amount}
            ) WHERE RNUM > (#{pageNum}-1) * #{amount}
        ]]>

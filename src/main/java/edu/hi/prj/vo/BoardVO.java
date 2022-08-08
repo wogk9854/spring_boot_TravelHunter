@@ -29,8 +29,6 @@ public class BoardVO{
 	private int rownum;
 	
 	private int reply;
-	private String iname;
-	List<String> inamelist;
 	private int count;
 
 }

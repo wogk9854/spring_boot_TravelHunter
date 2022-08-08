@@ -2,6 +2,7 @@ package edu.hi.prj.service;
 
 import java.util.List;
 
+import edu.hi.prj.vo.BoardImgVO;
 import edu.hi.prj.vo.BoardVO;
 import edu.hi.prj.vo.Criteria;
 import edu.hi.prj.vo.ImageVO;
@@ -19,7 +20,7 @@ public interface BoardService{
 	int updateView(int id);
 	int imginsert(ImageVO imageVO);
 	int boardGetid(BoardVO boardVO);
-	
+	List<BoardImgVO> getBoardImg();
 	
 	int getTotalCount();
 	List<BoardVO> pagingList(Criteria cri);

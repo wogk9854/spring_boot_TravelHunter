@@ -12,9 +12,9 @@ import edu.hi.prj.service.RoomService;
 import edu.hi.prj.vo.PlaceVO;
 
 
-@RequestMapping("/reservation")
+@RequestMapping("/product")
 @Controller
-public class ReservationController {
+public class ProductController {
 	
 	@Autowired
 	private PlaceService service;
@@ -30,7 +30,7 @@ public class ReservationController {
 		
 		model.addAttribute("getPlaceData",service.getPlaceData());
 		
-		return "/reservation/reservation";
+		return "/product/product";
 	}
 	
 	@GetMapping("/detail")
@@ -42,7 +42,7 @@ public class ReservationController {
 		model.addAttribute("reviewList",bservice.getReview(num));
 		model.addAttribute("reviewImgList",bservice.getReviewImgList(num));
 		
-		return "/reservation/detail";
+		return "/product/detail";
 	}
 		
 	

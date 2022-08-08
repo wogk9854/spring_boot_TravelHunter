@@ -1,6 +1,7 @@
 package edu.hi.prj.controller;
 
 import java.io.File;
+import java.util.List;
 import java.util.UUID;
 
 import org.apache.commons.io.FilenameUtils;
@@ -34,6 +35,7 @@ public class PheedController {
 	public String pheed(Model model, PheedCriteria cri) {
 		
 		model.addAttribute("boardList", service.pheedpaging(cri));
+		model.addAttribute("boardImg", service.getBoardImg());
 		int total =service.pheedCount();
 		model.addAttribute("pageMaker", new PheedPagingVO(cri, total));
 		return "/pheed/pheed";
@@ -59,33 +61,41 @@ public class PheedController {
 	}
 	
 	@PostMapping("/complete")
-	public String complete(BoardVO boardVO, MultipartFile files, ImageVO imageVO) throws Exception {
+	public String complete(BoardVO boardVO, List<MultipartFile> files, ImageVO imageVO) throws Exception {
 		 
-		
-			String FileName = files.getOriginalFilename();
-			String FileNameExtension = 
-					FilenameUtils.getExtension(FileName).toLowerCase();
-			File destinationFile;
-			String destinationFileName;
-			String fileUrl = "C:\\Users\\pc-09\\Desktop\\spring_boot_TravelHunter\\src\\main\\resources\\static\\pheedimg\\1";
-			
-			do {
-				UUID uuid = UUID.randomUUID();
-				destinationFileName = uuid + "." + FileNameExtension;
-				destinationFile = new File(fileUrl + destinationFileName);
-			} while(destinationFile.exists());
-			
-			destinationFile.getParentFile().mkdirs();
-			files.transferTo(destinationFile);
+		if(files.isEmpty()) {//업로드할파일없을시
+			service.write(boardVO);//작성
+		}else {
 			service.write(boardVO);//작성
 			
-			imageVO.setBoard_id(service.boardGetid(boardVO));
-			imageVO.setIname(destinationFileName);
-			imageVO.setIoriname(FileName);
-			imageVO.setIpath(fileUrl);
-		
-			service.imginsert(imageVO);//img업로드
-		
+			for(MultipartFile file:files) {
+				String FileName = file.getOriginalFilename();
+				String FileNameExtension = 
+						FilenameUtils.getExtension(FileName).toLowerCase();
+				File destinationFile;
+				String destinationFileName;
+				String fileUrl = "C:\\Temp\\spring_boot_TravelHunter\\src\\main\\resources\\static\\assets\\img\\boards\\";
+				
+				do {
+					UUID uuid = UUID.randomUUID();
+					destinationFileName = uuid + "." + FileNameExtension;
+					destinationFile = new File(fileUrl + destinationFileName);
+				} while(destinationFile.exists());
+				
+				destinationFile.getParentFile().mkdirs();
+				file.transferTo(destinationFile);
+				
+				imageVO.setBoard_id(service.boardGetid(boardVO));
+				imageVO.setIname(destinationFileName);
+				imageVO.setIoriname(FileName);
+				imageVO.setIpath(fileUrl);
+				
+				service.imginsert(imageVO);//img업로드
+				
+			}
+			
+			
+		}
 		return "redirect:/pheed";
 	}
 	
