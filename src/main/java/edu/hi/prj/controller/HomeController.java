@@ -110,7 +110,7 @@ public class HomeController {
 		
 		if(!(sessionpw.equals(vopw))) {
 			rttr.addFlashAttribute("msg", false);
-			return "redirect:/memberDeleteView";
+			return "redirect:/mypage";
 		}
 		member_service.memberDelete(memberVO);
 		session.invalidate();

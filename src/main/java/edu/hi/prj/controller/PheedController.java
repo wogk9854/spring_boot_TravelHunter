@@ -59,7 +59,7 @@ public class PheedController {
 	}
 	
 	@PostMapping("/complete")
-	public String complete(BoardVO boardVO, MultipartFile files, ImageVO imageVO) throws Exception {
+	public String complete(BoardVO boardVO, MultipartFile files, ImageVO imageVO, MultipartFile[] file) throws Exception {
 		 
 		
 			String FileName = files.getOriginalFilename();
@@ -77,14 +77,13 @@ public class PheedController {
 			
 			destinationFile.getParentFile().mkdirs();
 			files.transferTo(destinationFile);
-			
 			service.write(boardVO);//작성
 			
 			imageVO.setBoard_id(service.boardGetid(boardVO));
 			imageVO.setIname(destinationFileName);
 			imageVO.setIoriname(FileName);
 			imageVO.setIpath(fileUrl);
-
+		
 			service.imginsert(imageVO);//img업로드
 		
 		return "redirect:/pheed";

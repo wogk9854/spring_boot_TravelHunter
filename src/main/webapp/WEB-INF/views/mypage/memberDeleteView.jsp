@@ -10,7 +10,7 @@
 			<label for="mname">이름</label>
 			<input type="text" id="mname" name="mname" value="${member.mname}" readonly="readonly" /><br>
 
-			<button type="submit" id="submit">회원탈퇴</button>
+			<button type="submit" id="del">회원탈퇴</button>
 	
 			<c:if test="${msg == false }"> 
 				비밀번호가 맞지 않습니다.
@@ -20,7 +20,7 @@
 <%@include file ="../include/footer.jsp" %>
 
 <script type="text/javascript">
-	$("#submit").on("click", function(){
+	$("#del").on("click", function(){
 		if($("#mpw").val()==""){
 			alert("비밀번호를 입력해주세요.");
 			$("#mpw").focus();

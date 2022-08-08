@@ -55,7 +55,16 @@
 			and mpw = #{mpw}  	
        ]]> 
 	</select>
-    
+	
+	<select id="memberinfo" resultType="MemberVO">
+       <![CDATA[ 
+           select (board.id) bmemberid,member.id,mpw,mname,nick_name,memail,mphone,mbirth,payment from member, board
+           where member.id = board.member_id and member.id= #{id}  	
+       ]]>
+    </select>
+     <resultMap id="memberinfo" type="MemberVO">
+    	<result property="reply" column="reply"/>    
+	</resultMap>
 			
 	
    
