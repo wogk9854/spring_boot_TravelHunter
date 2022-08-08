@@ -153,7 +153,6 @@
 	     <result property="bgrade" column="bgrade"/>
 	     <result property="bview" column="bview"/>
 		 <collection property="reply" resultMap="replyCount"></collection>
-		 <collection property="inameList" resultMap="getBoardImg"></collection>
 	</resultMap>
 	
 	<select id="getList" resultType="BoardVO">
