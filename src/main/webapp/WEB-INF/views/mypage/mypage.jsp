@@ -3,13 +3,19 @@
 <%@include file ="../include/header.jsp" %>
 <style>
 ul.tabs{
-	margin: 0px;
+    float: left;
+    margin: 0px;
 	padding: 0px;
 	list-style: none;
 }
 
 ul.tabs li{
-  display: inline-block;
+    
+    width: 120px;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 1px;
+    text-align: center;
 	background: #898989;
 	color: white;
 	padding: 10px 15px;
@@ -17,24 +23,52 @@ ul.tabs li{
 }
 
 ul.tabs li.current{
-	background: #e0e0e0;
+    background: #e0e0e0;
 	color: #222;
 }
 
 .tab-content{
-  display: none;
+    width: 1000px;
+    height: 500px;
+    display: none;
 	background: #e0e0e0;
-	padding: 12px;
+    margin-left: 160px;
+	
 }
 
 .tab-content.current{
 	display: inherit;
 }
 
+ul.product li{
+    text-align: center;
+    width: 300px;
+    display: inline-block;
+	background: #898989;
+	color: white;
+	padding: 10px 15px;
+	cursor: pointer;
+}
+ul.product li.current{
+    background: #e0e0e0;
+	color: #222;
+}
+.product-content{
+    display: none;
+}
+.product-content.current{
+    display: inherit;
+}
+
 
 </style>	
 	
+	
 	<section style="padding:200px 0 0 100px">
+	<c:if test="${member == null }">
+		<a href="/login"><input type="button" value="로그인하기"></a>
+	</c:if>
+	<c:if test="${member != null }">
 		<ul class="tabs">
 			<li class="tab-link current" data-tab="tab-1">내정보</li>
 			<li class="tab-link" data-tab="tab-2">예약내역</li>
@@ -59,12 +93,17 @@ ul.tabs li.current{
 				<button type="submit">수정</button>
 				<a href="/memberUpdateView"><input type="button" value="회원정보수정"></a>
 				<a href="/memberDeleteView"><input type="button" value="회원탈퇴"></a>	
-			</form>
-	
+			</form>	
 		</div>
 		<div id="tab-2" class="tab-content">
-			<h1>예약내역</h1>
-			<p>예약내역내용</p>
+			<ul class="product">
+            	<li class="product-link current" data-tab="product-1">예약완료</li>
+            	<li class="product-link" data-tab="product-2">취소내역</li>
+            	<li class="product-link" data-tab="product-3">이용완료</li>
+       	 	</ul>
+        	<div id="product-1" class="product-content current">예약완료내용</div>
+        	<div id="product-2" class="product-content">취소내역내용</div>
+        	<div id="product-3" class="product-content">이용완료내용</div>
 		</div>
 		<div id="tab-3" class="tab-content">
 			<h1>내기록</h1>
@@ -76,19 +115,17 @@ ul.tabs li.current{
 				<label for="id">아이디</label>
 				<input type="text" id="id" name="id" value="${member.id}" readonly="readonly" /><br>
 				<label for="delpw">비밀번호</label>
-				<input type="password" id="delpw" name="delpw" /><br>
+				<input type="password" id="delpw" name="mpw" /><br>
 				<label for="mname">이름</label>
 				<input type="text" id="mname" name="mname" value="${member.mname}" readonly="readonly" /><br>
-
-				<button type="submit" id="submit">회원탈퇴</button>
-	
+			</form>
+				<button type="button" id="submit">회원탈퇴</button>	
 				<c:if test="${msg == false }"> 
 					비밀번호가 맞지 않습니다.
 				</c:if>		
-			</form>	
-			
+							
 		</div>
-			
+	</c:if>	
 			
 		
 		
@@ -109,56 +146,71 @@ ul.tabs li.current{
 		})
 
 	});
+	
+	$(document).ready(function(){
+		
+		$('ul.product li').click(function(){
+			var tab_id = $(this).attr('data-tab');
+
+			$('ul.product li').removeClass('current');
+			$('.product-content').removeClass('current');		
+
+			$(this).addClass('current');
+			$("#" + tab_id).addClass('current');
+		})
+
+	});
+	
+	
+	$(document).ready(function(){
+		// 취소
+		$(".cencle").on("click", function(){
+			
+			location.href = "/";
+					    
+		})
+	
+		$("#submit").on("click", function(){
+			if($("#delpw").val()==""){
+				alert("비밀번호를 입력해주세요.");
+				$("#delpw").focus();
+				return false;
+			}
+			$.ajax({
+				url : "/delpwcheck",
+				type : "post",
+				dataType : "json",
+				data : $("#delForm").serializeArray(),
+				success: function(data){
+					
+					if(data==0){
+						alert("패스워드가 틀렸습니다.");
+						
+						return;
+					}else{
+						if(confirm("회원탈퇴하시겠습니까?")){
+							$("#delForm").submit();
+						}
+						
+					}
+				}
+			})
+			
+		});
+		
+			
+		
+	})
+	
+	
+	
 </script>
 
-<script type="text/javascript">
-		$(document).ready(function(){
-			// 취소
-			$(".cencle").on("click", function(){
-				
-				location.href = "/";
-						    
-			})
-		
-			$("#submit").on("click", function(){
-				if($("#delpw").val()==""){
-					alert("비밀번호를 입력해주세요.");
-					$("#delpw").focus();
-					return false;
-				}
-				$.ajax({
-					url : "/delpwcheck",
-					type : "POST",
-					dataType : "json",
-					data : $("#delForm").serializeArray(),
-					success: function(data){
-						
-						if(data==null){
-							alert("패스워드가 틀렸습니다.");
-							return;
-						}else{
-							if(confirm("회원탈퇴하시겠습니까?")){
-								$("#delForm").submit();
-							}
-							
-						}
-					}
-				})
-				
-			});
-			
-				
-			
-		})
-	</script>
+
 		
 		
 		
 		
 		
-		<c:if test="${member != null }">
-			<h1 style="font-size:50px">${member.nick_name }님 안녕하세요</h1>
-		</c:if>
-		<c:if test="${member == null }">
-			<a href="/login"><input type="button" value="로그인하기"></a>
-		</c:if>
+		
+		

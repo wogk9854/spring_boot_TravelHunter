@@ -109,10 +109,10 @@ public class HomeController {
 		String vopw = memberVO.getMpw();
 		
 		if(!(sessionpw.equals(vopw))) {
-			rttr.addFlashAttribute("msg", false);
-			return "redirect:/mypage";
+			rttr.addFlashAttribute("msg", false);	
 		}
 		member_service.memberDelete(memberVO);
+		
 		session.invalidate();
 		return "/main/main";
 	}
