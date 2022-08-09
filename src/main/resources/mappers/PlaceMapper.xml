@@ -67,7 +67,7 @@
 			        image i,
 			        (select r.place_num,min(i.num) inum from room r,image i where r.num = i.room_num group by r.place_num)A 
 			            where  i.num = A.inum order by place_num desc)B
-			        		where place.num = A.num and place.num = P.place_num and place.num = B.place_num
+			        		where place.num = A.num(+) and place.num = P.place_num and place.num = B.place_num(+) order by place.num desc
        ]]>
     </select>
     
@@ -124,6 +124,34 @@
 			        where P.num = R.num
        ]]>
     </select>
+    
+    <insert id="registerPlace" >
+       <![CDATA[
+           insert into place (num, member_id, pname, location, pphone)
+            values (place_seq.nextval, #{member_id}, #{pname}, #{location}, #{pphone})
+       ]]>
+    </insert>
+    
+    <insert id="registerPlace_Type" >
+       <![CDATA[
+           insert into place_type (place_num, place_type_group_num)
+            values (#{place_num}, #{place_type_group_num})
+       ]]>
+    </insert>
+    
+    <insert id="registerRoom" >
+       <![CDATA[
+           insert into room (num, place_num, price, capacity, rinfo, rname)
+            values (room_seq.nextval, #{place_num}, #{price}, #{capacity}, #{rinfo}, #{rname})
+       ]]>
+    </insert>
+    
+    <insert id="imginsert" >
+       <![CDATA[
+           insert into image(num, room_num, image_type_num, iname, ioriname, ipath)
+				values(image_seq.nextval, #{room_num}, 0, #{iname}, #{ioriname}, #{ipath})
+       ]]>
+    </insert>
     
     
     

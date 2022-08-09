@@ -6,8 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.hi.prj.mapper.PlaceMapper;
+import edu.hi.prj.vo.ImageVO;
 import edu.hi.prj.vo.PlaceDetailVO;
 import edu.hi.prj.vo.PlaceVO;
+import edu.hi.prj.vo.Place_TypeVO;
+import edu.hi.prj.vo.RoomVO;
 
 @Service
 public class PlaceServiceImpl implements PlaceService{
@@ -52,7 +55,7 @@ public class PlaceServiceImpl implements PlaceService{
 
 	@Override
 	public double getGrade(int num) {
-		// TODO Auto-generated method stub
+		
 		return mapper.getGrade(num);
 	}
 
@@ -60,6 +63,30 @@ public class PlaceServiceImpl implements PlaceService{
 	public List<String> getPlaceDetailImg(int num) {
 		
 		return mapper.getPlaceDetailImg(num);
+	}
+
+	@Override
+	public void registerPlace(PlaceVO placeVO) {
+		
+		mapper.registerPlace(placeVO);
+	}
+
+	@Override
+	public void registerPlace_Type(Place_TypeVO place_TypeVO) {
+		
+		mapper.registerPlace_Type(place_TypeVO);
+	}
+
+	@Override
+	public void registerRoom(RoomVO roomVO) {
+		
+		mapper.registerRoom(roomVO);//객실 등록
+	}
+
+	@Override
+	public void imginsert(ImageVO imageVO) {
+		
+		mapper.imginsert(imageVO);//img업로드
 	}
 
 

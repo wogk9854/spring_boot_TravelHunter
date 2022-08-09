@@ -4,8 +4,11 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import edu.hi.prj.vo.ImageVO;
 import edu.hi.prj.vo.PlaceDetailVO;
 import edu.hi.prj.vo.PlaceVO;
+import edu.hi.prj.vo.Place_TypeVO;
+import edu.hi.prj.vo.RoomVO;
 
 @Mapper
 public interface PlaceMapper{
@@ -20,4 +23,9 @@ public interface PlaceMapper{
 	int getReviewCountList(int num);//해당 캠핑장 리뷰갯수 가져오기
 	double getGrade(int num);//해당 캠핑장 평균평점가져오기
 	List<String> getPlaceDetailImg(int num);//해당 캨핑장 객실 이미지 가져오기
+	
+	void registerPlace(PlaceVO placeVO);//캠핑장 등록
+	void registerPlace_Type(Place_TypeVO place_TypeVO);//캠핑장 타입 등록
+	void registerRoom(RoomVO roomVO);//객실 등록
+	void imginsert(ImageVO imageVO);//img업로드
 }
