@@ -107,7 +107,8 @@ ul.product li.current{
 		</div>
 		<div id="tab-3" class="tab-content">
 			<h1>내기록</h1>
-			<p>내기록내용</p>
+			<p>${member.id }</p>
+			
 		</div>
 		<div id="tab-4" class="tab-content">
 			<h1>회원탈퇴</h1>

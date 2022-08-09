@@ -4,20 +4,28 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<section style="padding:200px 0 0 100px">
 		<form action="/create" method="post">
-		아이디 : <input type="text" id="id" name="id" />
-		<button type="button" id="idcheck" onclick="fn_idcheck();" value="N">중복확인</button>	<br>
-         비밀번호 : <input type="password" name="mpw" id="mpw" required="required" /><br>
-        비밀번호확인 : <input type="password" name="testpw" id="mpw1"><br>
-        <div id="alert-success">비밀번호가 일치합니다.</div>
-		<div id="alert-danger">비밀번호가 일치하지 않습니다.</div>
-        이름 : <input type="text" name="mname" id="mname" /><br>
-        닉네임 : <input type="text" name="nick_name" id="nick_name" /><br>
-        이메일 : <input type="text" name="memail" id="memail" /><br>
-        핸드폰번호 : <input type="text" name="mphone" id="mphone" /><br>
-        생년월일 : <input type="text" name="mbirth" id="mbirth"><br>
+			<label for="id">아이디 : </label>
+			<input type="text" id="id" name="id" />
+			<button type="button" id="idcheck" onclick="fn_idcheck();" value="N">중복확인</button>	<br>
+        	<label for="mpw">비밀번호 : </label>
+			<input type="password" name="mpw" id="mpw" required="required" /><br>
+       		<label for="mpw1">비밀번호확인 : </label>
+			<input type="password" name="testpw" id="mpw1"><br>
+       		<div id="alert-success">비밀번호가 일치합니다.</div>
+			<div id="alert-danger">비밀번호가 일치하지 않습니다.</div>
+        	<label for="mname"> 이름 : </label>
+        	<input type="text" name="mname" id="mname" /><br>
+        	<label for="nick_name"> 닉네임 : </label>
+        	<input type="text" name="nick_name" id="nick_name" /><br>
+        	<label for="memail">이메일 : </label>
+        	<input type="text" name="memail" id="memail" /><br>
+        	<label for="mphone">핸드폰번호 : </label>
+        	<input type="text" name="mphone" id="mphone" /><br>
+        	<label for="mbirth">생년월일 : </label>
+        	<input type="text" name="mbirth" id="mbirth"><br>
 		
-		<button type="submit" id="submit">회원가입</button>
-		<button type="button">취소</button>	
+			<button type="submit" id="submit">회원가입</button>
+			<button type="button">취소</button>	
 		</form>
 		
 	</section>

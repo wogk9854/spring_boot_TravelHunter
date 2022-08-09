@@ -1,5 +1,7 @@
 package edu.hi.prj.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import edu.hi.prj.vo.MemberVO;
@@ -12,6 +14,6 @@ public interface MemberMapper{
 	void memberUpdate(MemberVO memberVO);
 	void memberDelete(MemberVO memberVO);
 	int delpwcheck(MemberVO memberVO);
-
+	List<MemberVO> memberBoardList(String id);
 	
 }

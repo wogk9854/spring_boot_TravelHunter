@@ -23,6 +23,8 @@ public class MemberVO{
 	private int mbirth;
 	private int payment;
 	
+	private int bid;
+	private String btitle;
 	
 
 }

@@ -65,6 +65,9 @@
      <resultMap id="memberinfo" type="MemberVO">
     	<result property="reply" column="reply"/>    
 	</resultMap>
+	
+	
+	
 			
 	
    

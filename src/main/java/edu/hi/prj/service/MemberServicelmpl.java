@@ -1,5 +1,7 @@
 package edu.hi.prj.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,6 +44,12 @@ public class MemberServicelmpl implements MemberService{
 	public int delpwcheck(MemberVO memberVO) {
 		int result = mapper.delpwcheck(memberVO);
 		return result;
+	}
+
+	@Override
+	public List<MemberVO> memberBoardList(String id) {
+		
+		return mapper.memberBoardList(id);
 	}
 
 
