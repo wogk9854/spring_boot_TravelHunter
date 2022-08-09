@@ -22,6 +22,7 @@ div#qna{
         position: relative;
         left: 1350px;
        }
+.paging{text-align:center;}
 </style>
 
 	<!-- slider Area Start-->
@@ -81,7 +82,20 @@ div#qna{
       	</c:forEach>
       	
     </table>
-    <br/>
+    <div class="paging">
+	    <c:if test="${pageMaker.prev}">
+			<a href="qna${pageMaker.makeQuery(pageMaker.startPage - 1) }">«</a>
+		</c:if>
+	    
+	    <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
+			<c:out value="${pageMaker.cri.pageNum == idx?'':''}" />
+			<a href="qna${pageMaker.makeQuery(idx)}">${idx}</a>
+		</c:forEach>
+			
+		<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
+			<a href="qna${pageMaker.makeQuery(pageMaker.endPage +1) }"> » </a>
+		</c:if>
+    </div>
     
     
     </div>
