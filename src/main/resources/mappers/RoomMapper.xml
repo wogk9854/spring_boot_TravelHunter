@@ -7,7 +7,7 @@
     <select id="getRoom" resultType="RoomVO">
        <![CDATA[ 
            select r.num,place_num,price,capacity,rinfo,rname,ipath roomImg from room r,image i 
-           		where place_num = #{num} and r.num = i.room_num
+           		where place_num = #{num} and r.num = i.room_num(+)
        ]]>
     </select>  
     

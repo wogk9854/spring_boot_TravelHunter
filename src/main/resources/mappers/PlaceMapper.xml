@@ -118,8 +118,8 @@
        <![CDATA[
      		select p.num num,p.member_id member_id,p.pname pname,location,pphone,review,grade,ipath from 
 			    place P,
-			    (select p.num,count(b.id)review from place p,board b where p.num = b.place_num and p.num = #{num} group by p.num)R,
-			    (select round(avg(bgrade),1)grade from place p,board b,room r where p.num = b.place_num and p.num = r.place_num and p.num = #{num} group by p.num)G,
+			    (select p.num,count(b.id)review from place p,board b where p.num = b.place_num(+) and p.num = #{num} group by p.num)R,
+			    (select round(avg(bgrade),1)grade from place p,board b,room r where p.num = b.place_num(+) and p.num = r.place_num and p.num = #{num} group by p.num)G,
 			    (select ipath from place p,room r,image i where p.num = r.place_num and i.room_num = r.num and p.num = #{num})I
 			        where P.num = R.num
        ]]>

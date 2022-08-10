@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file ="../include/header.jsp" %>
 	<section>
-		<form action="/manager/registRoom" method="POST">
+		<form action="/manager/registRoom" method="POST" enctype="multipart/form-data">
 			
 			업장 번호: <input type="text" name="place_num"/><br><br>
 			가격: <input type="number"  name="price"/><br><br>
@@ -11,7 +11,7 @@
 			객실정보:<textarea name="rinfo"></textarea>
 			이미지등록:<input type="file" name="files" multiple required /><br><br>
 			객실타입<br>
-			<select name="place_type_group_num">
+			<select name="place_type_group_num"> 
 				<option selected>타입 선택</option>
 				<option value="0">노지캠핑장</option>
 				<option value="1">오토캠핑장</option>
