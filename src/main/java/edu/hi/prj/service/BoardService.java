@@ -8,6 +8,7 @@ import edu.hi.prj.vo.Criteria;
 import edu.hi.prj.vo.ImageVO;
 import edu.hi.prj.vo.PheedCriteria;
 import edu.hi.prj.vo.ReviewImgVO;
+import edu.hi.prj.vo.SearchCriteria;
 
 public interface BoardService{
 	List<BoardVO> getList(int type);
@@ -22,8 +23,8 @@ public interface BoardService{
 	int boardGetid(BoardVO boardVO);
 	List<BoardImgVO> getBoardImg();
 	
-	int getTotalCount();
-	List<BoardVO> pagingList(Criteria cri);
+	int getTotalCount(SearchCriteria scri);
+	List<BoardVO> pagingList(SearchCriteria scri);
 	int pheedCount();
 	List<BoardVO> pheedpaging(PheedCriteria cri);
 	

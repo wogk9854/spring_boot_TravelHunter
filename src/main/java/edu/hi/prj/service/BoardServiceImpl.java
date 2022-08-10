@@ -12,6 +12,7 @@ import edu.hi.prj.vo.Criteria;
 import edu.hi.prj.vo.ImageVO;
 import edu.hi.prj.vo.PheedCriteria;
 import edu.hi.prj.vo.ReviewImgVO;
+import edu.hi.prj.vo.SearchCriteria;
 
 @Service
 public class BoardServiceImpl implements BoardService{
@@ -94,15 +95,15 @@ public class BoardServiceImpl implements BoardService{
 	}
 
 	@Override
-	public int getTotalCount() {
+	public int getTotalCount(SearchCriteria scri) {
 		
-		return mapper.getTotalCount();
+		return mapper.getTotalCount(scri);
 	}
 
 	@Override
-	public List<BoardVO> pagingList(Criteria cri) {
+	public List<BoardVO> pagingList(SearchCriteria scri) {
 		
-		return mapper.pagingList(cri);
+		return mapper.pagingList(scri);
 	}
 
 	@Override

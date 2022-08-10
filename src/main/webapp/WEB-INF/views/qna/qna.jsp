@@ -30,20 +30,27 @@ div#qna{
 				<a href="/qna/write">문의하기</a>
 			</div>
 		</div>
-        <form id="searchForm" action="/qna/search" method="post">
-        	<select name="searchType">
-	            <option value="">-- 선택 --</option>
-	            <option value="btitle">제목</option>
-	            <option value="bcontent">내용</option>
-	            <option value="member_id">작성자</option>
+       
+        <form role="form" method="get">
+        <div class="search">
+        	<select id="searchType" name="searchType">
+	            <option value="null"<c:out value="${scri.searchType == null ? 'selected' : ''}" />>-- 선택 --</option>
+	            <option value="btitle"<c:out value="${scri.searchType eq 'btitle' ? 'selected' : ''}"/>>제목</option>
+	            <option value="bcontent"<c:out value="${scri.searchType eq 'bcontent' ? 'selected' : ''}"/>>내용</option>
+	            <option value="member_id"<c:out value="${scri.searchType eq 'member_id' ? 'selected' : ''}"/>>작성자</option>
 	          </select>
-	    	검색 : <input type="text" name="keyword">
-	    	<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
-        	<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
-	    	<button type="submit">검색</button>
-        	
-        	
-        </form>
+	    	<input type="text" name="keyword" id="keywordInput" value="${scri.keyword}">
+	    	
+	    	<button id="searchBtn" type="button">검색</button>
+        	<script>
+      			$(function(){
+        			$('#searchBtn').click(function() {
+          				self.location = "qna" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $(".search option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+       			 });
+      		});   
+   			</script>
+        	</div>
+        
         
           
     <table border="1">
@@ -65,18 +72,18 @@ div#qna{
       		</tr>
       	</c:forEach>
     </table>
-    
+    </form>
     <c:if test="${pageMaker.prev}">
-		<a href="qna${pageMaker.makeQuery(pageMaker.startPage - 1) }">«</a>
+		<a href="qna${pageMaker.makeSearch(pageMaker.startPage - 1) }">«</a>
 	</c:if>
     
     <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
 		<c:out value="${pageMaker.cri.pageNum == idx?'':''}" />
-		<a href="qna${pageMaker.makeQuery(idx)}">${idx}</a>
+		<a href="qna${pageMaker.makeSearch(idx)}">${idx}</a>
 	</c:forEach>
 		
 	<c:if test="${pageMaker.next && pageMaker.endPage > 0}">
-		<a href="qna${pageMaker.makeQuery(pageMaker.endPage +1) }"> » </a>
+		<a href="qna${pageMaker.makeSearch(pageMaker.endPage +1) }"> » </a>
 	</c:if> <br>
     
     

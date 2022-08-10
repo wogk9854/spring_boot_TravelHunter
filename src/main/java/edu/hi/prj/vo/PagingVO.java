@@ -1,5 +1,8 @@
 package edu.hi.prj.vo;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -48,6 +51,31 @@ public class PagingVO{
 				.build(); // ?pageNum=3&amount=10
 		return uriComponentsBuilder.toUriString(); // ?pageNum=3&amount=10 리턴
 	}
+	
+	public String makeSearch(int page) {
+		
+		UriComponents uriComponents = 
+					UriComponentsBuilder.newInstance()
+					.queryParam("page", page)
+					.queryParam("perPageNum", cri.getAmount())
+					.queryParam("searchType", ((SearchCriteria)cri).getSearchType())
+					.queryParam("keyword", encoding(((SearchCriteria)cri).getKeyword()))
+					.build();
+		return uriComponents.toUriString();
+	}
+	public String encoding(String keyword) {
+		if(keyword == null || keyword.trim().length() == 0) {
+			return "";
+		}
+		try {
+			return URLEncoder.encode(keyword, "UTF-8");
+		} catch(UnsupportedEncodingException e) {
+			return "";
+		}
+		
+	}
+	
+	
 
 	
 

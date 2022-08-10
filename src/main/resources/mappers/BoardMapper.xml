@@ -83,9 +83,12 @@
    </update>
    <!-- qna글갯수 -->
    <select id="getTotalCount" resultType="int">
-       <![CDATA[
-           select count(*) from board where board_type_num = 2
-       ]]>
+           select count(*) from board 
+           where 1=1 
+           <include refid="search"></include>
+           and board_type_num = 2
+           
+       
     </select>
     
     <!-- 피드글갯수 -->
@@ -169,6 +172,10 @@
            FROM 
             (select * from (select rownum, b.* from board b where board_type_num = 2 order by id) order by rownum desc)A
                  	WHERE ROWNUM <= #{pageNum} * #{amount}
+         ]]>  
+         			<include refid="search"></include>
+         <![CDATA[       	
+                 	
                  	) WHERE RNUM > (#{pageNum}-1) * #{amount}
        ]]>
     </select>
@@ -185,7 +192,13 @@
            ) WHERE RNUM > (#{pageNum}-1) * #{amount}
        ]]>
     </select>
-    
+    <sql id="search">
+    	<if test="searchType != null">
+    		<if test="searchType == 'btitle'.toString()">AND BTITLE LIKE '%' || #{keyword} || '%'</if>
+    		<if test="searchType == 'bcontent'.toString()">AND BCONTENT LIKE '%' || #{keyword} || '%'</if>
+    		<if test="searchType == 'member_id'.toString()">AND MEMBER_ID LIKE '%' || #{keyword} || '%'</if>
+    	</if>
+    </sql>
     
     
     

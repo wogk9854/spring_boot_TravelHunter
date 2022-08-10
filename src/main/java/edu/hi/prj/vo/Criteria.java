@@ -12,11 +12,10 @@ import lombok.ToString;
 
 public class Criteria{
 	
-	private int pageNum;
-	private int amount;
+	private int pageNum;//page
+	private int amount;//perpagenum
 	
-	private String searchType;
-	private String searchName;
+
 	
 	public Criteria() {
 		this(1,10);

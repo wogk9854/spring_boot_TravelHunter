@@ -4,15 +4,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import edu.hi.prj.service.BoardService;
 import edu.hi.prj.service.ReplyService;
 import edu.hi.prj.vo.BoardVO;
-import edu.hi.prj.vo.Criteria;
 import edu.hi.prj.vo.PagingVO;
 import edu.hi.prj.vo.ReplyVO;
+import edu.hi.prj.vo.SearchCriteria;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -27,12 +28,14 @@ public class QnaController {
 	private ReplyService reply_service;
 	
 	@GetMapping("")
-	public String Qna(Model model, Criteria cri) {
+	public String Qna(Model model, @ModelAttribute("scri")SearchCriteria scri) {
+		model.addAttribute("boardList", service.pagingList(scri));
 		
-		model.addAttribute("boardList", service.pagingList(cri));
-		int total = service.getTotalCount();
+		PagingVO pagingVO = new PagingVO();
+		pagingVO.setCri(scri);
+		pagingVO.setTotal(service.getTotalCount(scri));
 		
-		model.addAttribute("pageMaker", new PagingVO(cri, total));
+		model.addAttribute("pageMaker", pagingVO);
 		return "/qna/qna";
 	}
 	
@@ -54,7 +57,7 @@ public class QnaController {
 		return "redirect:/qna";
 	}
 	
-	@PostMapping("/search")
+	@GetMapping("/search")
 	public String search(Model model,BoardVO boardVO) {
 		
 		String member_id = boardVO.getMember_id();

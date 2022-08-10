@@ -6,10 +6,10 @@ import org.apache.ibatis.annotations.Mapper;
 
 import edu.hi.prj.vo.BoardImgVO;
 import edu.hi.prj.vo.BoardVO;
-import edu.hi.prj.vo.Criteria;
 import edu.hi.prj.vo.ImageVO;
 import edu.hi.prj.vo.PheedCriteria;
 import edu.hi.prj.vo.ReviewImgVO;
+import edu.hi.prj.vo.SearchCriteria;
 
 @Mapper
 public interface BoardMapper{
@@ -26,8 +26,8 @@ public interface BoardMapper{
 	List<BoardImgVO> getBoardImg();
 	
 	
-	int getTotalCount();
-	List<BoardVO> pagingList(Criteria cri);
+	int getTotalCount(SearchCriteria scri);
+	List<BoardVO> pagingList(SearchCriteria scri);
 	int pheedCount();
 	List<BoardVO> pheedpaging(PheedCriteria cri);
 	
