@@ -15,6 +15,9 @@ public class Criteria{
 	private int pageNum;
 	private int amount;
 	
+	private String searchType;
+	private String searchName;
+	
 	public Criteria() {
 		this(1,10);
 	}

@@ -2,17 +2,85 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file ="../include/header.jsp" %>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+*{ padding: 0; margin: 0;}
+li{list-style: none;}
+a{text-decoration: none;}
+button{cursor: pointer;}
+
+body{ background-color:  #e0e0e0;}
+
+.join{
+    width: 780px; height: 1200px;
+    margin: 0 auto;
+}
+.join h2{
+    width: 100%;
+    
+    text-align: center; font-size: 20px;
+    font-weight: normal;
+}
+.join form{
+    width: 100%; height: 100%;
+    background-color: #fff;
+    padding: 60px; box-sizing: border-box;
+}
+.join legend{
+    position: absolute; left: -999em;
+}
+.join label{
+    display: block;
+    font-size: 12px; color: #333;
+    margin-bottom: 10px;
+}
+.join input{
+    display: block;
+    width: 100%; height: 50px;
+    margin-bottom: 25px;
+    border: none; background-color: #e0e0e0;
+    padding: 0 20px;
+    box-sizing: border-box; 
+}
+.join button.joinbutton{
+    display: block;
+    border: none;
+    width: 220px; height: 50px;
+    background-color: #AD9E87;
+    color: #fff; font-size: 14px; font-weight: bold;
+    margin: 0 auto;
+}
+.join button.idchk{
+    border: none;
+    background-color: #fff;
+    position: relative;
+    left: 600px;
+    font-size: 14px;
+    
+}
+.pwchk{
+    position: relative;
+    top: -30px;
+}
+
+</style>
+	
+	
+	
+	
+	
 	<section style="padding:200px 0 0 100px">
+		<div class="join">
 		<form action="/create" method="post">
+			<h2>회원가입</h2>
 			<label for="id">아이디 : </label>
 			<input type="text" id="id" name="id" />
-			<button type="button" id="idcheck" onclick="fn_idcheck();" value="N">중복확인</button>	<br>
+			<button class="idchk" type="button" id="idcheck" onclick="fn_idcheck();" value="N">중복확인</button>	<br>
         	<label for="mpw">비밀번호 : </label>
 			<input type="password" name="mpw" id="mpw" required="required" /><br>
        		<label for="mpw1">비밀번호확인 : </label>
 			<input type="password" name="testpw" id="mpw1"><br>
-       		<div id="alert-success">비밀번호가 일치합니다.</div>
-			<div id="alert-danger">비밀번호가 일치하지 않습니다.</div>
+       		<div class="pwchk" id="alert-success">비밀번호가 일치합니다.</div>
+			<div class="pwchk" id="alert-danger">비밀번호가 일치하지 않습니다.</div>
         	<label for="mname"> 이름 : </label>
         	<input type="text" name="mname" id="mname" /><br>
         	<label for="nick_name"> 닉네임 : </label>
@@ -24,10 +92,10 @@
         	<label for="mbirth">생년월일 : </label>
         	<input type="text" name="mbirth" id="mbirth"><br>
 		
-			<button type="submit" id="submit">회원가입</button>
-			<button type="button">취소</button>	
+			<button class="joinbutton" type="submit" id="submit">회원가입</button>
+
 		</form>
-		
+		</div>
 	</section>
 
 <%@include file ="../include/footer.jsp" %>

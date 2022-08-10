@@ -165,10 +165,11 @@
     
     <select id="pagingList" resultType="BoardVO">
        <![CDATA[ 
-           SELECT * FROM (SELECT ROWNUM AS RNUM, A.* FROM 
+           SELECT * FROM (SELECT ROWNUM AS RNUM, A.* 
+           FROM 
             (select * from (select rownum, b.* from board b where board_type_num = 2 order by id) order by rownum desc)A
-                 	WHERE ROWNUM <= #{pageNum} * #{amount})B
-                        WHERE RNUM > (#{pageNum}-1) * #{amount}
+                 	WHERE ROWNUM <= #{pageNum} * #{amount}
+                 	) WHERE RNUM > (#{pageNum}-1) * #{amount}
        ]]>
     </select>
     

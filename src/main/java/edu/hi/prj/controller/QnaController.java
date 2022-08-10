@@ -54,7 +54,7 @@ public class QnaController {
 		return "redirect:/qna";
 	}
 	
-	@GetMapping("/search")
+	@PostMapping("/search")
 	public String search(Model model,BoardVO boardVO) {
 		
 		String member_id = boardVO.getMember_id();

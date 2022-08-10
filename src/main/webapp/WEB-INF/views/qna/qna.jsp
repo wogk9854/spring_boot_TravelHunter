@@ -30,16 +30,21 @@ div#qna{
 				<a href="/qna/write">문의하기</a>
 			</div>
 		</div>
-        <form action="/qna/search" method="GET">
-        	<select>
-	            <option selected>-- 선택 --</option>
-	            <option>제목</option>
-	            <option>내용</option>
-	            <option>작성자</option>
+        <form id="searchForm" action="/qna/search" method="post">
+        	<select name="searchType">
+	            <option value="">-- 선택 --</option>
+	            <option value="btitle">제목</option>
+	            <option value="bcontent">내용</option>
+	            <option value="member_id">작성자</option>
 	          </select>
-	    	검색 : <input type="text" name="member_id">
-	    	<input type='submit' value="검색">
+	    	검색 : <input type="text" name="keyword">
+	    	<input type="hidden" name="pageNum" value="${pageMaker.cri.pageNum }">
+        	<input type="hidden" name="amount" value="${pageMaker.cri.amount }">
+	    	<button type="submit">검색</button>
+        	
+        	
         </form>
+        
           
     <table border="1">
         <tr>
