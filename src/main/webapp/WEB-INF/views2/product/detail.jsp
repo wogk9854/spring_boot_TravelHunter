@@ -79,8 +79,8 @@
 					<div class="banner_wrapper">
 						<div class="photo_banner clearfix">
 							<ul>
-								<c:forEach items="${placeDetail.getIpath()}" var="img">
-									<li  class="room_list"><img class="room_img" src="${img}"></li>
+								<c:forEach items="${placeDetail.getInameList()}" var="iname">
+									<li  class="room_list"><img class="room_img" src="/assets/img/rooms/${iname}"></li>
 								</c:forEach>
 							</ul>			
 							<div class="arrow clearfix">
@@ -161,7 +161,18 @@
 	     			<ul>
 		     			<c:forEach items="${room}" var="room">
 		     				<li>
-		     					<div class="room_img"><img src="${room.roomImg}"></div>
+	     						<div class="room_img">
+		     						<ul>
+			     						<c:forEach items="${imgList}" var="img">
+				     						<c:if test="${img.room_num == room.num}">
+				     							<li>
+				     								<img src="/assets/img/rooms/${img.iname}">
+				     							</li>
+				     						</c:if>
+			     						</c:forEach>
+		     						</ul>
+	     						</div>
+		     					
 		     					<div class="room_desc">
 		     						<h2>${room.rname}호</h2>
 		     						<div class="cpacity">기준${room.capacity}명/최대${(room.capacity)+2}명</div>

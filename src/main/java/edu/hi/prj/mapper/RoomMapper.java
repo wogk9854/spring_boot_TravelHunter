@@ -10,5 +10,6 @@ import edu.hi.prj.vo.RoomVO;
 public interface RoomMapper{
 	
 	List<RoomVO> getRoom(int num);
+	List<String> getImgList();
 	
 }

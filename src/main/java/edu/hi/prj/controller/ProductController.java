@@ -39,6 +39,7 @@ public class ProductController {
 		int num = placeVO.getNum();
 		model.addAttribute("placeDetail",service.getPlaceDetail(num));
 		model.addAttribute("room",rservice.getRoom(num));
+		model.addAttribute("imgList",rservice.getImgList());
 		model.addAttribute("reviewList",bservice.getReview(num));
 		model.addAttribute("reviewImgList",bservice.getReviewImgList(num));
 		

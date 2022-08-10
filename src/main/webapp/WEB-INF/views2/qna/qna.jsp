@@ -75,8 +75,6 @@ div#qna{
       			<td>${data.member_id}</td>
       			<td></td>
       			<td>${data.bdate}</td>
-      			
-      			
       		</tr>
       	
       	</c:forEach>

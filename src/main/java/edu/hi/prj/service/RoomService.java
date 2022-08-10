@@ -7,5 +7,6 @@ import edu.hi.prj.vo.RoomVO;
 public interface RoomService{
 	
 	List<RoomVO> getRoom(int num);
+	List<String> getImgList();
 	
 }
