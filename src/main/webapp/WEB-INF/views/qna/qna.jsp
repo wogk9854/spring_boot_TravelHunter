@@ -30,8 +30,8 @@ div#qna{
 				<a href="/qna/write">문의하기</a>
 			</div>
 		</div>
-       
-        <form role="form" method="get">
+       	
+       	 <form role="form" method="get">
         <div class="search">
         	<select id="searchType" name="searchType">
 	            <option value="null"<c:out value="${scri.searchType == null ? 'selected' : ''}" />>-- 선택 --</option>
@@ -50,6 +50,8 @@ div#qna{
       		});   
    			</script>
         	</div>
+       	
+       	
         
         
           
@@ -72,13 +74,12 @@ div#qna{
       		</tr>
       	</c:forEach>
     </table>
-    </form>
+   	</form>
     <c:if test="${pageMaker.prev}">
 		<a href="qna${pageMaker.makeSearch(pageMaker.startPage - 1) }">«</a>
 	</c:if>
     
     <c:forEach begin="${pageMaker.startPage }" end="${pageMaker.endPage }" var="idx">
-		<c:out value="${pageMaker.cri.pageNum == idx?'':''}" />
 		<a href="qna${pageMaker.makeSearch(idx)}">${idx}</a>
 	</c:forEach>
 		

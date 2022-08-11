@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edu.hi.prj.service.BoardService;
 import edu.hi.prj.service.ReplyService;
 import edu.hi.prj.vo.BoardVO;
+import edu.hi.prj.vo.Criteria;
 import edu.hi.prj.vo.PagingVO;
 import edu.hi.prj.vo.ReplyVO;
 import edu.hi.prj.vo.SearchCriteria;
@@ -28,12 +29,14 @@ public class QnaController {
 	private ReplyService reply_service;
 	
 	@GetMapping("")
-	public String Qna(Model model, @ModelAttribute("scri")SearchCriteria scri) {
+	public String Qna(Model model, @ModelAttribute("scri")SearchCriteria scri, Criteria cri) {
+		model.addAttribute("boardList", service.pagingList(scri));
+		
 		model.addAttribute("boardList", service.pagingList(scri));
 		
 		PagingVO pagingVO = new PagingVO();
 		pagingVO.setCri(scri);
-		pagingVO.setTotal(service.getTotalCount(scri));
+		pagingVO.setTotalCount(service.getTotalCount(scri));
 		
 		model.addAttribute("pageMaker", pagingVO);
 		return "/qna/qna";
