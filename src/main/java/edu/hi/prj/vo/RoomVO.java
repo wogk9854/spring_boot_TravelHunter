@@ -1,6 +1,6 @@
 package edu.hi.prj.vo;
 
-import java.sql.Timestamp;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,5 +22,4 @@ public class RoomVO{
 	private int capacity;
 	private String rinfo;
 	private String rname;
-	private String roomImg;
 }

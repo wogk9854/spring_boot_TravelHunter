@@ -145,7 +145,7 @@
 		                        <a href="/product/detail?num=${placeData.num}">
 			                        <div class="single-room mb-50">
 			                            <div class="room-img">
-			                               <img src="${placeData.placeImg}" alt="">
+			                               <img src="/assets/img/rooms/${placeData.iname}" alt="">
 			                            </div>
 			                            <div class="room-caption">
 			                                <h3 class="pname">${placeData.pname}</h3><span class="grade">평점:${placeData.placeAvgGrade}</span>
