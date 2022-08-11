@@ -6,15 +6,15 @@
     
     <select id="getHotList" resultType="BoardVO">
        <![CDATA[ 
-           select * from board where board_type_num = #{board_type_num} order by bview desc,id desc	
+           select * from board where board_type_num = #{board_type_num} order by bview desc,id desc   
        ]]>
     </select>
     
     <select id="searchList" resultType="BoardVO">
        <![CDATA[ 
           select * from 
-          		(select rownum,id,member_id,place_num,board_type_num,btitle,bcontent,bdate,bgrade,bview from board  where member_id = #{member_id} and board_type_num = 2) 
-          			order by rownum desc
+                (select rownum,id,member_id,place_num,board_type_num,btitle,bcontent,bdate,bgrade,bview from board  where member_id = #{member_id} and board_type_num = 2) 
+                   order by rownum desc
        ]]>
     </select>
     
@@ -28,22 +28,22 @@
     <select id="getReviewImgList" resultType="ReviewImgVO">
        <![CDATA[
            select id,ipath from
-		        image i,
-		        (select id from place p, board b where p.num = b.place_num and p.num =#{num})B
-		            where i.board_id = B.id
+              image i,
+              (select id from place p, board b where p.num = b.place_num and p.num =#{num})B
+                  where i.board_id = B.id
        ]]>
     </select>
     
     <insert id="insert">
            insert into board (id,member_id,place_num,board_type_num,btitle,bcontent,bdate,bgrade,bview)
-            	values (board_seq.nextval,#{member_id},#{place_num, jdbcType=INTEGER},#{board_type_num},#{btitle},#{bcontent},sysdate,#{bgrade, jdbcType=DOUBLE},0)
+               values (board_seq.nextval,#{member_id},#{place_num, jdbcType=INTEGER},#{board_type_num},#{btitle},#{bcontent},sysdate,#{bgrade, jdbcType=DOUBLE},0)
     </insert>
     
     <insert id="imginsert" parameterType="ImageVO">
            <![CDATA[
-           		insert into image(num, board_id, image_type_num, iname, ioriname, ipath)
-				values(image_seq.nextval, #{board_id}, 1, #{iname}, #{ioriname}, #{ipath})
-   			]]>
+                 insert into image(num, board_id, image_type_num, iname, ioriname, ipath)
+            values(image_seq.nextval, #{board_id}, 1, #{iname}, #{ioriname}, #{ipath})
+            ]]>
     </insert>
     
         <select id="boardGetid" resultType="int">
@@ -54,16 +54,16 @@
     
     
     <update id="update" >
-    	<![CDATA[
-    		update board set member_id=#{member_id}, btitle=#{btitle}, bcontent=#{bcontent}
-          	where id =#{id}
-    	]]>
+       <![CDATA[
+          update board set member_id=#{member_id}, btitle=#{btitle}, bcontent=#{bcontent}
+             where id =#{id}
+       ]]>
     </update>
     
     <delete id="delete" >
-    	<![CDATA[
-    		delete from board where id = #{id}
-    	]]>
+       <![CDATA[
+          delete from board where id = #{id}
+       ]]>
     </delete>
     
    
@@ -119,7 +119,7 @@
     <select id="replyCount" resultType="int">
        <![CDATA[
              select count(reply) reply from reply, board
-             	where reply.board_id = board.id group by board.id order by board.id desc
+                where reply.board_id = board.id group by board.id order by board.id desc
        ]]>
     </select>
     
@@ -136,27 +136,27 @@
     </select>
     
     <resultMap id="replyCount" type="int">
-    	<result property="reply" column="reply"/>    
-	</resultMap>
-	
-	<resultMap id="img" type="String">
-    	<result property="iname" column="iname"/>    
-	</resultMap>
-	
-	<resultMap id="BoardMap" type="BoardVO">
-		 <id property="id" column="id"/>
-	     <result property="member_id" column="member_id"/>
-	     <result property="place_num" column="place_num"/>
-	     <result property="board_type_num" column="board_type_num"/>
-	     <result property="btitle" column="btitle"/>
-	     <result property="bcontent" column="bcontent"/>
-	     <result property="bdate" column="bdate"/> 
-	     <result property="bgrade" column="bgrade"/>
-	     <result property="bview" column="bview"/>
-		 <collection property="reply" resultMap="replyCount"></collection>
-	</resultMap>
-	
-	<select id="getList" resultType="BoardVO">
+       <result property="reply" column="reply"/>    
+   </resultMap>
+   
+   <resultMap id="img" type="String">
+       <result property="iname" column="iname"/>    
+   </resultMap>
+   
+   <resultMap id="BoardMap" type="BoardVO">
+       <id property="id" column="id"/>
+        <result property="member_id" column="member_id"/>
+        <result property="place_num" column="place_num"/>
+        <result property="board_type_num" column="board_type_num"/>
+        <result property="btitle" column="btitle"/>
+        <result property="bcontent" column="bcontent"/>
+        <result property="bdate" column="bdate"/> 
+        <result property="bgrade" column="bgrade"/>
+        <result property="bview" column="bview"/>
+       <collection property="reply" resultMap="replyCount"></collection>
+   </resultMap>
+   
+   <select id="getList" resultType="BoardVO">
        <![CDATA[ 
            select id,board.member_id,place_num,board_type_num,btitle,bcontent,bdate,bgrade,bview,reply from board,
            (select r.board_id, count(reply) reply from reply r, board b where r.board_id = b.id group by b.id order by b.id) R
@@ -165,30 +165,18 @@
     </select>
     
     <select id="pagingList" resultType="BoardVO">
-       	<![CDATA[ 
-         	select rnum, id, btitle, bcontent, r,
-       			   place_num,board_type_num,bdate,
-      			   bgrade,bview,member_id 
-      			   from
-						(select rownum rnum, id, btitle, bcontent,r,
-       			 		place_num,board_type_num,bdate,
-       				 	bgrade,bview,member_id
-       				 	from(select 
-       						* from (select rownum r, id, btitle, bcontent,member_id,
-               						 place_num,board_type_num,bdate,
-                					 bgrade,bview
-                					 from board where board_type_num =2
-                			 ]]>
-                			 <include refid="search"></include>
-                			<![CDATA[
-                					 
-									 order by id
-							)order by r desc)
-			 		
-					)board where rnum between #{rowStart} and #{rowEnd}
-         
-         
-         
+          <![CDATA[ 
+           select * from(
+                    select row_number() over (order by A.rnum desc) realrow,A.* from 
+                        (select row_number() over(order by id desc) rnum ,b.* from board b where board_type_num = 2 
+      ]]>
+                      <include refid="search"></include>
+      <![CDATA[
+                        
+                        )A
+                    )B 
+         where rnum  between #{rowStart} and #{rowEnd} order by B.realrow desc
+                  
        ]]>
           
     </select>
@@ -198,27 +186,27 @@
            SELECT * FROM (
            SELECT ROWNUM AS RNUM, A.* FROM (SELECT * FROM
            (select id,board.member_id,place_num,board_type_num,btitle,bcontent,bdate,bgrade,bview,reply from board,
-           		(select r.board_id, count(reply) reply from reply r, board b where r.board_id = b.id group by b.id order by b.id) reply
-           			where board.id = reply.board_id(+) and board_type_num = 0 order by id desc)
-           				board order by id desc
+                 (select r.board_id, count(reply) reply from reply r, board b where r.board_id = b.id group by b.id order by b.id) reply
+                    where board.id = reply.board_id(+) and board_type_num = 0 order by id desc)
+                       board order by id desc
            ) A WHERE ROWNUM <= #{pageNum} * #{amount}
            ) WHERE RNUM > (#{pageNum}-1) * #{amount}
        ]]>
     </select>
     <sql id="search">
-    	<if test="searchType != null">
-    		<if test="searchType == 'btitle'.toString()">AND BTITLE LIKE '%' || #{keyword} || '%'</if>
-    		<if test="searchType == 'bcontent'.toString()">AND BCONTENT LIKE '%' || #{keyword} || '%'</if>
-    		<if test="searchType == 'member_id'.toString()">AND MEMBER_ID LIKE '%' || #{keyword} || '%'</if>
-    	</if>
+       <if test="searchType != null">
+          <if test="searchType == 'btitle'.toString()">AND BTITLE LIKE '%' || #{keyword} || '%'</if>
+          <if test="searchType == 'bcontent'.toString()">AND BCONTENT LIKE '%' || #{keyword} || '%'</if>
+          <if test="searchType == 'member_id'.toString()">AND MEMBER_ID LIKE '%' || #{keyword} || '%'</if>
+       </if>
     </sql>
     
     
     
-	
-	
-	
-	
+   
+   
+   
+   
     
 
     
