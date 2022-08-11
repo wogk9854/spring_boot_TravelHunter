@@ -27,7 +27,7 @@ public class PagingVO{
 	private boolean prev;
 	private boolean next;
 	private int displayPageNum = 10;
-	private Criteria cri;
+	private Criteria cri; 
 	
 	public void setCri(Criteria cri) {
 		this.cri = cri;

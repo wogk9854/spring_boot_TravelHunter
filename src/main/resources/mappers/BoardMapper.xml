@@ -166,22 +166,29 @@
     
     <select id="pagingList" resultType="BoardVO">
        	<![CDATA[ 
-          select id,member_id,
-      			 place_num,board_type_num,
-       			 btitle,bcontent,bdate,
-       			 bgrade,bview 
-			  from(select id,member_id,
-            	place_num,board_type_num,
-            	btitle,bcontent,bdate,
-            	bgrade,bview,
-            	row_number() over(order by id desc) as rnum from board
-            	 where board_type_num = 2
-      		 ]]> 
-       		<include refid="search"></include>
-       <![CDATA[     	 
-            	 
-            	 )mp
-				where rnum between #{rowStart} and #{rowEnd} 
+         	select rnum, id, btitle, bcontent, r,
+       			   place_num,board_type_num,bdate,
+      			   bgrade,bview,member_id 
+      			   from
+						(select rownum rnum, id, btitle, bcontent,r,
+       			 		place_num,board_type_num,bdate,
+       				 	bgrade,bview,member_id
+       				 	from(select 
+       						* from (select rownum r, id, btitle, bcontent,member_id,
+               						 place_num,board_type_num,bdate,
+                					 bgrade,bview
+                					 from board where board_type_num =2
+                			 ]]>
+                			 <include refid="search"></include>
+                			<![CDATA[
+                					 
+									 order by id
+							)order by r desc)
+			 		
+					)board where rnum between #{rowStart} and #{rowEnd}
+         
+         
+         
        ]]>
           
     </select>
