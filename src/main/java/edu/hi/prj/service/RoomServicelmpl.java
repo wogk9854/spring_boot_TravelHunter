@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.hi.prj.mapper.RoomMapper;
-import edu.hi.prj.vo.ReplyVO;
 import edu.hi.prj.vo.RoomVO;
+import edu.hi.prj.vo.RsvRoomVO;
 
 @Service
 public class RoomServicelmpl implements RoomService{
@@ -24,6 +24,12 @@ public class RoomServicelmpl implements RoomService{
 	public List<String> getImgList() {
 		
 		return mapper.getImgList();
+	}
+
+	@Override
+	public List<RsvRoomVO> getRsvRoom(int num,String rdate) {
+		
+		return mapper.getRsvRoom(num,rdate);
 	}
 
 	

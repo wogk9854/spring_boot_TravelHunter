@@ -160,28 +160,52 @@
 	     		<div class="room_list">
 	     			<ul>
 		     			<c:forEach items="${room}" var="room">
-		     				<li>
-	     						<div class="room_img">
-		     						<ul>
-			     						<c:forEach items="${imgList}" var="img">
-				     						<c:if test="${img.room_num == room.num}">
-				     							<li>
-				     								<img src="/assets/img/rooms/${img.iname}">
-				     							</li>
-				     						</c:if>
-			     						</c:forEach>
-		     						</ul>
-	     						</div>
-		     					
-		     					<div class="room_desc">
-		     						<h2>${room.rname}호</h2>
-		     						<div class="cpacity">기준${room.capacity}명/최대${(room.capacity)+2}명</div>
-		     						<div class="check_in">체크인  15:00</div>
-		     						<div class="check_out">체크아웃 11:00</div>
-		     						<div class="price">${room.price}원</div>
-		     						<button>예약하기</button>
-		     					</div>
-		     				</li>
+		     				
+		     			
+			     			
+			     				
+			     					<li>
+			     						<div class="room_img">
+				     						<ul>
+					     						<c:forEach items="${imgList}" var="img">
+						     						<c:if test="${img.room_num == room.num}">
+						     							<li>
+						     								<img src="/assets/img/rooms/${img.iname}">
+						     							</li>
+						     						</c:if>
+					     						</c:forEach>
+				     						</ul>
+			     						</div>
+				     					
+				     					<div class="room_desc">
+				     						<h2>${room.rname}호</h2>
+				     						<div class="cpacity">기준${room.capacity}명/최대${(room.capacity)+2}명</div>
+				     						<div class="check_in">체크인  15:00</div>
+				     						<div class="check_out">체크아웃 11:00</div>
+				     						<div class="price">${room.price}원</div>
+				     						
+				     						<c:choose>
+					     						<c:when test="${empty rsvroom}">
+					     							<button>예약하기</button>
+					     						</c:when>
+					     						<c:when test="${rsvroom.num != room.num}">
+					     							<c:forEach items="${rsvroom}" var="rsvroom">
+						     							<button>예약하기</button>
+						     						</c:forEach>
+						     					</c:when>
+						     					<c:when test="${rsvroom.num = room.num}">
+					     							<c:forEach items="${rsvroom}" var="rsvroom">
+						     							<button>예약완료</button>
+						     						</c:forEach>
+						     					</c:when>
+				     						</c:choose>
+				     						
+				     						
+				     					</div>
+				     				</li>
+			     				
+			     				
+		     				
 		     			</c:forEach>
 	     			</ul>
 	     		</div>
