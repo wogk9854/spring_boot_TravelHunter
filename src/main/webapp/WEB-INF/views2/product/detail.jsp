@@ -222,48 +222,51 @@
 					<p>전체리뷰 ${placeDetail.review}개</p>
 				</div>
 				<div class="review_list">
-					<ul>
+					<c:if test="${reviewList.size() > 0}">
 						<c:forEach items="${reviewList}" var="review">
-							<li>
-								<div class="pic">
-									<img src="/images/profile_img.png">
-								</div>
-								<div class="r_list_head">
-									<div class="review_title"><h2>${review.btitle}</h2></div>
-									<div class="grade">
-										<c:if test="${review.bgrade == 0}"><div class="grade_img score_0"></div></c:if>
-										<c:if test="${review.bgrade > 0 && review.bgrade < 1}"><div class="grade_img score_5"></div></c:if>
-										<c:if test="${review.bgrade == 1}"><div class="grade_img score_10"></div></c:if>
-										<c:if test="${review.bgrade > 1 && review.bgrade < 2}"><div class="grade_img score_15"></div></c:if>
-										<c:if test="${review.bgrade == 2}"><div class="grade_img score_20"></div></c:if>
-										<c:if test="${review.bgrade > 2 && review.bgrade < 3}"><div class="grade_img score_25"></div></c:if>
-										<c:if test="${review.bgrade == 3}"><div class="grade_img score_30"></div></c:if>
-										<c:if test="${review.bgrade > 3 && review.bgrade < 4}"><div class="grade_img score_35"></div></c:if>
-										<c:if test="${review.bgrade == 4}"><div class="grade_img score_40"></div></c:if>
-										<c:if test="${review.bgrade > 4 && review.bgrade < 5}"><div class="grade_img score_45"></div></c:if>
-										<c:if test="${review.bgrade == 5}"><div class="grade_img score_50"></div></c:if>
-										<span>평점: ${review.bgrade}</span>
+							<ul>
+								<li>
+									<div class="pic">
+										<img src="/images/profile_img.png">
 									</div>
-									<div class="rsv_info">${review.place_num} / 작성자:  ${review.member_id}</div>
-								</div>
-								<div class="r_list_contents">
-									<div class="exp">${review.bcontent}</div>
-									<div class="img_zone clearfix">
-										<ul>
-											<c:forEach items="${reviewImgList}" var="data">
-												<c:if test="${data.id == review.id}">
-													<li><img src="${data.ipath}"></li>
-												</c:if>
-											</c:forEach>
-										</ul>
+									<div class="r_list_head">
+										<div class="review_title"><h2>${review.btitle}</h2></div>
+										<div class="grade">
+											<c:if test="${review.bgrade == 0}"><div class="grade_img score_0"></div></c:if>
+											<c:if test="${review.bgrade > 0 && review.bgrade < 1}"><div class="grade_img score_5"></div></c:if>
+											<c:if test="${review.bgrade == 1}"><div class="grade_img score_10"></div></c:if>
+											<c:if test="${review.bgrade > 1 && review.bgrade < 2}"><div class="grade_img score_15"></div></c:if>
+											<c:if test="${review.bgrade == 2}"><div class="grade_img score_20"></div></c:if>
+											<c:if test="${review.bgrade > 2 && review.bgrade < 3}"><div class="grade_img score_25"></div></c:if>
+											<c:if test="${review.bgrade == 3}"><div class="grade_img score_30"></div></c:if>
+											<c:if test="${review.bgrade > 3 && review.bgrade < 4}"><div class="grade_img score_35"></div></c:if>
+											<c:if test="${review.bgrade == 4}"><div class="grade_img score_40"></div></c:if>
+											<c:if test="${review.bgrade > 4 && review.bgrade < 5}"><div class="grade_img score_45"></div></c:if>
+											<c:if test="${review.bgrade == 5}"><div class="grade_img score_50"></div></c:if>
+											<span>평점: ${review.bgrade}</span>
+										</div>
+										<div class="rsv_info">${review.place_num} / 작성자:  ${review.member_id}</div>
 									</div>
-									<div class="reply_date">${review.bdate}</div>
-								</div>
-								
-							</li>
+									<div class="r_list_contents">
+										<div class="exp">${review.bcontent}</div>
+										<div class="img_zone clearfix">
+											<ul>
+												<c:forEach items="${reviewImgList}" var="data">
+													<c:if test="${data.id == review.id}">
+														<li><img src="${data.ipath}"></li>
+													</c:if>
+												</c:forEach>
+											</ul>
+										</div>
+										<div class="reply_date">${review.bdate}</div>
+									</div>
+								</li>
+							</ul>
 						</c:forEach>
-						
-					</ul>
+					</c:if>
+					<c:if test="${reviewList.size() == 0 }">
+						<div class=non_review style="padding:50px; text-align:center;">등록된 리뷰가 없습니다.</div>
+					</c:if>
 				</div>
 			</div>
 			<!-- e.객실정보 -->
