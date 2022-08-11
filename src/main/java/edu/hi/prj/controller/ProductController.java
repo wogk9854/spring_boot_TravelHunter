@@ -40,6 +40,7 @@ public class ProductController {
 		model.addAttribute("placeDetail",service.getPlaceDetail(num));
 		model.addAttribute("room",rservice.getRoom(num));
 		model.addAttribute("imgList",rservice.getImgList());
+		model.addAttribute("rsvroom",rservice.getRsvRoom(28,"22/08/15"));
 		model.addAttribute("reviewList",bservice.getReview(num));
 		model.addAttribute("reviewImgList",bservice.getReviewImgList(num));
 		
