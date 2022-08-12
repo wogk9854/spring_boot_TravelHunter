@@ -6,7 +6,12 @@
     
     <select id="getRoom" resultType="RoomVO">
        <![CDATA[ 
-           select * from room where place_num = #{num} order by price
+           select * from room where place_num = #{num} and num not in
+           		(select distinct num from 
+				        room r, 
+				     reserved rsv 
+				where r.place_num = #{num} and rsv.room_num = r.num and rdate between to_date(#{startdate},'mm-dd-yyyy') and to_date(#{enddate},'mm-dd-yyyy')) 
+			order by price,num
        ]]>
     </select> 
     
@@ -15,14 +20,5 @@
            select * from image
        ]]>
     </select> 
-    
-    <select id="getRsvRoom" resultType="RsvRoomVO">
-       <![CDATA[ 
-           select num,rdate from 
-           		room r, 
-           		reserved rsv 
-           	where r.place_num = #{num} and rsv.room_num = r.num and rdate in(#{rdate})
-       ]]>
-    </select>
     
 </mapper>

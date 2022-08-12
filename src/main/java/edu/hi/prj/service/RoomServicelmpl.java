@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import edu.hi.prj.mapper.RoomMapper;
 import edu.hi.prj.vo.RoomVO;
-import edu.hi.prj.vo.RsvRoomVO;
 
 @Service
 public class RoomServicelmpl implements RoomService{
@@ -15,21 +14,15 @@ public class RoomServicelmpl implements RoomService{
 	private RoomMapper mapper;
 
 	@Override
-	public List<RoomVO> getRoom(int num) {
+	public List<RoomVO> getRoom(int num, String startdate, String enddate) {
 		
-		return mapper.getRoom(num);
+		return mapper.getRoom(num,startdate,enddate);
 	}
 
 	@Override
 	public List<String> getImgList() {
 		
 		return mapper.getImgList();
-	}
-
-	@Override
-	public List<RsvRoomVO> getRsvRoom(int num,String rdate) {
-		
-		return mapper.getRsvRoom(num,rdate);
 	}
 
 	

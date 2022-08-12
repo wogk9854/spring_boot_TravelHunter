@@ -1,6 +1,7 @@
 package edu.hi.prj.vo;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +16,11 @@ import lombok.ToString;
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class RsvRoomVO{
+public class BookingVO{
 	private int num;
-	private Timestamp rdate;
+	private int member_num;
+	private int room_num;
+	private int place_num;
+	private String startdate;
+	private String enddate;
 }

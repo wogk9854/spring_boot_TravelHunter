@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import edu.hi.prj.service.BoardService;
 import edu.hi.prj.service.PlaceService;
 import edu.hi.prj.service.RoomService;
+import edu.hi.prj.vo.BookingVO;
 import edu.hi.prj.vo.PlaceVO;
 
 
@@ -34,13 +35,15 @@ public class ProductController {
 	}
 	
 	@GetMapping("/detail")
-	public String detail(Model model,PlaceVO placeVO) {
+	public String detail(Model model,PlaceVO placeVO,BookingVO bookingVO) {
 		
 		int num = placeVO.getNum();
+		String startdate = bookingVO.getStartdate();
+		String enddate = bookingVO.getEnddate();
+		
 		model.addAttribute("placeDetail",service.getPlaceDetail(num));
-		model.addAttribute("room",rservice.getRoom(num));
+		model.addAttribute("room",rservice.getRoom(num,startdate,enddate));
 		model.addAttribute("imgList",rservice.getImgList());
-		model.addAttribute("rsvroom",rservice.getRsvRoom(28,"22/08/15"));
 		model.addAttribute("reviewList",bservice.getReview(num));
 		model.addAttribute("reviewImgList",bservice.getReviewImgList(num));
 		

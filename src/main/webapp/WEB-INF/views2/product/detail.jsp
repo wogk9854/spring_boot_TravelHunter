@@ -30,7 +30,9 @@
 	.tab_list .select_tab li{float:left; padding:20px; color:#00000061}
 	.tab_list .select_tab li.active{color:#f1b233;}
 	.gj-datepicker-md [role="right-icon"]{font-size:18px}
-	.gj-textbox-md{height:44px;width:200px; margin:32px 0;}
+	.datepicker_wrapp{overflow:hidden}
+	.startdate {margin:20px 20px 20px 0; float:left}
+	.enddate {margin:20px 20px 20px 0; float:left}
 	.tab_contents .room_list li{border:1px solid #eaeaea;overflow:hidden;margin-bottom:20px;}
 	.tab_contents .room_list li .room_img{float:left}
 	.tab_contents .room_list li .room_desc{float:left}
@@ -50,7 +52,6 @@
 	.tab_contents .review_list li .r_list_contents{float:left;width:100%;margin:20px 0 0 120px}
 	.tab_contents .review_list li .r_list_contents .reply_date{padding:20px 0;}
 	.tab_contents .review_list li .r_list_contents .img_zone{}
-	.tab_contents .review_list li .r_list_contents .img_zone img{width:100%;}
 	
 	.room_img img{width:300px; height:200px}
 	.review_list li li{width:300px;float:left;}
@@ -154,55 +155,51 @@
 	     	
 	     	<!-- s.객실예약 -->
 	     	<div class="tab_contents active">
-	     		<form action="" method="GET">
-	     			<input id="datepicker1"  placeholder="날짜선택"/>
+	     		
+     			<form action="/product/detail" method="GET">
+	     			<div class="datepicker_wrapp">
+		     			<div class="startdate">
+			     			<input id="datepicker1" name="startdate" placeholder="${bookingVO.startdate}"/>
+			     		</div>	
+			     		<div class="enddate">
+			     			<input id="datepicker2" name="enddate" placeholder="${bookingVO.enddate}"/>
+			     		</div>
+			     		<div class="single-select-box mt-20">
+	                        <a href="#" class="btn select-btn">선택</a>
+	                   </div>
+	                   <input type="hidden" name="num" value="${placeDetail.num}"/>
+			     		<div class="submit_btn">
+			     			<input type="submit" value="선택" />
+			     		</div>
+		     		</div>
 	     		</form>
+	     		
 	     		<div class="room_list">
 	     			<ul>
 		     			<c:forEach items="${room}" var="room">
 		     				
-		     			
-			     			
-			     				
-			     					<li>
-			     						<div class="room_img">
-				     						<ul>
-					     						<c:forEach items="${imgList}" var="img">
-						     						<c:if test="${img.room_num == room.num}">
-						     							<li>
-						     								<img src="/assets/img/rooms/${img.iname}">
-						     							</li>
-						     						</c:if>
-					     						</c:forEach>
-				     						</ul>
-			     						</div>
-				     					
-				     					<div class="room_desc">
-				     						<h2>${room.rname}호</h2>
-				     						<div class="cpacity">기준${room.capacity}명/최대${(room.capacity)+2}명</div>
-				     						<div class="check_in">체크인  15:00</div>
-				     						<div class="check_out">체크아웃 11:00</div>
-				     						<div class="price">${room.price}원</div>
-				     						
-				     						<c:choose>
-					     						<c:when test="${empty rsvroom}">
-					     							<button>예약하기</button>
-					     						</c:when>
-					     						<c:when test="${rsvroom.num != room.num}">
-					     							<c:forEach items="${rsvroom}" var="rsvroom">
-						     							<button>예약하기</button>
-						     						</c:forEach>
-						     					</c:when>
-						     					<c:when test="${rsvroom.num = room.num}">
-					     							<c:forEach items="${rsvroom}" var="rsvroom">
-						     							<button>예약완료</button>
-						     						</c:forEach>
-						     					</c:when>
-				     						</c:choose>
-				     						
-				     						
-				     					</div>
-				     				</li>
+				     		<li>
+	     						<div class="room_img">
+		     						<ul>
+			     						<c:forEach items="${imgList}" var="img">
+				     						<c:if test="${img.room_num == room.num}">
+				     							<li>
+				     								<img src="/assets/img/rooms/${img.iname}">
+				     							</li>
+				     						</c:if>
+			     						</c:forEach>
+		     						</ul>
+	     						</div>
+		     					
+		     					<div class="room_desc">
+		     						<h2>${room.rname}호</h2>
+		     						<div class="cpacity">기준${room.capacity}명/최대${(room.capacity)+2}명</div>
+		     						<div class="check_in">체크인  15:00</div>
+		     						<div class="check_out">체크아웃 11:00</div>
+		     						<div class="price">${room.price}원</div>
+		     						<button>예약하기</button>
+		     					</div>
+		     				</li>
 			     				
 			     				
 		     				

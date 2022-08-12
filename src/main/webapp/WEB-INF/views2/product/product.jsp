@@ -142,7 +142,11 @@
 			                
 		                	<div class="col-xl-4 col-lg-6 col-md-6">
 		                        <!-- Single Room -->
-		                        <a href="/product/detail?num=${placeData.num}">
+		                        
+		                        <c:set var="now" value="<%=new java.util.Date()%>" />
+								<c:set var="sysDate"><fmt:formatDate value="${now}" pattern="MM-dd-yyyy" /></c:set> 
+								
+		                        <a href="/product/detail?num=${placeData.num}&startdate=${sysDate}&enddate=${sysDate}">
 			                        <div class="single-room mb-50">
 			                            <div class="room-img">
 			                               <img src="/assets/img/rooms/${placeData.iname}" alt="">
