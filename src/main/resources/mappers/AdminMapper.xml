@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="edu.hi.prj.mapper.AdminMapper">
+    
+    <select id="getMemberList" resultType="MemberVO">
+       <![CDATA[ 
+           select * from member order by id asc          	
+       ]]>
+    </select>
+    
+    <select id="searchMemberList" resultType="MemberVO">
+       <![CDATA[ 
+           select * from member where id like '%'||#{id}||'%' order by id asc          	
+       ]]>
+    </select>
+    
+     <select id="getPlaceList" resultType="PlaceVO">
+       <![CDATA[ 
+           select * from place order by num asc	
+       ]]>
+    </select>
+    
+    <select id="searchPlaceList" resultType="PlaceVO">
+       <![CDATA[ 
+           select * from place where num like '%'||#{num}||'%' order by num asc          	
+       ]]>
+    </select>
+    
+    
+    <select id="selectMember" resultType="MemberVO">
+       <![CDATA[
+           select * from member where id = #{id}
+       ]]>
+    </select>
+    
+    
+    <select id="selectPlace" resultType="PlaceVO">
+    	<![CDATA[
+           select * from place where num = #{id}
+       ]]>  
+    </select>
+    
+    <select id="getRoomList" resultType="RoomVO">
+    	<![CDATA[
+           select * from Room where place_num = #{id}
+       ]]>  
+    </select>
+    
+    <select id="getReservationList" resultType="ReservationVO">
+    	<![CDATA[
+           select * from reservation
+       ]]>  
+    </select>
+    
+    <select id="searchReservationList" resultType="ReservationVO">
+    	<![CDATA[
+           select * from reservation where num like '%'||#{num}||'%' order by num asc
+       ]]>  
+    </select>
+    
+    
+    <update id="updateMemberNick">
+    	<![CDATA[
+    		update member set nick_name=#{nick} where id =#{id}
+    	]]>
+    </update>
+    
+    
+    <delete id="deleteMember" >
+    	<![CDATA[
+    		delete from member where id = #{id}
+    	]]>
+    </delete>
+    
+    <delete id="delMemberPlace">
+   		 <![CDATA[
+    		delete from place where member_id = #{id}
+    	]]>
+    </delete>
+       
+       
+    <delete id="deletePlace" >
+    	<![CDATA[
+    		delete from place where id = #{id}
+    	]]>
+    </delete>
+    
+    <delete id="deleteRoom" >
+    	<![CDATA[
+    		delete from room where place_num = #{id} and num = #{room}
+    	]]>
+    </delete>        
+       
+</mapper>
