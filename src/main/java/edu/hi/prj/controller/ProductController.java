@@ -1,5 +1,7 @@
 package edu.hi.prj.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +32,7 @@ public class ProductController {
 	public String reservation(Model model) {
 		
 		model.addAttribute("getPlaceData",service.getPlaceData());
-		
+		model.addAttribute("filtering", service.filtering());
 		return "/product/product";
 	}
 	

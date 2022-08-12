@@ -89,6 +89,12 @@ public class PlaceServiceImpl implements PlaceService{
 		mapper.imginsert(imageVO);//img업로드
 	}
 
+	@Override
+	public List<PlaceVO> filtering() {
+		
+		return mapper.filtering();
+	}
+
 
 
 }

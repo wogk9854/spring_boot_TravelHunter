@@ -1,6 +1,8 @@
 package edu.hi.prj.vo;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -31,5 +33,7 @@ public class BoardVO{
    
    private int reply;
    private int count;
-
+   
+  
+   
 }

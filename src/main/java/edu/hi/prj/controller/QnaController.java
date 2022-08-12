@@ -34,6 +34,7 @@ public class QnaController {
 		
 		model.addAttribute("boardList", service.pagingList(scri));
 		
+		
 		PagingVO pagingVO = new PagingVO();
 		pagingVO.setCri(scri);
 		pagingVO.setTotalCount(service.getTotalCount(scri));

@@ -144,9 +144,11 @@
                 </div>
                 
                 <div class="row">
-                
+               
+               
                 <c:forEach var="placeData" items="${getPlaceData}">
-			                
+			          <c:forEach var="filtering" items="${filtering}">
+			               <c:if test="${placeData.num == filtering.num}">
 		                	<div class="col-xl-4 col-lg-6 col-md-6">
 		                        <!-- Single Room -->
 								
@@ -167,8 +169,9 @@
 			                        </div>
 			                      </a>
 		                    </div>
+		                  </c:if>  
 	               </c:forEach>
-                
+                </c:forEach>
                 
         </section>
         <!-- Room End -->
