@@ -90,9 +90,17 @@ public class PlaceServiceImpl implements PlaceService{
 	}
 
 	@Override
-	public List<PlaceVO> filtering() {
+	public List<PlaceVO> filtering(String startdate, String enddate) {
 		
-		return mapper.filtering();
+		if(startdate == null) {
+			startdate = "12/08/22";
+		}
+		if(enddate == null) {
+			startdate = "13/08/22";
+		}
+		
+		
+		return mapper.filtering(startdate,enddate);
 	}
 
 

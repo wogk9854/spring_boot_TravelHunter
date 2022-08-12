@@ -41,7 +41,7 @@
                             <span> Check In Date:</span>
                         </div>
                         <div class="boking-datepicker">
-                            <input id="datepicker1"  placeholder="${startdate}" />
+                            <input id="datepicker1" name="startdate" placeholder="${startdate}" />
                         </div>
                    </div>
                     <!-- Single Select Box -->
@@ -51,7 +51,7 @@
                             <span>Check OutDate:</span>
                         </div>
                         <div class="boking-datepicker">
-                            <input id="datepicker2"  placeholder="${enddate}" />
+                            <input id="datepicker2" name="startdate" placeholder="${enddate}" />
                         </div>
                    </div>
                     <!-- Single Select Box -->
@@ -60,17 +60,17 @@
                             <span>숙박인원</span>
                         </div>
                         <div class="select-this">
-                            <form action="#">
-                                <div class="select-itms">
-                                    <select name="select" id="select1">
-                                    	<option value="selected">선택</option>
-                                        <option value="">1</option>
-                                        <option value="">2</option>
-                                        <option value="">3</option>
-                                        <option value="">4+</option>
-                                    </select>
-                                </div>
-                            </form>
+                            
+                             <div class="select-itms">
+                                 <select name="capacity" id="select1">
+                                 	<option value="selected">선택</option>
+                                     <option value="1">1</option>
+                                     <option value="2">2</option>
+                                     <option value="3">3</option>
+                                     <option value="4">4+</option>
+                                 </select>
+                             </div>
+                            
                         </div>
                    </div>
                     <!-- Single Select Box -->
@@ -79,22 +79,22 @@
                             <span>장소,지역</span>
                         </div>
                         <div class="select-this">
-                            <form action="#">
-                            	<!--  
-                                <div class="select-itms">
-                                    <select name="select" id="select2">
-                                        <option value="">서울</option>
-                                        <option value="">부산</option>
-                                        <option value="">경기도</option>
-                                        <option value="">강원도</option>
-                                        <option value="">충청도</option>
-                                        <option value="">경상도</option>
-                                        <option value="">전라도</option>
-                                    </select>
-                                </div>
-                               	-->
-                                <input class="text"  placeholder="장소입력" />
-                            </form>
+                           
+                          	<!--  
+                              <div class="select-itms">
+                                  <select name="select" id="select2">
+                                      <option value="">서울</option>
+                                      <option value="">부산</option>
+                                      <option value="">경기도</option>
+                                      <option value="">강원도</option>
+                                      <option value="">충청도</option>
+                                      <option value="">경상도</option>
+                                      <option value="">전라도</option>
+                                  </select>
+                              </div>
+                             	-->
+                              <input class="text" name="location" placeholder="장소입력" />
+                            
                         </div>
                    </div>
                     <!-- Single Select Box -->
@@ -103,17 +103,17 @@
                             <span>타입 선택</span>
                         </div>
                         <div class="select-this">
-                            <form action="#">
-                                <div class="select-itms">
-                                    <select name="place_type_num" id="select3">
-                                    	<option selected>선택하세요</option>
-                                        <option value="0">노지캠핑</option>
-                                        <option value="1">오토캠핑</option>
-                                        <option value="2">글램핑</option>
-                                        <option value="3">차박</option>
-                                    </select>
-                                </div>
-                            </form>
+                           
+                             <div class="select-itms">
+                                 <select name="place_type_num" id="select3">
+                                 	<option selected>선택하세요</option>
+                                     <option value="0">노지캠핑</option>
+                                     <option value="1">오토캠핑</option>
+                                     <option value="2">글램핑</option>
+                                     <option value="3">차박</option>
+                                 </select>
+                             </div>
+                            
                         </div>
                    </div>
                     <!-- Single Select Box -->

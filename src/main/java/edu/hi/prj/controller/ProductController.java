@@ -1,7 +1,5 @@
 package edu.hi.prj.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,16 +27,19 @@ public class ProductController {
 	private BoardService bservice;
 	
 	@GetMapping("")
-	public String reservation(Model model) {
+	public String reservation(Model model,BookingVO bookingVO ) {
+		
+		String startdate ="";
+		String enddate ="";
 		
 		model.addAttribute("getPlaceData",service.getPlaceData());
-		model.addAttribute("filtering", service.filtering());
+		model.addAttribute("filtering", service.filtering(startdate,enddate));
 		return "/product/product";
 	}
 	
 	@GetMapping("/detail")
 	public String detail(Model model,PlaceVO placeVO,BookingVO bookingVO) {
-		
+	
 		int num = placeVO.getNum();
 		String startdate = bookingVO.getStartdate();
 		String enddate = bookingVO.getEnddate();

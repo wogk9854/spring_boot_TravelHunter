@@ -62,7 +62,7 @@
 			    place P,
 			    (select p.num,count(b.id)review from place p,board b where p.num = b.place_num(+) and p.num = #{num} group by p.num)R,
 			    (select round(avg(bgrade),1)grade from place p,board b,room r where p.num = b.place_num(+) and p.num = r.place_num and p.num = #{num} group by p.num)G,
-			    (select iname from place p,room r,image i where p.num = r.place_num and i.room_num = r.num and p.num = #{num})I
+			    (select iname from place p,room r,image i where p.num = r.place_num and i.room_num(+) = r.num and p.num = #{num})I
 			where P.num = R.num
        ]]>
     </select>
@@ -100,11 +100,11 @@
     <!-- 필터링한캠핑장번호 -->
     <select id="filtering" resultType="FilteringVO">
        <![CDATA[ 
-           select distinct place.num num from place_type, room, place where capacity >=0 and place_type_group_num = 0 and location = 'a'  and room.num not in
+           select distinct place.num num from place_type, room, place where capacity >=0 and place_type_group_num in(0,1,2,3) and location in('서울','부산','경기도','a','강원도','제주도') and room.num not in
     			(select distinct num from 
 				        room r, 
 				     reserved rsv 
-				where rsv.room_num = r.num and rdate between to_date('08-12-2022','mm-dd-yyyy') and to_date('08-12-2022','mm-dd-yyyy'))
+				where rsv.room_num = r.num and rdate between to_date(#{startdate},'mm-dd-yyyy') and to_date(#{enddate},'mm-dd-yyyy'))
        ]]>
     </select>
     
