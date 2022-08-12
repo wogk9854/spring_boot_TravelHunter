@@ -21,6 +21,12 @@
         <!-- slider Area End-->
         
         <!-- Booking place Start-->
+        <!-- 체크인(오늘),체크아웃(내일) 디폴트날짜 -->
+        <c:set var="today" value="<%=new java.util.Date()%>" />
+        <c:set var="afterday" value="<%=new java.util.Date(new java.util.Date().getTime() + 1000 * 60 * 60 * 24 * 1)%>" />
+		<c:set var="startdate"><fmt:formatDate value="${today}" pattern="MM-dd-yyyy" /></c:set>
+		<c:set var="enddate"><fmt:formatDate value="${afterday}" pattern="MM-dd-yyyy" /></c:set>
+		
         <div class="booking-area" style="margin:100px 0; padding:0">
             <div class="container">
                <div class="row ">
@@ -35,7 +41,7 @@
                             <span> Check In Date:</span>
                         </div>
                         <div class="boking-datepicker">
-                            <input id="datepicker1"  placeholder="10/12/2020" />
+                            <input id="datepicker1"  placeholder="${startdate}" />
                         </div>
                    </div>
                     <!-- Single Select Box -->
@@ -45,7 +51,7 @@
                             <span>Check OutDate:</span>
                         </div>
                         <div class="boking-datepicker">
-                            <input id="datepicker2"  placeholder="12/12/2020" />
+                            <input id="datepicker2"  placeholder="${enddate}" />
                         </div>
                    </div>
                     <!-- Single Select Box -->
@@ -57,8 +63,9 @@
                             <form action="#">
                                 <div class="select-itms">
                                     <select name="select" id="select1">
+                                    	<option value="selected">선택</option>
                                         <option value="">1</option>
-                                        <option value="" selected>2</option>
+                                        <option value="">2</option>
                                         <option value="">3</option>
                                         <option value="">4+</option>
                                     </select>
@@ -142,11 +149,8 @@
 			                
 		                	<div class="col-xl-4 col-lg-6 col-md-6">
 		                        <!-- Single Room -->
-		                        
-		                        <c:set var="now" value="<%=new java.util.Date()%>" />
-								<c:set var="sysDate"><fmt:formatDate value="${now}" pattern="MM-dd-yyyy" /></c:set> 
 								
-		                        <a href="/product/detail?num=${placeData.num}&startdate=${sysDate}&enddate=${sysDate}">
+		                        <a href="/product/detail?num=${placeData.num}&startdate=${startdate}&enddate=${enddate}">
 			                        <div class="single-room mb-50">
 			                            <div class="room-img">
 			                               <img src="/assets/img/rooms/${placeData.iname}" alt="">
