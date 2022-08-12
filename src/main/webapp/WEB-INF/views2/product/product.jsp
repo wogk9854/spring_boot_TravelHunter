@@ -105,7 +105,7 @@
                         <div class="select-this">
                            
                              <div class="select-itms">
-                                 <select name="place_type_num" id="select3">
+                                 <select name="place_type_group_num" id="select3">
                                  	<option selected>선택하세요</option>
                                      <option value="0">노지캠핑</option>
                                      <option value="1">오토캠핑</option>
