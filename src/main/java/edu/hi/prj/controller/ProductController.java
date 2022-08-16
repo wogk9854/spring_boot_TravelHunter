@@ -11,6 +11,8 @@ import edu.hi.prj.service.PlaceService;
 import edu.hi.prj.service.RoomService;
 import edu.hi.prj.vo.BookingVO;
 import edu.hi.prj.vo.PlaceVO;
+import edu.hi.prj.vo.Place_TypeVO;
+import edu.hi.prj.vo.RoomVO;
 
 
 @RequestMapping("/product")
@@ -27,13 +29,19 @@ public class ProductController {
 	private BoardService bservice;
 	
 	@GetMapping("")
-	public String reservation(Model model,BookingVO bookingVO ) {
+	public String reservation(Model model,BookingVO bookingVO,Place_TypeVO place_TypeVO,RoomVO roomVO,PlaceVO placeVO ) {
 		
-		String startdate ="";
-		String enddate ="";
+		String startdate = bookingVO.getStartdate();
+		String enddate = bookingVO.getEnddate();
+		String place_type_group_num = place_TypeVO.getPlace_type_group_num();
+		int capacity = roomVO.getCapacity();
+		String location = placeVO.getLocation();
 		
+		System.out.println("pt" +place_type_group_num + "::::::::::::::::::::::::::::::::::::::::::");
+		System.out.println("location" +location + "::::::::::::::::::::::::::::::::::::::::::");
+		System.out.println("capacity" +capacity + "::::::::::::::::::::::::::::::::::::::::::");
 		model.addAttribute("getPlaceData",service.getPlaceData());
-		model.addAttribute("filtering", service.filtering(startdate,enddate));
+		model.addAttribute("filtering", service.filtering(startdate,enddate,place_type_group_num,capacity,location));
 		return "/product/product";
 	}
 	

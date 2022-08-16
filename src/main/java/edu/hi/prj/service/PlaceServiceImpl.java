@@ -1,5 +1,7 @@
 package edu.hi.prj.service;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,17 +92,33 @@ public class PlaceServiceImpl implements PlaceService{
 	}
 
 	@Override
-	public List<PlaceVO> filtering(String startdate, String enddate) {
+	public List<PlaceVO> filtering(String startdate, String enddate, String place_type_group_num, int capacity, String location) {
 		
-		if(startdate == null) {
-			startdate = "12/08/22";
+		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yy");
+	    Calendar cal = Calendar.getInstance();
+
+	    String today = sdf.format(cal.getTime());
+	    cal.add(cal.DATE, +1);
+	    String afterday = sdf.format(cal.getTime());
+	    
+		
+		if(startdate == "" || startdate == null) {
+			startdate = today;
 		}
-		if(enddate == null) {
-			startdate = "13/08/22";
+		if(enddate == "" || enddate == null) {
+			enddate = afterday;
 		}
-		
-		
-		return mapper.filtering(startdate,enddate);
+		if( place_type_group_num == null || place_type_group_num.equals("선택하세요")) {
+			place_type_group_num  = "%";
+		}
+		if( capacity == 0) {
+			
+		}
+		if( location == null || location =="") {
+			location  = "%";
+		}
+		System.out.println(startdate + ":::::::::::::::::::::::::::::" + enddate);
+		return mapper.filtering(startdate,enddate,place_type_group_num,capacity, location);
 	}
 
 
