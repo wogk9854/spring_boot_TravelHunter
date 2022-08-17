@@ -108,6 +108,7 @@ public class PlaceServiceImpl implements PlaceService{
 		if(enddate == "" || enddate == null) {
 			enddate = afterday;
 		}
+		
 		if( place_type_group_num == null || place_type_group_num.equals("선택하세요")) {
 			place_type_group_num  = "%";
 		}

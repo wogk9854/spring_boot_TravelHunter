@@ -10,7 +10,7 @@
            		(select distinct num from 
 				        room r, 
 				     reserved rsv 
-				where r.place_num = #{num} and rsv.room_num = r.num and rdate between to_date(#{startdate},'mm-dd-yyyy') and to_date(#{enddate},'mm-dd-yyyy')) 
+				where r.place_num = #{num} and rsv.room_num = r.num and rdate between to_date(#{startdate},'mm-dd-yyyy') and to_date(#{enddate},'mm-dd-yyyy')-1) 
 			order by price,num
        ]]>
     </select> 

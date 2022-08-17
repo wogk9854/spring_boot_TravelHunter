@@ -70,7 +70,7 @@ div#qna{
        
       	<c:forEach var="data" items="${boardList}">
       		<tr>
-      			<td>${data.rownum}</td>
+      			<td>${data.realrow}</td>
       			<td><a href="/qna/detail?id=${data.id}">${data.btitle}</a></td>
       			<td>${data.member_id}</td>
       			<td></td>

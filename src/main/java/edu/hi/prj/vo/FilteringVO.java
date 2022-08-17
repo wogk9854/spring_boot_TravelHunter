@@ -15,6 +15,7 @@ import lombok.ToString;
 @NoArgsConstructor
 public class FilteringVO{
 	private int num;
+	private int price;
 	
 
 

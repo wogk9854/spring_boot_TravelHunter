@@ -101,10 +101,15 @@
     <select id="filtering" resultType="FilteringVO">
        <![CDATA[ 
        		
-       		select distinct p.num from place p,place_type pt where p.num = pt.place_num and pt.place_type_group_num LIKE #{place_type_group_num}
-           and p.num in (select distinct p.num from place p, room r, reserved rsv  
-           where p.num = r.place_num and r.num = rsv.room_num(+) and nvl(rdate,'1000/01/01') not between to_date(#{startdate},'mm-dd-yyyy') and to_date(#{enddate},'mm-dd-yyyy') 
-           and capacity >= #{capacity}  and location like #{location})order by p.num desc
+		select p.num,min(price) price from 
+			place p,
+			place_type pt,
+			(select place_num,min(price) price from room r where capacity >= #{capacity} and r.price >= 0 and r.num 
+		    	not in (
+		        	(select distinct r.num from room r, reserved rsv where r.num = rsv.room_num and rdate between to_date(#{startdate},'mm-dd-yy') and to_date(#{enddate},'mm-dd-yy')-1)
+		        ) 
+		    group by place_num)R
+		where p.num = pt.place_num and pt.place_num = R.place_num and place_type_group_num like #{place_type_group_num} and location like #{location} group by p.num order by p.num desc
       
        ]]>
     </select>

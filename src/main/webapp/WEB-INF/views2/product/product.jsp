@@ -66,7 +66,9 @@
 			                                     <option value="1">1</option>
 			                                     <option value="2">2</option>
 			                                     <option value="3">3</option>
-			                                     <option value="4">4+</option>
+			                                     <option value="4">4</option>
+			                                     <option value="8">8</option>
+			                                     <option value="20">20</option>
 			                                 </select>
 			                             </div>
 			                            
@@ -160,7 +162,7 @@
 			                            <div class="room-caption">
 			                                <h3 class="pname">${placeData.pname}</h3><span class="grade">평점:${placeData.placeAvgGrade}</span>
 			                                <div class="per-night">
-			                                    <span>가격: ${placeData.price}원</span>
+			                                    <span>가격: ${filtering.price}원</span>
 			                                </div>
 			                                <div class="per-night">
 			                                    <span>${placeData.location}</span>
