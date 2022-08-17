@@ -21,7 +21,7 @@ public class PlaceVO{
 	private int pphone;
 	
 	private double placeAvgGrade;
-	private String iname;
+	private String mainimg;
 	private int price;
 
 }
