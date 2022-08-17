@@ -35,8 +35,10 @@
     </select>
     
     <insert id="insert">
+           <![CDATA[
            insert into board (id,member_id,place_num,board_type_num,btitle,bcontent,bdate,bgrade,bview)
                values (board_seq.nextval,#{member_id},#{place_num, jdbcType=INTEGER},#{board_type_num},#{btitle},#{bcontent},sysdate,#{bgrade, jdbcType=DOUBLE},0)
+   			]]>
     </insert>
     
     <insert id="imginsert" parameterType="ImageVO">

@@ -6,10 +6,25 @@
     <!-- 캠핑장 예약페이지 (place테이블 정보 + 평균평점 + 대표가격 + 대표이미지) -->
    	<select id="getPlaceData" resultType="PlaceVO">
        <![CDATA[
-			select * from 
+			select place.num num,place.member_id member_id, place. pname pname,place.location location,pphone,bgrade placeAvgGrade,price, iname from 
 			    place,
-			    (select p.num,round(avg(bgrade),1) placeAvgGrade from place p,board b where p.num = b.place_num(+) group by p.num order by p.num desc)A 
-			where place.num = A.num(+) order by place.num desc
+			    (select place_num,min(price) price from room group by place_num)P,
+			    (select p.num,round(avg(bgrade),1) bgrade from place p,board b where p.num = b.place_num(+) group by p.num order by p.num desc)A,
+			    (select place_num, iname from 
+                        image i,
+                        (select place_num,max(i.num) num from 
+                                image i,
+                                (select B.num,place_num from 
+                                    image i,
+                                    (select max(r.num)num ,r.place_num from 
+                                        room r,
+                                        (select p.num, min(r.price) price from place p,room r where p.num = r.place_num group by p.num)A 
+                                    where A.num = r.place_num and r.price = A.price group by place_num)B
+                                where i.room_num = B.num)C
+                        where i.room_num = C.num group by place_num)D
+                    where i.num = D.num)B
+                    
+			where place.num = A.num(+) and place.num = P.place_num and place.num = B.place_num(+) order by place.num desc
        ]]>
     </select>
     
@@ -38,13 +53,12 @@
       <result property="pphone" column="pphone"/>
       <result property="review" column="review"/>
       <result property="grade" column="grade"/>
-      <result property="mainimg" column="mainimg"/>
       <collection property="inameList" resultMap="getPlaceDetailImg"></collection>
    	</resultMap>
    	
    	<select id="getPlaceDetail" resultMap="placeDetailMap">
        <![CDATA[
-     		select p.num, p.member_id,p.pname, location, pphone, review, grade, mainimg,iname inameList from 
+     		select p.num num,p.member_id member_id,p.pname pname,location,pphone,review,grade,iname inameList from 
 			    place P,
 			    (select p.num,count(b.id)review from place p,board b where p.num = b.place_num(+) and p.num = #{num} group by p.num)R,
 			    (select round(avg(bgrade),1)grade from place p,board b,room r where p.num = b.place_num(+) and p.num = r.place_num and p.num = #{num} group by p.num)G,

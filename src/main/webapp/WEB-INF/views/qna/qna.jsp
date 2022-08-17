@@ -33,13 +33,14 @@ div#qna{
           
            <form role="form" method="get">
         <div class="search">
-           <select id="searchType" name="searchType">
+           <select id="searchType" name="searchType" onchange="handleOnChange(this)">
                <option value="null"<c:out value="${scri.searchType == null ? 'selected' : ''}" />>-- 선택 --</option>
-               <option value="btitle"<c:out value="${scri.searchType eq 'btitle' ? 'selected' : ''}"/>>제목</option>
-               <option value="bcontent"<c:out value="${scri.searchType eq 'bcontent' ? 'selected' : ''}"/>>내용</option>
-               <option value="member_id"<c:out value="${scri.searchType eq 'member_id' ? 'selected' : ''}"/>>작성자</option>
+               <option value="btitle" cost_value="제목"<c:out value="${scri.searchType eq 'btitle' ? 'selected' : ''}"/>>제목</option>
+               <option value="bcontent" cost_value="내용"<c:out value="${scri.searchType eq 'bcontent' ? 'selected' : ''}"/>>내용</option>
+               <option value="member_id" cost_value="v"<c:out value="${scri.searchType eq 'member_id' ? 'selected' : ''}"/>>작성자</option>
              </select>
-          <input type="text" name="keyword" id="keywordInput" value="${scri.keyword}">
+          
+          <input type="hidden" name="keyword" id="keywordInput" value="${scri.keyword}">
           
           <button id="searchBtn" type="button">검색</button>
            <script>
@@ -47,7 +48,18 @@ div#qna{
                  $('#searchBtn').click(function() {
                       self.location = "qna" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $(".search option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
                  });
-            });   
+            });
+            
+               $(function(){
+            	   var idval = $('#keywordInput');
+            	   $('#searchType').change(function(){
+            		   var element = $(this).find('option:selected');
+            		   var myTag = element.attr('cost_value');
+            		   idval.val(myTag);
+            	   });
+            	   
+               });
+               
             </script>
            </div>
           
