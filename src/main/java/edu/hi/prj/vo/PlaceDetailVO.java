@@ -24,6 +24,7 @@ public class PlaceDetailVO{
 	
 	private int review;
 	private double grade;
+	private String mainimg;
 	List<String> inameList;
 	
 }

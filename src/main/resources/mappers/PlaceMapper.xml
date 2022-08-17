@@ -38,12 +38,13 @@
       <result property="pphone" column="pphone"/>
       <result property="review" column="review"/>
       <result property="grade" column="grade"/>
+      <result property="mainimg" column="mainimg"/>
       <collection property="inameList" resultMap="getPlaceDetailImg"></collection>
    	</resultMap>
    	
    	<select id="getPlaceDetail" resultMap="placeDetailMap">
        <![CDATA[
-     		select p.num num,p.member_id member_id,p.pname pname,location,pphone,review,grade,iname inameList from 
+     		select p.num, p.member_id,p.pname, location, pphone, review, grade, mainimg,iname inameList from 
 			    place P,
 			    (select p.num,count(b.id)review from place p,board b where p.num = b.place_num(+) and p.num = #{num} group by p.num)R,
 			    (select round(avg(bgrade),1)grade from place p,board b,room r where p.num = b.place_num(+) and p.num = r.place_num and p.num = #{num} group by p.num)G,

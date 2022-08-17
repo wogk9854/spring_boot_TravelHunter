@@ -9,7 +9,7 @@
 	.top_contents .place_photo #main_photo img{width:100%; height:400px;}
 	.top_contents .place_photo .banner_wrapper{position: relative;}
 	.top_contents .place_photo .photo_banner{margin:20px;overflow:hidden}
-	.top_contents .place_photo .photo_banner ul {width:200%;height:85px}
+	.top_contents .place_photo .photo_banner ul {width:1000%;height:85px}
 	.top_contents .place_photo .photo_banner li{float:left;margin-left:10px;width:127px}
 	.top_contents .place_photo .photo_banner li.active{border:2px solid #ffa726;border-radius:5px;padding:2px;}
 	.top_contents .place_photo .photo_banner li:first-child{margin-left:0;}
@@ -80,6 +80,7 @@
 					<div class="banner_wrapper">
 						<div class="photo_banner clearfix">
 							<ul>
+								<li  class="room_list"><img class="room_img" src="${placeDetail.mainimg}"></li>
 								<c:forEach items="${placeDetail.getInameList()}" var="iname">
 									<li  class="room_list"><img class="room_img" src="/assets/img/rooms/${iname}"></li>
 								</c:forEach>
