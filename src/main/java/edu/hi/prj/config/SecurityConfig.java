@@ -41,7 +41,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 		//http://localhost:8282/admin/adminHome
 		
 		http.authorizeHttpRequests()
-			.antMatchers("/user/**").hasAnyRole("USER","MANAGER","ADMIN")
+			.antMatchers("/mypage/**").hasAnyRole("USER","MANAGER","ADMIN")
 			.antMatchers("/admin/**").hasAnyRole("ADMIN")
 			.antMatchers("/manager/**").hasAnyRole("MANAGER","ADMIN")
 			.antMatchers("/**").permitAll();
