@@ -67,7 +67,6 @@
                                         	<a href="/place">Camping Spot</a>
                                         	<ul class="submenu">
                                         		<li><a href="/place">장소 소개</a></li>
-                                                <li><a href="/place/introduce">장소 타입</a></li>
                                                 <li><a href="/place/monthspot">이달의 장소</a></li>
                                             </ul>
                                         </li>

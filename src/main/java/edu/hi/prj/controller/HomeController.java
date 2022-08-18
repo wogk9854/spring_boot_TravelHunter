@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,17 +14,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import edu.hi.prj.mapper.UserMapper;
 import edu.hi.prj.service.BoardServiceImpl;
 import edu.hi.prj.service.MemberService;
 import edu.hi.prj.vo.MemberVO;
+import edu.hi.prj.vo.UserVO;
 
 @Controller
 public class HomeController {
 
 	@Autowired
 	private BoardServiceImpl service;
+	
 	@Autowired
 	private MemberService member_service;
+	
+	@Autowired
+	private UserMapper userMapper;
+	
+	@Autowired
+	private BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	
 	
 	@GetMapping("/")
 	public String main(Model model) {
@@ -39,16 +51,39 @@ public class HomeController {
 		return "/login/login";
 	}
 	
-	@GetMapping("/join")
-	public String join() {
+	@GetMapping("/joinForm")
+	public void joinForm() {
 		
-		return "/join/join";
 	}
+	
+	@PostMapping("/join")
+	public @ResponseBody String join(UserVO userVO) {
+		
+		String rawPassword = userVO.getPassword();
+		String encPassword = bCryptPasswordEncoder.encode(rawPassword);
+		userVO.setPassword(encPassword);
+		System.out.println(encPassword+"::::::::::::::::::::::::::::::::" +rawPassword);
+		userMapper.insertUser(userVO);
+		userMapper.insertAuthorities(userVO);
+		return "회원가입 완료";
+	}
+	
+//	@GetMapping("/join")
+//	public String join() {
+//		
+//		return "/join/join";
+//	}
 	
 	//회원가입
 	@PostMapping("/create")
-	public String create(MemberVO memberVO) {
-		member_service.create(memberVO);
+	public String create(UserVO userVO) {
+		String rawPassword = userVO.getPassword();
+		String encPassword = bCryptPasswordEncoder.encode(rawPassword);
+		userVO.setPassword(encPassword);
+		
+		userMapper.insertUser(userVO);
+		userMapper.insertAuthorities(userVO);
+		
 		return "/main/main";
 	}
 	
