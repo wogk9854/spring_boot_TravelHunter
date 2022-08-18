@@ -1,27 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@include file ="../include/header.jsp" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> 
+
+<%@include file ="include/header.jsp" %>
 	<section>
-		<!-- slider Area Start-->
-        <div class="slider-area">
-            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="/assets/img/hero/roomspage_hero.jpg" >
-                <div class="container">
-                    <div class="row ">
-                        <div class="col-md-11 offset-xl-1 offset-lg-1 offset-md-1">
-                            <div class="hero-caption">
-                                <span>Manager</span>
-                                <h2>Regist Room</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- slider Area End-->
-        
+        <h1>업장 등록</h1>
+        작성자:
+        <sec:authorize access="isAuthenticated()">
+			<sec:authentication property="principal.username"/>
+		</sec:authorize>
+		<br><br>
 		<form action="/manager/registPlace" method="POST">
+		<sec:authorize access="isAuthenticated()">
+			<input type="hidden"  name="member_id" value="<sec:authentication property="principal.username"/>"/>
+		</sec:authorize>
 			
-			작성자: <input type="text" name="member_id"/><br><br>
 			사업장명: <input type="text"  name="pname"/><br><br>
 			주소:<br>
 			<select name="location">
@@ -36,7 +29,7 @@
 			<input type="submit" value="등록"/>
 		</form>
 	</section>
-<%@include file ="../include/footer.jsp" %>
+<%@include file ="include/footer.jsp" %>
 
 <script>
 	

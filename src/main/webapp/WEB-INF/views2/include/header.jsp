@@ -80,7 +80,7 @@
                             <!-- header-btn -->
                             <div class="header-btn">
                                 <a href="/mypage" class="btn btn1 d-none d-lg-block ">My Page</a>
-                                <a href="/manager" class="btn btn1 d-none d-lg-block ">Manager Page</a>
+                                <a href="/manager" target='_blank' class="btn btn1 d-none d-lg-block ">Manager Page</a>
                             </div>
                         </div>
                         <!-- Mobile Menu -->

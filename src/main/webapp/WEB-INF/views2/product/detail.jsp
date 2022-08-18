@@ -201,9 +201,6 @@
 		     						<button>예약하기</button>
 		     					</div>
 		     				</li>
-			     				
-			     				
-		     				
 		     			</c:forEach>
 	     			</ul>
 	     		</div>

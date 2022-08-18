@@ -30,7 +30,19 @@ public class ManagerController {
 	@GetMapping("")
 	public String manager() {
 		
-		return "/manager/manager";
+		return "/manager/manager2";
+	}
+	
+	@GetMapping("/myplace")
+	public String myplace() {
+		
+		return "/manager/myplace";
+	}
+	
+	@GetMapping("/edit")
+	public String edit() {
+		
+		return "/manager/edit";
 	}
 	
 	@GetMapping("/registroom")
