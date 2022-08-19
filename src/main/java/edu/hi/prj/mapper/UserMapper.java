@@ -10,7 +10,7 @@ public interface UserMapper {
 
 	UserVO getUser(String username);
 	
-	@Insert("insert into member(id,mpw) values(#{username},#{password})")
+	@Insert("insert into member(id,mpw,mname,nick_name,memail,mphone,mbirth) values(#{username},#{password},#{mname},#{nick_name},#{memail},#{mphone},#{mbirth})")
 	public int insertUser(UserVO userVO);
 
 	@Insert("insert into AUTHORITY (member_id,AUTH_NUM) values(#{username},'0')")

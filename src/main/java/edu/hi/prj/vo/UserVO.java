@@ -23,6 +23,11 @@ ENABLED           CHAR(1)
 public class UserVO {
 	private String username;
 	private String password;
+	private String mname;
+	private String nick_name;
+	private String memail;
+	private int mphone;
+	private int mbirth;
 	
 	private List<AuthVO> authList;
 	

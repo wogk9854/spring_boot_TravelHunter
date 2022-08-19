@@ -55,28 +55,11 @@ public class HomeController {
 		return "/login/login";
 	}
 	
-	@GetMapping("/joinForm")
-	public void joinForm() {
+	@GetMapping("/join")
+	public String join() {
 		
+		return "/join/join";
 	}
-	
-	@PostMapping("/join")
-	public @ResponseBody String join(UserVO userVO) {
-		
-		String rawPassword = userVO.getPassword();
-		String encPassword = bCryptPasswordEncoder.encode(rawPassword);
-		userVO.setPassword(encPassword);
-		System.out.println(encPassword+"::::::::::::::::::::::::::::::::" +rawPassword);
-		userMapper.insertUser(userVO);
-		userMapper.insertAuthorities(userVO);
-		return "회원가입 완료";
-	}
-	
-//	@GetMapping("/join")
-//	public String join() {
-//		
-//		return "/join/join";
-//	}
 	
 	//회원가입
 	@PostMapping("/create")
@@ -88,7 +71,7 @@ public class HomeController {
 		userMapper.insertUser(userVO);
 		userMapper.insertAuthorities(userVO);
 		
-		return "/main/main";
+		return "redirect:/";
 	}
 	
 	//로그인
