@@ -49,6 +49,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 		//스프링 시큐리티에서 제공하는 기본 로그인 폼을 사용하겠다.
 		http.formLogin();
 		
+		
 	  
 	}
 	

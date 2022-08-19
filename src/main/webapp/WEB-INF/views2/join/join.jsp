@@ -101,7 +101,7 @@ body{ background-color:  #e0e0e0;}
 <%@include file ="../include/footer.jsp" %>
 
 <script type="text/javascript">
-	/*$(function(){
+	$(function(){
 	    $("#alert-success").hide();
 	    $("#alert-danger").hide();
 	    $("input").keyup(function(){
@@ -194,6 +194,6 @@ body{ background-color:  #e0e0e0;}
 		})
 	}
 		
-		*/
+		
 		
 </script>

@@ -1,9 +1,6 @@
 package edu.hi.prj.vo;
 
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.List;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,8 +1,5 @@
 package edu.hi.prj.vo;
 
-import java.sql.Timestamp;
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
