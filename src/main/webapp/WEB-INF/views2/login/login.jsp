@@ -78,6 +78,15 @@ body{ background-color: #ededed; }
     color: #fff; font-size: 14px; font-weight: bold;
 }
 
+.google{
+	width: 220px;
+	margin: 0 auto;
+	margin-bottom: 5px; 
+	
+}
+.google img{
+	width: 100%;
+}
 
 </style>
 
@@ -100,9 +109,15 @@ body{ background-color: #ededed; }
                 </ul>
                 <button type="submit">로그인</button>    
                 <br>
-                <a href="/oauth2/authorization/google"><img src="/assets/img/loginbutton/btn_google_signin_dark_focus_web.png"></a> <br>
-                <a href="/oauth2/authorization/facebook">페이스북로그인</a> <br>
-                <a href="/oauth2/authorization/facebook"><img src="/assets/img/loginbutton/kakao_login_medium_narrow.png"></a>
+                <div class="google">
+                	<a href="/oauth2/authorization/google"><img src="/assets/img/loginbutton/googlelogin.png"></a> <br>
+                </div>
+                <div class="google">
+                	<a href="/oauth2/authorization/facebook"><img src="/assets/img/loginbutton/facebooklogin.png"></a> <br>
+                </div>	
+                	
+                	<a href="/oauth2/authorization/facebook">a</a>
+               
         </form>	
         <br>
         
