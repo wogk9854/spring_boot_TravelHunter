@@ -3,26 +3,46 @@ package edu.hi.prj.vo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-
+@Data
 @Slf4j
-public class UserDetailsVO implements UserDetails{
+@NoArgsConstructor
+public class UserDetailsVO implements UserDetails, OAuth2User{
+	@Autowired
+	BCryptPasswordEncoder bCryptPasswordEncoder;
+	
+	@Autowired
+	private UserVO userVO;
+	private Map<String, Object> attributes;
+	
 	
 	private String username;
 	private String password;
+	private String mname;
+	private String memail;
 	private List<GrantedAuthority> authorities;
 	
 	public UserDetailsVO(UserVO user) {
 		this.setAuthorities(user);
 		this.setPassword(user.getPassword());
 		this.setUsername(user.getUsername());
+		this.setMemail(user.getMemail());
+		this.setMname(user.getMname());
+		this.userVO = user;
 	}
+
 	
 	//setter 함수
 	public void setUsername(String username) {
@@ -33,6 +53,10 @@ public class UserDetailsVO implements UserDetails{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public void setMname(String mname) {
+		this.mname = mname;
+	}
+	
 	
 	// setter
 	public void setAuthorities(UserVO userVO) {
@@ -90,5 +114,18 @@ public class UserDetailsVO implements UserDetails{
 		// TODO Auto-generated method stub
 		return true;
 	}
+
+	@Override
+	public Map<String, Object> getAttributes() {
+		return attributes;
+	}
+
+	@Override
+	public String getName() {
+		return this.username;
+	}
+	
+	
+	
 
 }

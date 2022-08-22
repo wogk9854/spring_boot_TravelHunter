@@ -18,7 +18,7 @@
     
     <select id="getUser" resultMap="userMap">
     	<![CDATA[
-        	select id username, mpw password, member_id username, aname authority  from member m, authority a, authgroup ag 
+        	select id username, mpw password, member_id username, mname, memail, aname authority  from member m, authority a, authgroup ag 
         		where m.id = a.member_id and a.auth_num = ag.num and m.id = #{username}
     	]]>
     </select>

@@ -8,9 +8,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,11 +25,14 @@ import edu.hi.prj.mapper.UserMapper;
 import edu.hi.prj.service.BoardServiceImpl;
 import edu.hi.prj.service.MemberService;
 import edu.hi.prj.vo.MemberVO;
+import edu.hi.prj.vo.UserDetailsVO;
 import edu.hi.prj.vo.UserVO;
 
 @Controller
 public class HomeController {
-
+	
+	UserDetailsVO userDetailsVO = new UserDetailsVO();
+	
 	@Autowired
 	private BoardServiceImpl service;
 	
@@ -39,6 +45,44 @@ public class HomeController {
 	@Autowired
 	private BCryptPasswordEncoder bCryptPasswordEncoder;
 	
+	
+	@ResponseBody
+	@GetMapping("/test/login")
+	public String loginTest(Authentication authentication, @AuthenticationPrincipal UserDetailsVO userDetails) {
+		
+		
+		System.out.println("test/login ===============");
+
+		UserDetailsVO userDetailsVO = (UserDetailsVO) authentication.getPrincipal();
+		System.out.println("authentication : " + authentication.getPrincipal());
+		System.out.println("userDetails : " + userDetails.getUserVO());
+		
+	
+
+		return "세션정보확인";
+	}
+	
+	@ResponseBody
+	@GetMapping("/test/oauth/login")
+	public String loginOAuthTest(Authentication authentication,
+								@AuthenticationPrincipal OAuth2User oauth) {
+		
+		
+		System.out.println("test/oauth/login ===============");
+
+		OAuth2User oauth2User = (OAuth2User) authentication.getPrincipal();
+		System.out.println("authentication : " + authentication.getPrincipal());
+		System.out.println("oauth2User : " + oauth.getAttributes());
+
+		return "세션정보확인";
+	}
+	
+	@GetMapping("/user")
+	public @ResponseBody String User(@AuthenticationPrincipal UserDetailsVO userdetailsVO) {
+		System.out.println("UserDetailsVO : " + userdetailsVO.getUserVO());
+		
+		return "user";
+	}
 	
 	
 	@GetMapping("/")
@@ -164,8 +208,17 @@ public class HomeController {
 		//3.Principal 객체로 가져오는 방법 (가져올수 있는게 getName()정도)
 		System.out.println("Principal 유저 아이디: " + principal.getName() );
 		
+		
 		return "redirect:/";
 	}
+	
+	@Secured("ROLE_MANAGER")
+	@GetMapping("/info")
+	@ResponseBody
+	public String info() {
+		return "secured테스트";
+	}
+	
 
 }
 
