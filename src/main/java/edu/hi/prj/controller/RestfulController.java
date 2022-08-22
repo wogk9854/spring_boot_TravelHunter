@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,8 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.hi.prj.service.BoardService;
 import edu.hi.prj.service.ReplyService;
+import edu.hi.prj.service.RoomService;
 import edu.hi.prj.vo.BoardVO;
+import edu.hi.prj.vo.PlaceVO;
 import edu.hi.prj.vo.ReplyVO;
+import edu.hi.prj.vo.RoomVO;
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
 
@@ -29,10 +31,20 @@ public class RestfulController {
 	@Autowired
 	private ReplyService rservice;
 	
+	@Autowired
+	private RoomService room_service;
+	
+	
 	@GetMapping("/boards/{id}")
 	public BoardVO getBoard(BoardVO boardVO) {
 		
 		return bservice.getBoard(boardVO.getId());
+	}
+	
+	@GetMapping("/room/{num}")
+	public List<RoomVO> getRoom(RoomVO roomVO,PlaceVO placeVO) {
+		
+		return room_service.getMyRoom(placeVO.getNum());
 	}
 	
 	@GetMapping("/reply/{id}")

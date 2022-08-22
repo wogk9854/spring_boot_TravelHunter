@@ -13,6 +13,9 @@
 	.tab_contents .room_info .info_box{padding:40px;background:#eaeaea;color:#0000008f}
 	.room_img img{width:300px; height:200px}
 	.review_list li li{width:300px;float:left;}
+	
+	.btn_wrapper{text-align:right;margin:0 0 20px 0;}
+	.regist_btn{display:inline-block;width:200px;color:#fff; font-weight:600;font-size:18px;text-align:center; padding: 10px 20px; background-color:#85b4d0; border-radius:25px;}
 </style>
 
      <div class="row bg-title">
@@ -59,18 +62,17 @@
                <div class="col-md-12">
                  <input
                    type="text"
-                   value="서울캠핑장"
+                   value="${placeData.pname}"
                    class="form-control form-control-line"
                  />
                </div>
              </div>
-             
              <div class="form-group">
                <label class="col-md-12">관리자</label>
                <div class="col-md-12">
                  <input
                    type="text"
-                   value="홍길동"
+                   value="${placeData.member_id}"
                    class="form-control form-control-line"
                  />
                </div>
@@ -79,8 +81,8 @@
                <label for="example-email" class="col-md-12">주소</label>
                <div class="col-md-12">
                  <input
-                   type=text"
-                   value="서울"
+                   type="text"
+                   value="${placeData.location}"
                    class="form-control form-control-line"
                    name="location"
                    id="example-email"
@@ -93,7 +95,7 @@
                <div class="col-md-12">
                  <input
                    type="text"
-                   value="010-000-0000"
+                   value="${placeData.pphone}"
                    class="form-control form-control-line"
                  />
                </div>
@@ -110,26 +112,33 @@
      
      <!-- s.객실관리 -->
      <h1>객실관리</h1>
+     <div class=btn_wrapper>
+		<a href="/manager/registroom?num=${placeData.num}" class="regist_btn">객실등록</a>
+	</div>
      <div class="tab_contents active">
     		
     		<div class="room_list">
     			<ul>
-	     			<c:forEach begin="1" end="5" var="room">
+	     			<c:forEach items="${room}" var="room">
 			     		<li>
 	    					<div class="room_img">
 	     						<ul>
-	     							<li>
-	     								<img src="/assets/img/rooms/room1.jpg">
-	     							</li>
+	     							<c:forEach items="${imgList}" var="img">
+		     							<c:if test="${img.room_num == room.num}">
+			     							<li>
+				     							<img src="/assets/img/rooms/${img.iname}">
+			     							</li>
+			     						</c:if>
+	     							</c:forEach>
 	     						</ul>
 	    					</div>
 	     					
 	     					<div class="room_desc">
 	     						<h2>101호</h2>
-	     						<div class="cpacity">기준2명/최대4}명</div>
+	     						<div class="cpacity">기준${room.capacity}명/최대${room.capacity + 2}명</div>
 	     						<div class="check_in">체크인  15:00</div>
 	     						<div class="check_out">체크아웃 11:00</div>
-	     						<div class="price">50000원</div>
+	     						<div class="price">${room.price}원</div>
 	     						<button>수정하기</button>
 	     					</div>
 	     				</li>

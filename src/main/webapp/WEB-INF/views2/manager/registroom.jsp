@@ -1,10 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@include file ="../include/header.jsp" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> 
+
+<%@include file ="include/header.jsp" %>
 	<section>
 		<form action="/manager/registRoom" method="POST" enctype="multipart/form-data">
 			
-			업장 번호: <input type="text" name="place_num"/><br><br>
+			업장 번호: ${placeVO.num}<input type="hidden" name="place_num" value="${placeVO.num}"/><br><br>
 			가격: <input type="number"  name="price"/><br><br>
 			기준인원:<input type="number"  name="capacity"/><br><br>
 			호수/객실명:<input type="text"  name="rname"/><br><br>
@@ -23,8 +25,5 @@
 			<input type="submit" value="등록"/>
 		</form>
 	</section>
-<%@include file ="../include/footer.jsp" %>
+<%@include file ="include/footer.jsp" %>
 
-<script>
-	
-</script>

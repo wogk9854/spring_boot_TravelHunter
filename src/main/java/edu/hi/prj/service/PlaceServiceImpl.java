@@ -122,6 +122,18 @@ public class PlaceServiceImpl implements PlaceService{
 		return mapper.filtering(startdate,enddate,place_type_group_num,capacity, location);
 	}
 
+	@Override
+	public List<PlaceDetailVO> getMyPlaceList(String member_id) {
+		
+		return mapper.getMyPlaceList(member_id);
+	}
+
+	@Override
+	public PlaceVO getMyPlaceData(int num) {
+		
+		return mapper.getMyPlaceData(num);
+	}
+
 
 
 }

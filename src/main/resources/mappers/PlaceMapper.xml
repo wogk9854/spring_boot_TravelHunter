@@ -14,7 +14,6 @@
     </select>
     
     <!-- 캠핑장예약 상세 페이지 -->
-    
     <!-- 해당 캠핑장 모든객실 이미지 -->
     <select id="getPlaceDetailImg" resultType="String">
        <![CDATA[ 
@@ -53,11 +52,11 @@
        ]]>
     </select>
     
-    <!-- 객실등록 -->
+    <!-- 캠핑장등록 -->
     <insert id="registerPlace" >
        <![CDATA[
-           insert into place (num, member_id, pname, location, pphone)
-            values (place_seq.nextval, #{member_id}, #{pname}, #{location}, #{pphone})
+           insert into place (num, member_id, pname, location, pphone, mainimg)
+            values (place_seq.nextval, #{member_id}, #{pname}, #{location}, #{pphone},#{mainimg})
        ]]>
     </insert>
     
@@ -86,20 +85,34 @@
     <!-- 필터링한캠핑장번호 -->
     <select id="filtering" resultType="FilteringVO">
        <![CDATA[ 
-       		
-		select p.num,min(price) price from 
-			place p,
-			place_type pt,
-			(select place_num,min(price) price from room r where capacity >= #{capacity} and r.price >= 0 and r.num 
-		    	not in (
-		        	(select distinct r.num from room r, reserved rsv where r.num = rsv.room_num and rdate between to_date(#{startdate},'mm-dd-yy') and to_date(#{enddate},'mm-dd-yy')-1)
-		        ) 
-		    group by place_num)R
-		where p.num = pt.place_num and pt.place_num = R.place_num and place_type_group_num like #{place_type_group_num} and location like #{location} group by p.num order by p.num desc
-      
+			select p.num,min(price) price from 
+				place p,
+				place_type pt,
+				(select place_num,min(price) price from room r where capacity >= #{capacity} and r.price >= 0 and r.num 
+			    	not in (
+			        	(select distinct r.num from room r, reserved rsv where r.num = rsv.room_num and rdate between to_date(#{startdate},'mm-dd-yy') and to_date(#{enddate},'mm-dd-yy')-1)
+			        ) 
+			    group by place_num)R
+			where p.num = pt.place_num and pt.place_num = R.place_num and place_type_group_num like #{place_type_group_num} and location like #{location} group by p.num order by p.num desc
        ]]>
     </select>
     
+    <!-- 매니저별 캠핑장 조회 -->
+    <select id="getMyPlaceList" resultType="PlaceDetailVO">
+       <![CDATA[ 
+			select * from 
+			    place p,
+			    (select p.num,round(avg(bgrade),1) grade from place p, board b where p.num = b.place_num(+) and p.member_id = #{member_id} group by p.num)A
+			where p.num = A.num order by p.num
+         ]]>
+    </select>
+    
+    <!-- 해당 캠핑장정보 조회 -->
+    <select id="getMyPlaceData" resultType="PlaceVO">
+       <![CDATA[ 
+			select * from place where num = #{num}
+         ]]>
+    </select>
     
     
     

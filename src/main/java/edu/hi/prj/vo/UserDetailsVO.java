@@ -1,6 +1,5 @@
 package edu.hi.prj.vo;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -8,14 +7,7 @@ import java.util.List;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -29,7 +21,7 @@ public class UserDetailsVO implements UserDetails{
 	public UserDetailsVO(UserVO user) {
 		this.setAuthorities(user);
 		this.setPassword(user.getPassword());
-		this.setUsername(user.getUsername());		
+		this.setUsername(user.getUsername());
 	}
 	
 	//setter 함수

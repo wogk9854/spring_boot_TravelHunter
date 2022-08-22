@@ -28,6 +28,8 @@
     <link href="/assets/admin/css/style.css" rel="stylesheet" />
     <!-- color CSS -->
     <link href="/assets/admin/css/colors/blue-dark.css" id="theme" rel="stylesheet" />
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </head>
 
   <body>
@@ -68,18 +70,6 @@
                 />
                 <a href=""><i class="fa fa-search"></i></a>
               </form>
-            </li>
-          </ul>
-          <ul class="nav navbar-top-links navbar-right pull-right">
-            <li>
-              <a class="profile-pic" href="#">
-                <img
-                  src="/assets/plugins/images/users/varun.jpg"
-                  alt="user-img"
-                  width="36"
-                  class="img-circle"
-                /><b class="hidden-xs">Steave</b>
-              </a>
             </li>
           </ul>
         </div>
