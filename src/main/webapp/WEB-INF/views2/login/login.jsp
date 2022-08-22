@@ -100,7 +100,9 @@ body{ background-color: #ededed; }
                 </ul>
                 <button type="submit">로그인</button>    
                 <br>
-                <a href="/oauth2/authorization/google">구글로그인</a>  
+                <a href="/oauth2/authorization/google"><img src="/assets/img/loginbutton/btn_google_signin_dark_focus_web.png"></a> <br>
+                <a href="/oauth2/authorization/facebook">페이스북로그인</a> <br>
+                <a href="/oauth2/authorization/facebook"><img src="/assets/img/loginbutton/kakao_login_medium_narrow.png"></a>
         </form>	
         <br>
         

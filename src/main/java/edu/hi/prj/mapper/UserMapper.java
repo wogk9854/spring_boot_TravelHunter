@@ -26,6 +26,7 @@ public interface UserMapper {
 	
 	@Insert("insert into AUTHORITY (member_id,AUTH_NUM) values(#{username},'0')")
 	public void insertAuthoritiesgoogle(String username);
+	
 	@Select("select id username, mpw password, mname, nick_name, memail, mphone, mbirth, payment from member where id = #{username}")
 	public UserVO userinfo(String username);
 	

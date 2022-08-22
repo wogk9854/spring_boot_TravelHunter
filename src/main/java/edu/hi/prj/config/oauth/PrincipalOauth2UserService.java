@@ -1,7 +1,4 @@
-package edu.hi.prj.config;
-
-import java.util.ArrayList;
-import java.util.List;
+package edu.hi.prj.config.oauth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -36,13 +33,24 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 		//userRequest정보 -> userRequest정보로loadUser함수 -> 회원프로필받음
 		System.out.println("getAttributes : " + oauth2User.getAttributes());
 		
-		String provider = userRequest.getClientRegistration().getRegistrationId();//google
-		String providerId = oauth2User.getAttribute("sub");
+		OAuth2UserInfo oauth2UserInfo = null;
+		if(userRequest.getClientRegistration().getRegistrationId().equals("google")) {
+			System.out.println("google login");
+			oauth2UserInfo = new GoogleUserInfo(oauth2User.getAttributes());
+		}else if(userRequest.getClientRegistration().getRegistrationId().equals("facebook")) {
+			System.out.println("facebook login");
+			oauth2UserInfo = new FacebookUserInfo(oauth2User.getAttributes());
+		}else {
+			System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
+		}
+		
+		String provider = oauth2UserInfo.getProbider();
+		String providerId = oauth2UserInfo.getProviderId();
 		String username = provider + "_" + providerId;//google_11111111
 		String password = bCryptPasswordEncoder.encode("123");
-		String memail = oauth2User.getAttribute("email");
-		String mname = oauth2User.getAttribute("name");
-		UserVO user = usermapper.getUser(username);		
+		String memail = oauth2UserInfo.getMemail();
+		String mname = oauth2UserInfo.getMname();
+		UserVO user = usermapper.getUser(username);	
 		
 		System.out.println("-----------------------------------------------------------------------------------");
 		System.out.println("test password :   " + password);

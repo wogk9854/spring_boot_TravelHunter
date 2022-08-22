@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import edu.hi.prj.config.oauth.PrincipalOauth2UserService;
 import edu.hi.prj.security.CustomUserDetailsService;
 
 //지금부터 하는거는 시큐리티 설정 클래스 만들기
@@ -52,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter  {
 			.antMatchers("/manager/**").hasAnyRole("MANAGER","ADMIN")
 			.antMatchers("/**").permitAll();
 		
-		//스프링 시큐리티에서 제공하는 기본 로그인 폼을 사용하겠다.
+		
 		http.formLogin()
 			.loginPage("/login")
 			.defaultSuccessUrl("/")
