@@ -22,4 +22,6 @@ public class RoomVO{
 	private int capacity;
 	private String rinfo;
 	private String rname;
+	
+	private List<String> iname;
 }

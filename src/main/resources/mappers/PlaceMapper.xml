@@ -37,7 +37,7 @@
       <result property="pphone" column="pphone"/>
       <result property="review" column="review"/>
       <result property="grade" column="grade"/>
-       <result property="mainimg" column="mainimg"/>
+      <result property="mainimg" column="mainimg"/>
       <collection property="inameList" resultMap="getPlaceDetailImg"></collection>
    	</resultMap>
    	

@@ -47,6 +47,12 @@ public class RestfulController {
 		return room_service.getMyRoom(placeVO.getNum());
 	}
 	
+	@GetMapping("/roomImg/{num}")
+	public List<String> getRoomImg(RoomVO roomVO) {
+		
+		return room_service.getRoomImg(roomVO.getNum());
+	}
+	
 	@GetMapping("/reply/{id}")
 	public List<ReplyVO> getReply(BoardVO boardVO) {
 		

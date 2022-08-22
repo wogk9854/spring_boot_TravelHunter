@@ -124,40 +124,7 @@
 											</ul>
 										</div>
 									</div>
-									<script>
-										$.ajax({
-											type : "GET",
-											url : "/json/room/" + ${placeData.num},
-											success : function(room) {
-												$(room).each(function(){
-													
-													var htmls="";
-													
-													htmls += "<li>";
-													htmls += "<div class='room_img'>";
-													htmls += "<ul>";
-													htmls += "<li><img src='/assets/img/rooms/${img.iname}'></li>";	
-													htmls += "</ul>";
-													htmls += "</div>";
-													htmls += "<div class='room_desc'>";
-													htmls += "<h2>" + this.rname + "호</h2>" + this.place_num;
-													htmls += "<div class='cpacity'>기준" + this.capacity + "명/최대" + this.capacity + "명</div>";
-													htmls += "<div class=check_in'>체크인  15:00</div>";
-													htmls += "<div class='check_out'>체크아웃 11:00</div>";
-													htmls += "<div class='price'>" + this.price + "원</div>";
-													htmls += "<button>예약하기</button>";
-													htmls += "</div>";
-													htmls += "</li>";
-													
-													$(".room_list .place_num" + this.place_num ).append(htmls); 
-													
-												});
-											},
-											error : function(){
-												console.log("error");
-											}
-										});
-									</script>
+									
 									<!-- s.객실정보 -->
 									<div class="content_wrap">
 										<div class="tab_contents active">
@@ -240,6 +207,66 @@
 									</div>
 								</div>
 							</li>
+							<script>
+								$.ajax({
+									type : "GET",
+									url : "/json/room/" + ${placeData.num},
+									success : function(room) {
+						
+										$(room).each(function(){
+											
+											var htmls="";
+											
+											htmls += "<li class='room_num"　+ this.num　+ "'>";
+											htmls += "<div class='room_img'>";
+											htmls += "<ul>";
+											htmls += "<li><img src='/assets/img/rooms/${img.iname}'></li>";	
+											htmls += "</ul>";
+											htmls += "</div>";
+											htmls += "<div class='room_desc'>";
+											htmls += "<h2>" + this.rname + "호</h2>" + this.place_num;
+											htmls += "<div class='cpacity'>기준" + this.capacity + "명/최대" + this.capacity + "명</div>";
+											htmls += "<div class=check_in'>체크인  15:00</div>";
+											htmls += "<div class='check_out'>체크아웃 11:00</div>";
+											htmls += "<div class='price'>" + this.price + "원</div>";
+											htmls += "<button>예약하기</button>";
+											htmls += "</div>";
+											htmls += "</li>";
+											
+											$(".room_list .place_num" + this.place_num ).append(htmls);
+											$(".room_num" + this.num).val(this.num);
+											
+											$.ajax({
+												type : "GET",
+												url : "/json/roomImg/" + this.num,
+												success : function(roomImg) {
+									
+													$(roomImg).each(function(){
+														
+														var htmls="";
+														
+														
+														
+														$(".room_list .place_num" + this.room_num ).append(htmls); 
+														
+													});
+												},
+												error : function(){
+													console.log("error");
+												}
+											});
+											$(".room_num" + 122 + " li").append("<img src='/assets/img/rooms/room1.jpg'>");
+											
+										});
+									},
+									error : function(){
+										console.log("error");
+									}
+								});
+								
+								
+								console.log($(".room_num" + 122));
+							</script>
 						</c:forEach>
 					</ul>
 				</div>

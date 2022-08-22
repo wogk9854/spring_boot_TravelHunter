@@ -21,6 +21,12 @@
        ]]>
     </select>
     
+    <select id="getRoomImg" resultType="RoomImgVO">
+       <![CDATA[ 
+           select * from image where room_num = #{num}
+       ]]>
+    </select>
+    
     <select id="getMyRoom" resultType="RoomVO">
        <![CDATA[ 
            select * from room where place_num = #{num}

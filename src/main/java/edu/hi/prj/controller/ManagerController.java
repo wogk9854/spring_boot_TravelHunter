@@ -49,7 +49,6 @@ public class ManagerController {
 		
 		String member_id = authentication.getName(); 
 		model.addAttribute("placeData",place_service.getMyPlaceList(member_id));
-		//model.addAttribute("room",room_service.getMyRoom(41));
 		model.addAttribute("reviewList",board_service.getReview(10));
 		model.addAttribute("imgList",room_service.getImgList());
 		

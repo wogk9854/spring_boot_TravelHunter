@@ -31,5 +31,11 @@ public class RoomServicelmpl implements RoomService{
 		return mapper.getMyRoom(num);
 	}
 
+	@Override
+	public List<String> getRoomImg(int num) {
+		
+		return mapper.getRoomImg(num);
+	}
+
 	
 }
