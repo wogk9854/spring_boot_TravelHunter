@@ -47,7 +47,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 			oauth2UserInfo = new NaverUserInfo((Map<String, Object>)oauth2User.getAttributes().get("response"));
 		}else if(userRequest.getClientRegistration().getRegistrationId().equals("kakao")) {
 			System.out.println("kakao login");
-			oauth2UserInfo = new KakaoUserInfo((Map<String, Object>) oauth2User.getAttributes().get("kakao_account"));
+			oauth2UserInfo = new KakaoUserInfo(oauth2User.getAttributes());
 		}else {
 			System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 		}

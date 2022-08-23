@@ -30,5 +30,7 @@ public class GoogleUserInfo implements OAuth2UserInfo {
 	public String getMname() {
 		return (String) attributes.get("name");
 	}
+
+	
 	
 }
