@@ -78,13 +78,13 @@ body{ background-color: #ededed; }
     color: #fff; font-size: 14px; font-weight: bold;
 }
 
-.google{
+.sociallogin{
 	width: 220px;
 	margin: 0 auto;
-	margin-bottom: 5px; 
+	margin-bottom: 5px;
 	
 }
-.google img{
+.sociallogin img{
 	width: 100%;
 }
 
@@ -109,14 +109,20 @@ body{ background-color: #ededed; }
                 </ul>
                 <button type="submit">로그인</button>    
                 <br>
-                <div class="google">
+                <div class="sociallogin">
                 	<a href="/oauth2/authorization/google"><img src="/assets/img/loginbutton/googlelogin.png"></a> <br>
                 </div>
-                <div class="google">
+                <div class="sociallogin">
                 	<a href="/oauth2/authorization/facebook"><img src="/assets/img/loginbutton/facebooklogin.png"></a> <br>
+                </div>
+                <div class="sociallogin">
+                	<a href="/oauth2/authorization/naver"><img src="/assets/img/loginbutton/naverlogin.png"></a> <br>
+                </div>
+                <div class="sociallogin">
+                	<a href="/oauth2/authorization/kakao"><img src="/assets/img/loginbutton/kakaologin.png"></a> <br>
                 </div>	
                 	
-                	<a href="/oauth2/authorization/facebook">a</a>
+                	
                
         </form>	
         <br>

@@ -1,5 +1,7 @@
 package edu.hi.prj.config.oauth;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -40,6 +42,12 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 		}else if(userRequest.getClientRegistration().getRegistrationId().equals("facebook")) {
 			System.out.println("facebook login");
 			oauth2UserInfo = new FacebookUserInfo(oauth2User.getAttributes());
+		}else if(userRequest.getClientRegistration().getRegistrationId().equals("naver")) {
+			System.out.println("naver login");
+			oauth2UserInfo = new NaverUserInfo((Map<String, Object>)oauth2User.getAttributes().get("response"));
+		}else if(userRequest.getClientRegistration().getRegistrationId().equals("kakao")) {
+			System.out.println("kakao login");
+			oauth2UserInfo = new KakaoUserInfo((Map<String, Object>) oauth2User.getAttributes().get("kakao_account"));
 		}else {
 			System.out.println("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx");
 		}
@@ -53,7 +61,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 		UserVO user = usermapper.getUser(username);	
 		
 		System.out.println("-----------------------------------------------------------------------------------");
-		System.out.println("test password :   " + password);
+		System.out.println("password :   " + password);
 		System.out.println("user .............."  + user);
 		System.out.println("username....... " +username);
 		System.out.println("memali....... : " + memail);
