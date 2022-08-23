@@ -9,9 +9,9 @@ button{ cursor: pointer; } /* 모든 버튼에 마우스손모양 처리 */
 
 /* body설정 */
 body{ background-color: #ededed; }
-
+section{padding:50px 0}
 .loginbox{
-    width: 780px; height: 550px;
+    width: 780px;
     margin: 0 auto; /* 블록요소를 부모영역에서 가운데 처리 */
 }
 .loginbox h2{
@@ -23,7 +23,7 @@ body{ background-color: #ededed; }
     font-weight: normal;
 }
 .loginbox form{
-    width: 100%; height: 600px;
+    width: 100%;
     background-color: #fff;
     /* 패딩수치를 인사이드 처리 */
     padding: 60px; box-sizing: border-box;
@@ -92,7 +92,7 @@ body{ background-color: #ededed; }
 
 
 
-<section style="padding:200px 0 0 100px">
+<section>
 	<div class="loginbox">
         <h2>로그인</h2>
         <form action="/login" method="POST">
@@ -139,7 +139,7 @@ body{ background-color: #ededed; }
 
 <%@include file ="../include/footer.jsp" %>
 			
-11
+
 
 <script>
 	

@@ -37,5 +37,6 @@ public interface BoardMapper{
 	int replyCount(int num);
 	
 	
+	
 
 }

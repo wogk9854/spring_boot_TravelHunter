@@ -45,13 +45,14 @@
 	
 	.tab_contents .review_top{padding:40px 0;border-bottom: 2px solid #eaeaea;text-align:center}
 	.tab_contents .review_top .grade{font-size:30px; font-weight:600;}
+	.tab_contents .review_top p{color:#000}
 	.tab_contents .review_list > ul > li {padding:20px;overflow:hidden;border-bottom: 1px solid #eaeaea;}
 	.tab_contents .review_list li .pic{float:left;width:100px; height:100px; border-radius:100%;overflow:hidden}
 	.tab_contents .review_list li .pic img{width:100%}
 	.tab_contents .review_list li .r_list_head{margin-left:30px;padding: 10px 0;float:left;height:100px}
 	.tab_contents .review_list li .r_list_contents{float:left;width:100%;margin:20px 0 0 120px}
 	.tab_contents .review_list li .r_list_contents .reply_date{padding:20px 0;}
-	.tab_contents .review_list li .r_list_contents .img_zone{}
+	.tab_contents .review_list li .r_list_contents .img_zone img{width:100%}
 	
 	.room_img img{width:300px; height:200px}
 	.review_list li li{width:300px;float:left;}

@@ -6,15 +6,21 @@
     
     <select id="getList" resultType="ReplyVO">
        <![CDATA[ 
-           select * from reply where board_id = #{id} order by repdate desc
+           select * from reply where board_id = #{id} order by board_id desc, step asc
            	
        ]]>
     </select>  
     
+    <update id="updateShape">
+	   <![CDATA[
+	       update reply set step = step + 1 where board_id =#{board_id} and step > #{step}
+	   ]]>
+   	</update>
+    
     <insert id="insert" >
        <![CDATA[
-           insert into reply (num, board_id, member_id, reply, repdate)
-            values (reply_seq.nextval, #{board_id}, #{member_id}, #{reply}, sysdate)
+           insert into reply (num, board_id, member_id, reply, repdate, step, indent)
+            values (reply_seq.nextval, #{board_id}, #{member_id}, #{reply}, sysdate, #{step}+1, #{indent}+1)
        ]]>
     </insert>
     

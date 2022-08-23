@@ -31,6 +31,17 @@
        <![CDATA[ 
            select * from room where place_num = #{num}
        ]]>
-    </select> 
+    </select>
+    
+    <update id="updateRoom">
+       <![CDATA[ 
+           update room set 
+           		rname = #{rname},
+           		price = #{price},
+           		capacity = #{capacity},
+           		rinfo = #{rinfo}
+            where num = #{num}
+       ]]>
+    </update> 
     
 </mapper>

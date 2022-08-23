@@ -21,4 +21,6 @@ public class ReplyVO{
 	private String member_id;
 	private String reply;
 	private Timestamp repdate;
+	private int step;
+	private int indent;
 }

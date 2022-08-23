@@ -112,7 +112,7 @@
      
      <!-- s.객실관리 -->
      <h1>객실관리</h1>
-     <div class=btn_wrapper>
+    <div class=btn_wrapper>
 		<a href="/manager/registroom?num=${placeData.num}" class="regist_btn">객실등록</a>
 	</div>
      <div class="tab_contents active">
@@ -134,7 +134,7 @@
 	    					</div>
 	     					
 	     					<div class="room_desc">
-	     						<h2>101호</h2>
+	     						<h2>${room.rname}호</h2>
 	     						<div class="cpacity">기준${room.capacity}명/최대${room.capacity + 2}명</div>
 	     						<div class="check_in">체크인  15:00</div>
 	     						<div class="check_out">체크아웃 11:00</div>

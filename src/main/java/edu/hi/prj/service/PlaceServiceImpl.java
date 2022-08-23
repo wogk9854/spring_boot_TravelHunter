@@ -134,6 +134,12 @@ public class PlaceServiceImpl implements PlaceService{
 		return mapper.getMyPlaceData(num);
 	}
 
+	@Override
+	public void updatePlace(PlaceVO placeVO) {
+		mapper.updatePlace(placeVO);
+		
+	}
+
 
 
 }

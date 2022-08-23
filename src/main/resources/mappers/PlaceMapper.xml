@@ -114,7 +114,15 @@
          ]]>
     </select>
     
-    
+    <update id="updatePlace">
+       <![CDATA[ 
+           update place set 
+           		pname = #{pname},
+           		location = #{location},
+           		pphone = #{pphone}
+            where num = #{num}
+       ]]>
+    </update> 
     
      
     

@@ -12,11 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.hi.prj.service.BoardService;
+import edu.hi.prj.service.PlaceService;
 import edu.hi.prj.service.ReplyService;
 import edu.hi.prj.service.RoomService;
 import edu.hi.prj.vo.BoardVO;
+import edu.hi.prj.vo.PlaceDetailVO;
 import edu.hi.prj.vo.PlaceVO;
 import edu.hi.prj.vo.ReplyVO;
+import edu.hi.prj.vo.ReviewImgVO;
+import edu.hi.prj.vo.RoomImgVO;
 import edu.hi.prj.vo.RoomVO;
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
@@ -26,19 +30,22 @@ import lombok.extern.slf4j.Slf4j;
 public class RestfulController {
 	
 	@Autowired
-	private BoardService bservice;
+	private BoardService board_service;
 	
 	@Autowired
-	private ReplyService rservice;
+	private ReplyService reply_service;
 	
 	@Autowired
 	private RoomService room_service;
+	
+	@Autowired
+	private PlaceService place_service;
 	
 	
 	@GetMapping("/boards/{id}")
 	public BoardVO getBoard(BoardVO boardVO) {
 		
-		return bservice.getBoard(boardVO.getId());
+		return board_service.getBoard(boardVO.getId());
 	}
 	
 	@GetMapping("/room/{num}")
@@ -48,15 +55,33 @@ public class RestfulController {
 	}
 	
 	@GetMapping("/roomImg/{num}")
-	public List<String> getRoomImg(RoomVO roomVO) {
+	public List<RoomImgVO> getRoomImg(RoomVO roomVO) {
 		
 		return room_service.getRoomImg(roomVO.getNum());
+	}
+	
+	@GetMapping("/review/{num}")
+	public List<BoardVO> getReview(PlaceVO placeVO) {
+		
+		return board_service.getReview(placeVO.getNum());
+	}
+	
+	@GetMapping("/reviewInfo/{num}")
+	public PlaceDetailVO reviewInfo(PlaceVO placeVO) {
+		
+		return place_service.getPlaceDetail(placeVO.getNum());
+	}
+	
+	@GetMapping("/reviewImg/{num}")
+	public List<ReviewImgVO> reviewImg(PlaceVO placeVO) {
+		
+		return board_service.getReviewImgList(placeVO.getNum());
 	}
 	
 	@GetMapping("/reply/{id}")
 	public List<ReplyVO> getReply(BoardVO boardVO) {
 		
-		return rservice.getList(boardVO.getId());
+		return reply_service.getList(boardVO.getId());
 		
 	}
 	
@@ -66,7 +91,7 @@ public class RestfulController {
 		ResponseEntity<String> entity = null;
 		try {
 			
-			 int rn = bservice.updateView(boardVO.getId());
+			 int rn = board_service.updateView(boardVO.getId());
 		     
 			entity = new ResponseEntity<String>("SUCCESS",HttpStatus.OK);         
 		     
@@ -84,7 +109,7 @@ public class RestfulController {
 		ResponseEntity<String> entity = null;
 		try {
 			
-			 rservice.write(replyVO);
+			reply_service.write(replyVO);
 		     
 			entity = new ResponseEntity<String>("SUCCESS",HttpStatus.OK);         
 		     

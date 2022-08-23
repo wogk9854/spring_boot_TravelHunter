@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %> 
+
 <%@include file ="../include/header.jsp" %>
 <script src="/assets/js/ajax/pheed.js"></script>
 <style>
@@ -57,8 +59,10 @@
 	.pheed_wrapper .pheed_list > ul > li > a > .photo .next .button_box{position: absolute;right: 0;top: 50%;transform: translate(-100%,-50%);}
 	.pheed_wrapper .pheed_list > ul > li > a > .photo .next .button_box .next_button{width: 1em;height: 1em;border-top: 2px solid #fff;border-right: 2px solid #fff;transform: rotate(45deg);}
 
-	.pagination{}
+ 	.reply_form{display:none;} 
+ 	.reply_form.active{display:block;} 
 	.pagination .inner{width:1536px; margin:0 auto;}
+	td{height:30px;}
 </style>
 
 	<section style="padding:0 0 100px 0">
@@ -193,10 +197,18 @@
 						<div class="reply_zone"></div>
 					</div>
 					<div class="reply_box">
-						<input id="id" type="hidden"/>
-						id:<input id="member_id" type="text" name="member_id"/><br>
-						댓글: <input id="reply" type="text" name="reply"/>
-						<button id="write_btn">게시</button>
+						<input id="id" type="hidden" name="id"/>
+						<input id="step" type="hidden" name="step" value="0"/>
+						<input id="indent" type="hidden" name="indent" value="0"/>
+						<sec:authorize access="isAuthenticated()">
+							<input type="hidden" id="member_id" name="member_id" value="<sec:authentication property='principal.username'/>"/>
+							댓글: <input id="reply" type="text" name="reply"/>
+							<button id="write_btn">게시</button>
+						</sec:authorize><br>
+						<sec:authorize access="isAnonymous()">
+							<p><a href="<c:url value="/login" />">로그인</a></p>
+						</sec:authorize>
+						
 					</div>
 				</div>
 			</div>
@@ -219,7 +231,7 @@
 	});//e.comment,content click
 
 	
-	// s.게시버튼 클릭시(mousedown) 
+	// 게시버튼 클릭시(mousedown) 
 	$("#write_btn").mousedown(function(){
 		//DB에 댓글 데이터 추가
 		registReply.register();
@@ -229,7 +241,20 @@
 	$("#write_btn").mouseup(function(){
 		//댓글정보 불러와 화면 최신화 
 		registReply.getBoard();
-		$("#member_id").val("");
+		$("#reply").val("");
+	});
+	
+	//대댓글 게시버튼 클릭시(mousedown) 
+	$(document).on("mousedown",".reply_btn",function(){
+		//DB에 댓글 데이터 추가
+		$("#reply").val($(this).parent().parent().parent().find(".reply").val());
+		registReply.register();
+	});
+	
+	//대댓글 게시버튼 클릭시(mouseup)
+	$(document).on("mouseup",".reply_btn",function(){
+		//댓글정보 불러와 화면 최신화 
+		registReply.getBoard();
 		$("#reply").val("");
 	});
 	
@@ -239,8 +264,23 @@
 		
 		$("#detail,.dim").removeClass("active");
 		$("body").removeClass("fixed");
-		$("#member_id").val("");
 		$("#reply").val("");
+	});
+	
+	//답글달기 클릭시 데이터셋팅
+	$(document).on("click",".re_reply",function(e){
+		e.preventDefault();
+		if($(this).hasClass("active") == false){
+			$(this).addClass("active");
+			$(this).parent().parent().next().addClass("active");
+			
+			$("#step").val($(this).parent().parent().parent().find(".step").val());
+			$("#indent").val($(this).parent().parent().parent().find(".indent").val());
+		}else{
+			$(this).removeClass("active");
+			$(this).parent().parent().next().removeClass("active");
+		}
+		
 	});
 	
 	//좋아요 아이콘

@@ -28,4 +28,5 @@ public interface PlaceService{
 	
 	List<PlaceDetailVO> getMyPlaceList(String member_id);//관리자별 캠핑장 조회
 	PlaceVO getMyPlaceData(int num);//해당 캠핑장정보 조회
+	void updatePlace(PlaceVO placeVO);//캠핑장 정보수정
 }

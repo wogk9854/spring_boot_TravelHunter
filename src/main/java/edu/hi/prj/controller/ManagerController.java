@@ -41,7 +41,7 @@ public class ManagerController {
 	@GetMapping("")
 	public String manager() {
 		
-		return "/manager/manager2";
+		return "/manager/manager";
 	}
 	
 	@GetMapping("/myplace")
@@ -49,7 +49,7 @@ public class ManagerController {
 		
 		String member_id = authentication.getName(); 
 		model.addAttribute("placeData",place_service.getMyPlaceList(member_id));
-		model.addAttribute("reviewList",board_service.getReview(10));
+		//model.addAttribute("reviewList",board_service.getReview(10));
 		model.addAttribute("imgList",room_service.getImgList());
 		
 		return "/manager/myplace";
@@ -157,7 +157,17 @@ public class ManagerController {
 		return "redirect:/manager";
 	}
 
+	@PostMapping("/updateRoom")
+	public String updateRoom(RoomVO roomVO) {
+		room_service.updateRoom(roomVO);
+		return "redirect:/manager/myplace";
+	}
 	
+	@PostMapping("/updatePlace")
+	public String updatePlace(PlaceVO placeVO) {
+		place_service.updatePlace(placeVO);
+		return "redirect:/manager/myplace";
+	}
 	
 	
 }

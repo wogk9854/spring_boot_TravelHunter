@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.hi.prj.mapper.RoomMapper;
+import edu.hi.prj.vo.RoomImgVO;
 import edu.hi.prj.vo.RoomVO;
 
 @Service
@@ -32,9 +33,14 @@ public class RoomServicelmpl implements RoomService{
 	}
 
 	@Override
-	public List<String> getRoomImg(int num) {
+	public List<RoomImgVO> getRoomImg(int num) {
 		
 		return mapper.getRoomImg(num);
+	}
+
+	@Override
+	public void updateRoom(RoomVO roomVO) {
+		mapper.updateRoom(roomVO);
 	}
 
 	

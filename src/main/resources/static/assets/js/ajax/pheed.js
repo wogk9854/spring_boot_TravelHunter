@@ -51,10 +51,19 @@
 					$(data).each(function(){
 						   htmls += '<table>';
 		                   htmls += '<tr>';
+		                   for(var i=0; i<(this.indent - 1); i++){
+		                   		htmls += "[re]";
+		                   }
 		                   htmls += '<td>'+ this.member_id + '</td>';
 		                   htmls += '<td>'+ this.reply + '</td>';
 		                   htmls += '<td>'+ this.repdate + '</td>';
-		                   htmls += '</tr>';   
+		                   htmls += '<td><a href="#" class="re_reply">댓글달기</a></td>';
+		                   htmls += '</tr>';
+		                   htmls += "<tr class='reply_form'><td colspan='3'>";
+		                   htmls += "<input type='text' class='reply'/>";
+		                   htmls += "<input type='hidden' class='step' value='" + this.step + "'/>";
+		                   htmls += "<input type='hidden' class='indent' value='" + this.indent + "'/>";
+		                   htmls += "</td><td class='reply_btn'>작성</td></tr>";   
 		                   htmls += '</table>';
 		            });
 					$(".reply_zone").html(htmls);
@@ -81,11 +90,15 @@
 			let member_id = $("#member_id").val();
 			let reply = $("#reply").val();
 			let board_id = $("#id").val();
+			let step = $("#step").val();
+			let indent = $("#indent").val();
 			
 			let form = {
 				member_id : member_id,
 				reply : reply,
-				board_id : board_id
+				board_id : board_id,
+				step : step,
+				indent : indent
 			};
 			
 			$.ajax({ 
@@ -121,12 +134,21 @@
 					var htmls="";
 					$(data).each(function(){
 						   htmls += '<table>';
-	                       htmls += '<tr>';
-	                       htmls += '<td>'+ this.member_id + '</td>';
-	                       htmls += '<td>'+ this.reply + '</td>';
-	                       htmls += '<td>'+ this.repdate + '</td>';
-	                       htmls += '</tr>';   
-	                       htmls += '</table>';
+		                   htmls += '<tr>';
+		                   for(var i=0; i<(this.indent - 1); i++){
+		                   		htmls += "[re]";
+		                   }
+		                   htmls += '<td>'+ this.member_id + '</td>';
+		                   htmls += '<td>'+ this.reply + '</td>';
+		                   htmls += '<td>'+ this.repdate + '</td>';
+		                   htmls += '<td><a href="#" class="re_reply">댓글달기</a></td>';
+		                   htmls += '</tr>';
+		                   htmls += "<tr class='reply_form'><td colspan='3'>";
+		                   htmls += "<input type='text' class='reply'/>";
+		                   htmls += "<input type='hidden' class='step' value='" + this.step + "'/>";
+		                   htmls += "<input type='hidden' class='indent' value='" + this.indent + "'/>";
+		                   htmls += "</td><td class='reply_btn'>작성</td></tr>";   
+		                   htmls += '</table>';
 	                });
 					$(".reply_zone").html(htmls);
 				},

@@ -21,6 +21,7 @@ public class ReplyServicelmpl implements ReplyService{
 	
 	@Override
 	public void write(ReplyVO replyVO) {
+		mapper.updateShape(replyVO);
 		mapper.insert(replyVO);
 	}
 	
@@ -40,6 +41,12 @@ public class ReplyServicelmpl implements ReplyService{
 	public int replyCount(int count) {
 		
 		return mapper.replyCount(count);
+	}
+
+	@Override
+	public void updateShape(ReplyVO replyVO) {
+		mapper.updateShape(replyVO);
+		
 	}
 	
 	
