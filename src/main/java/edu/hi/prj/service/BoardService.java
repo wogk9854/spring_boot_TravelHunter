@@ -2,15 +2,21 @@ package edu.hi.prj.service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import edu.hi.prj.mapper.UserMapper;
 import edu.hi.prj.vo.BoardImgVO;
 import edu.hi.prj.vo.BoardVO;
-import edu.hi.prj.vo.Criteria;
 import edu.hi.prj.vo.ImageVO;
 import edu.hi.prj.vo.PheedCriteria;
 import edu.hi.prj.vo.ReviewImgVO;
 import edu.hi.prj.vo.SearchCriteria;
+	
+
 
 public interface BoardService{
+	
+	
 	List<BoardVO> getList(int type);
 	List<BoardVO> getHotList(int type);
 	BoardVO getBoard(int id);
@@ -32,5 +38,7 @@ public interface BoardService{
 	List<BoardVO> getReview(int place_num);
 	List<ReviewImgVO> getReviewImgList(int num);
 	int replyCount(int num);
+	
+	
 	
 }

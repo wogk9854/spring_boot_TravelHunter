@@ -16,10 +16,9 @@ import edu.hi.prj.vo.UserVO;
 			
 @Service
 public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
-	
-	
 	@Autowired
 	UserMapper usermapper;
+
 	
 	UserVO userVO = new UserVO();
 	BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();

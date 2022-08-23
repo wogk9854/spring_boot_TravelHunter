@@ -1,7 +1,5 @@
 package edu.hi.prj.vo;
 
-import java.sql.Timestamp;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -19,5 +17,4 @@ public class LikeVO{
 	private int num;
 	private int board_id;
 	private String member_id;
-	private Timestamp ldate;
 }
